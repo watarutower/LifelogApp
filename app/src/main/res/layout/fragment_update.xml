@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
-            name="homeViewModel"
+            name="updateViewModel"
             type="com.example.lifelogapp.ui.update.UpdateViewModel" />
     </data>
 
@@ -14,7 +15,7 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="45dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title"
+                android:text="@string/update_title"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textStyle="bold" />
 
@@ -38,12 +39,54 @@
                 <!-- Media -->
                 <com.google.android.material.slider.Slider
                     android:id="@+id/continuousSlider"
-                    android:layout_width="365dp"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:value="50"
+                    android:valueFrom="0"
+                    android:valueTo="100"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="15dp"/>
 
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0"
-                  />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+
+                    <EditText
+                        android:id="@+id/editTextTextPersonName"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:elevation="40dp"
+                        android:ems="10"
+                        android:hint="@string/hint_comment"
+                        android:inputType="textMultiLine|textPersonName"
+                        android:singleLine="false"
+                        android:textAlignment="viewStart" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_confirm"
+                        android:layout_marginRight="8dp"
+
+                        style="?attr/borderlessButtonStyle"
+                        />
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_cancel"
+                        style="?attr/borderlessButtonStyle"
+                        />
+                </LinearLayout>
+
+
 
             </LinearLayout>
         </LinearLayout>
@@ -52,6 +95,5 @@
 
 
     </com.google.android.material.card.MaterialCardView>
-
-
 </layout>
+

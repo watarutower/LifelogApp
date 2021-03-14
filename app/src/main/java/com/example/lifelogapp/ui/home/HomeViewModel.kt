@@ -15,7 +15,7 @@ class HomeViewModel : ViewModel() {
         _navigateToUpdate.value = null
     }
 
-    fun onUpdate() {
+    fun onFabClicked() {
         _navigateToUpdate.value = true
     }
 }

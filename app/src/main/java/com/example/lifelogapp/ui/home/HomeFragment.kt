@@ -9,10 +9,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.example.lifelogapp.MainActivity
 import com.example.lifelogapp.R
 import com.example.lifelogapp.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
 
@@ -35,11 +38,21 @@ class HomeFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 //        })
-        val singleItems = arrayOf("Item 1", "Item 2", "Item 3")
-        val checkedItem = 1
 
+//        val fab: View = findViewById(R.id.extended_fab)
+//        fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+//                    .setAction("Action", null)
+//                    .show()
 
-
+        homeViewModel.navigateToUpdate.observe(viewLifecycleOwner,
+        Observer<Boolean?> {navigate ->
+            navigate?.let{
+                val navController = findNavController()
+                navController.navigate(R.id.action_fragment_home_to_fragment_update)
+                homeViewModel.doneNavigating()
+            }
+        })
 
         return binding.root
     }

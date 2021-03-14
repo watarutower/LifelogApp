@@ -15,6 +15,8 @@
     <string name="home_bodycondition">BodyCondition</string>
     <string name="home_mindcondition">MindCondition</string>
     <string name="title">Status</string>
+    <string name="update_title">How\'s your condition?</string>
+
     <string name="secondary_text">Now my Body is...</string>
     <string name="supporting_text">This is the comment you write when you feel like doing it.</string>
     <string name="fab_update">update</string>
@@ -25,5 +27,8 @@
     <string name="dialog_fab">This is dialog for statu update</string>
     <string name="fab">for what it\'s worth</string>
     <string name="dialog_message">this is dialog message!!</string>
+    <string name="hint_comment">Comment here</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="button_cancel">Cancel</string>
 
 </resources>
