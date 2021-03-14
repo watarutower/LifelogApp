@@ -30,5 +30,7 @@
     <string name="hint_comment">Comment here</string>
     <string name="button_confirm">Confirm</string>
     <string name="button_cancel">Cancel</string>
+    <string name="app_title">LifelogApp</string>
+    <string name="status_section">status section</string>
 
 </resources>

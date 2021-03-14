@@ -15,7 +15,9 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="45dp">
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,18 +72,22 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:orientation="horizontal">
+
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/button_confirm"
-                        android:layout_marginRight="8dp"
+                        android:text="@string/button_cancel"
+                        android:layout_marginLeft="25dp"
+                        android:onClick="@{() -> updateViewModel.onCancelClicked()}"
 
                         style="?attr/borderlessButtonStyle"
                         />
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/button_cancel"
+                        android:text="@string/button_confirm"
+
+                        android:onClick="@{() -> updateViewModel.onSubmitClicked()}"
                         style="?attr/borderlessButtonStyle"
                         />
                 </LinearLayout>

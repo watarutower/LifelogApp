@@ -15,8 +15,11 @@ class UpdateViewModel : ViewModel(){
         _navigateToHome.value = null
     }
 
-    fun onConfirmClicked() {
+    fun onSubmitClicked() {
         _navigateToHome.value = true
     }
 
+    fun onCancelClicked() {
+        _navigateToHome.value = true
+    }
 }

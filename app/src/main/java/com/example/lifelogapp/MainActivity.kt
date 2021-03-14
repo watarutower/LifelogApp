@@ -25,33 +25,19 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
 //    lateinit var binding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        supportActionBar?.hide()
+        val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-
-
-        val context = this
-
-
-
-
-
-
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_home, R.id.navigation_activitylog, R.id.navigation_history, R.id.navigation_mypage))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
-
-
-
     }
-
-
 }
