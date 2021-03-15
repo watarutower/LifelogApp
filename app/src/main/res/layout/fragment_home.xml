@@ -94,7 +94,6 @@
                 android:onClick="@{() -> homeViewModel.onFabClicked()}"
                 android:text="@string/fab_update"
                 app:icon="@drawable/ic_baseline_autorenew_24"
-
                 app:iconSize="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

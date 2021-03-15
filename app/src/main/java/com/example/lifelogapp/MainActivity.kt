@@ -48,29 +48,31 @@ class MainActivity : AppCompatActivity() {
 //        val activityLogFragment = ActivityLogFragment()
 //        val historyFragment = HistoryFragment()
 //        val myPageFragment = MyPageFragment()
-        val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {menuItem
-            when (menuItem.itemId) {
-                R.id.navigation_home -> {
-                    val fragment = HomeFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
-                            .commit()
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.navigation_activitylog -> {
-                    val fragment = ActivityLogFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
-                            .commit()
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.navigation_history -> {
-                    val fragment = HistoryFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
-                            .commit()
-                    return@OnNavigationItemSelectedListener true
-                }
-            }
-            false
-        }
+
+//
+//       BottomNavigationView.OnNavigationItemSelectedListener {
+//            when (it.itemId) {
+//                    R.id.navigation_home -> {
+//                        setContentView(R.layout.fragment_home)
+//                        true
+//                }
+//                R.id.navigation_activitylog -> {
+//                        setContentView(R.layout.fragment_activitylog)
+//                        true
+//                    }
+//                R.id.navigation_history -> {
+//                    setContentView(R.layout.fragment_history)
+//                    true
+//                }
+//                R.id.navigation_mypage -> {
+//                    setContentView(R.layout.fragment_mypage)
+//                    true
+//                }
+//            }
+//            false
+//        }
+
+
 
 
 
