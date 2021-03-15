@@ -15,12 +15,12 @@ class ActivityLogFragment : Fragment() {
     private lateinit var activityLogViewModel: ActivityLogViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         activityLogViewModel =
-            ViewModelProvider(this).get(ActivityLogViewModel::class.java)
+                ViewModelProvider(this).get(ActivityLogViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_activitylog, container, false)
         val textView: TextView = root.findViewById(R.id.text_dashboard)
         activityLogViewModel.text.observe(viewLifecycleOwner, Observer {

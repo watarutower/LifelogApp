@@ -13,6 +13,12 @@
             android:id="@+id/action_fragment_home_to_fragment_update"
             app:destination="@id/fragment_update"
            />
+        <action
+            android:id="@+id/action_fragment_home_to_fragent_activitylog"
+            app:destination="@id/fragent_activitylog" />
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_history"
+            app:destination="@id/fragment_history" />
     </fragment>
 
     <fragment
@@ -28,7 +34,11 @@
     <fragment
         android:id="@+id/fragment_mypage"
         android:name="com.example.lifelogapp.ui.mypage.MyPageFragment"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/fragment_mypage" >
+        <action
+            android:id="@+id/action_fragment_mypage_to_fragment_home"
+            app:destination="@id/fragment_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_update"
