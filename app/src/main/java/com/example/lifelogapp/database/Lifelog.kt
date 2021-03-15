@@ -17,9 +17,9 @@ data class Lifelog(
     @ColumnInfo(name = "one_mind")
     val oneMind: Int?,
 
-    @ColumnInfo(name = "one_comment")
-    val oneComment: Text?,
+    @ColumnInfo(name = "comment")
+    val oneComment: String?,
 
     @ColumnInfo(name = "one_time")
-    val oneTime: LocalDateTime = LocalDateTime.now()
+    val oneTime: Long =  System.currentTimeMillis()
 )
