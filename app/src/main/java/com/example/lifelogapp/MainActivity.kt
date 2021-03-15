@@ -14,7 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.lifelogapp.ui.activitylog.ActivityLogFragment
-import com.example.lifelogapp.ui.history.HistoryFragment
+
 import com.example.lifelogapp.ui.home.HomeFragment
 
 import com.example.lifelogapp.ui.mypage.MyPageFragment
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
-//        val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
+        val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -72,6 +72,10 @@ class MainActivity : AppCompatActivity() {
 //            false
 //        }
 
+        val appBarConfiguration = AppBarConfiguration(setOf(
+                R.id.navigation_home, R.id.navigation_activitylog, R.id.navigation_history, R.id.navigation_mypage))
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
 
 
 

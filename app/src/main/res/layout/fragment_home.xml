@@ -8,100 +8,94 @@
             type="com.example.lifelogapp.ui.home.HomeViewModel" />
     </data>
 
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="55dp">
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                <!-- Title, secondary and supporting text -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="403dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Media -->
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="194dp"
+                        android:contentDescription="@string/status_section"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/ic_baseline_tag_faces_24" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <!-- Title, secondary and supporting text -->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/title"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <!-- Media -->
+                        android:layout_marginTop="0dp"
+                        android:inputType="textMultiLine"
+                        android:singleLine="false"
+                        android:text="@string/supporting_text"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary" />
 
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="194dp"
-                            android:contentDescription="@string/status_section"
-                            android:scaleType="fitCenter"
-                            app:srcCompat="@drawable/ic_baseline_tag_faces_24" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <!-- Title, secondary and supporting text -->
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:inputType="textMultiLine"
-                                android:singleLine="false"
-                                android:textAlignment="viewStart"
-                                android:text="@string/supporting_text"
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
-
-                        </LinearLayout>
-                    </LinearLayout>
                 </LinearLayout>
+            </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/extended_fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginTop="204dp"
-                android:contentDescription="@string/fab_description"
-                android:onClick="@{() -> homeViewModel.onFabClicked()}"
-                android:text="@string/fab_update"
-                app:icon="@drawable/ic_baseline_autorenew_24"
-                app:iconSize="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.939"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card" />
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extended_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="204dp"
+            android:contentDescription="@string/fab_description"
+            android:onClick="@{() -> homeViewModel.onFabClicked()}"
+            android:text="@string/fab_update"
+            app:icon="@drawable/ic_baseline_autorenew_24"
+            app:iconSize="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.939"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>
