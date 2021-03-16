@@ -12,13 +12,16 @@
         <action
             android:id="@+id/action_fragment_home_to_fragment_update"
             app:destination="@id/fragment_update"
-           />
+            />
         <action
-            android:id="@+id/action_fragment_home_to_fragent_activitylog"
+            android:id="@+id/action_fragment_home_to_fragment_activitylog"
             app:destination="@id/fragent_activitylog" />
         <action
-            android:id="@+id/action_fragment_home_to_fragment_history"
-            app:destination="@id/fragment_history" />
+            android:id="@+id/action_fragment_home_to_fragment_history_detail"
+            app:destination="@id/fragment_history_detail" />
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_mypage"
+            app:destination="@id/fragment_mypage" />
     </fragment>
 
     <fragment
@@ -27,18 +30,16 @@
         tools:layout="@layout/fragment_activitylog" />
 
     <fragment
-        android:id="@+id/fragment_history"
-        android:name="com.example.lifelogapp.ui.history.HistoryFragment"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/fragment_history_detail"
+        android:name="com.example.lifelogapp.ui.historydetail.HistoryDetailFragment"
+        tools:layout="@layout/fragment_history_detail"
+
+        />
 
     <fragment
         android:id="@+id/fragment_mypage"
         android:name="com.example.lifelogapp.ui.mypage.MyPageFragment"
-        tools:layout="@layout/fragment_mypage" >
-        <action
-            android:id="@+id/action_fragment_mypage_to_fragment_home"
-            app:destination="@id/fragment_home" />
-    </fragment>
+        tools:layout="@layout/fragment_mypage" />
 
     <fragment
         android:id="@+id/fragment_update"

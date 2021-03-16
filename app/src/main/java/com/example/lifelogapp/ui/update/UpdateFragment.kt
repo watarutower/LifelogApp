@@ -28,9 +28,6 @@ class UpdateFragment : Fragment() {
             navigate?.let{
             val navController = findNavController()
                 navController.navigate(R.id.action_fragment_update_to_fragment_home)
-                // Reset state to make sure we only navigate once, even if the device
-                // has a configuration c
-                // hange.
                 updateViewModel.doneNavigating()
             }
         })

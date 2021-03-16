@@ -28,7 +28,6 @@ class HomeFragment : Fragment() {
             inflater, R.layout.fragment_home, container, false)
 
         val application = requireNotNull(this.activity).application
-        val
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 

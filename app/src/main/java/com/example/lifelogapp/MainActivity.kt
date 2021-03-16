@@ -5,11 +5,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -30,55 +32,39 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
 //    lateinit var binding: ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
-        val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
-
+        val navView: BottomNavigationView = findViewById(R.id.navigation)
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(setOf(
-//            R.id.navigation_home, R.id.navigation_activitylog, R.id.navigation_history, R.id.navigation_mypage))
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//        navView.setupWithNavController(navController)
 
-//        val activityLogFragment = ActivityLogFragment()
-//        val historyFragment = HistoryFragment()
-//        val myPageFragment = MyPageFragment()
+        val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home  -> {
+                    navController.navigate(R.id.fragment_home)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_activitylog  -> {
 
-//
-//       BottomNavigationView.OnNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                    R.id.navigation_home -> {
-//                        setContentView(R.layout.fragment_home)
-//                        true
-//                }
-//                R.id.navigation_activitylog -> {
-//                        setContentView(R.layout.fragment_activitylog)
-//                        true
-//                    }
-//                R.id.navigation_history -> {
-//                    setContentView(R.layout.fragment_history)
-//                    true
-//                }
-//                R.id.navigation_mypage -> {
-//                    setContentView(R.layout.fragment_mypage)
-//                    true
-//                }
-//            }
-//            false
-//        }
+                    navController.navigate(R.id.fragent_activitylog)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_history_detail -> {
+                    navController.navigate(R.id.fragment_history_detail)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_mypage -> {
+                    navController.navigate(R.id.fragment_mypage)
+                    return@OnNavigationItemSelectedListener true
+                }
 
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_activitylog, R.id.navigation_history, R.id.navigation_mypage))
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
-
-
-
+            }
+            false
+        }
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
+
+
+
 }
