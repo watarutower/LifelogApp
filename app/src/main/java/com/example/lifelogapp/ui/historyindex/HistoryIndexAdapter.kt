@@ -1,4 +1,4 @@
-//package com.example.lifelogapp.ui.history
+//package com.example.lifelogapp.ui.historyindex
 //
 //import android.annotation.SuppressLint
 //import androidx.recyclerview.widget.DiffUtil

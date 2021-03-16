@@ -38,7 +38,6 @@ class UpdateViewModel (
         viewModelScope.launch {
             val newStatus = Lifelog()
             insert(newStatus)
-
             _navigateToHome.value = true
         }
     }

@@ -17,9 +17,9 @@ class HistoryDetailViewModel (
 
     private var newStatus = MutableLiveData<Lifelog?>()
 
-    val daylogs = database.getDayLogs()
+    val daylog = database.getDayLogs()
 
-    val daylogsString = Transformations.map(daylogs) { daylogs ->
+    val daylogsString = Transformations.map(daylog) { daylogs ->
         formatDaylogs(daylogs, application.resources)
     }
 

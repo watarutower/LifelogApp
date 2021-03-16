@@ -10,15 +10,15 @@ import java.time.LocalDateTime
 data class Lifelog(
     @PrimaryKey(autoGenerate = true)
     var statusId: Long = 0L,
-
-    @ColumnInfo(name = "one_condition")
-    val oneCondition: Int? = null,
-
-    @ColumnInfo(name = "one_mind")
-    val oneMind: Int? = null ,
-
-    @ColumnInfo(name = "comment")
-    val oneComment: String? = null,
+//
+//    @ColumnInfo(name = "one_condition")
+//    val oneCondition: Int? = null,
+//
+//    @ColumnInfo(name = "one_mind")
+//    val oneMind: Int? = null ,
+//
+//    @ColumnInfo(name = "comment")
+//    val oneComment: String? = null,
 
     @ColumnInfo(name = "submit_time")
     val submitTime: Long =  System.currentTimeMillis()
