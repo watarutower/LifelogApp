@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.lifelogapp.R
-import com.example.lifelogapp.ui.history.HistoryViewModel
 
 class MyPageFragment : Fragment()  {
     private lateinit var myPageViewModel: MyPageViewModel

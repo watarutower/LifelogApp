@@ -25,7 +25,7 @@ class HistoryDetailAdapter: ListAdapter<Lifelog, HistoryDetailAdapter.ViewHolder
     }
 
     class ViewHolder private constructor(val binding: ListItemDayStatusBinding)
-                                            : RecyclerView.ViewHolder(binding.root){
+        : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: Lifelog) {
             binding.daystatus = item

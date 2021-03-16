@@ -1,4 +1,4 @@
-package com.example.lifelogapp.ui.history
+package com.example.lifelogapp.ui.historyindex
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -6,13 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lifelogapp.database.LifelogDao
 
-class HistoryViewModel(
+class HistoryIndexViewModel(
     dataSource: LifelogDao,
     application: Application
 ) : ViewModel() {
+    val database = dataSource
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is history Fragment"
-    }
-    val text: LiveData<String> = _text
+    val dayLog = database.getDayLog()
+
+
+
+
+
 }

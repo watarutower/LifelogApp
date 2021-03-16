@@ -12,14 +12,14 @@ data class Lifelog(
     var statusId: Long = 0L,
 
     @ColumnInfo(name = "one_condition")
-    val oneCondition: Int,
+    val oneCondition: Int? = null,
 
     @ColumnInfo(name = "one_mind")
-    val oneMind: Int?,
+    val oneMind: Int? = null ,
 
     @ColumnInfo(name = "comment")
-    val oneComment: String?,
+    val oneComment: String? = null,
 
-    @ColumnInfo(name = "one_time")
-    val oneTime: Long =  System.currentTimeMillis()
+    @ColumnInfo(name = "submit_time")
+    val submitTime: Long =  System.currentTimeMillis()
 )

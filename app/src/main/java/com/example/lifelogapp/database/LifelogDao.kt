@@ -9,7 +9,7 @@ import androidx.room.Query
 interface LifelogDao {
 
     @Insert
-    suspend fun insert(oneLog: Lifelog )
+    suspend fun insert(newStatus: Lifelog )
 
     /** まだ不明
      * Selects and returns the row that matches the supplied start time, which is our key.
@@ -25,7 +25,7 @@ interface LifelogDao {
      * sorted by start time in descending order.
      */
     @Query("SELECT * FROM each_status_table ORDER BY statusId DESC")
-    fun getDayLog(): LiveData<List<Lifelog>>
+    fun getDayLogs(): LiveData<List<Lifelog>>
 
     /**
      * Selects and returns the latest status.

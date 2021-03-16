@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="412dp"
-        tools:context=".historydetail.HistoryDetailFragment">
+        tools:context=".ui.historydetail.HistoryDetailFragment">
 
         <TextView
             android:id="@+id/text_history_detail"

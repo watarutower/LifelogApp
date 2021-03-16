@@ -1,10 +1,13 @@
 package com.example.lifelogapp.ui.historydetail
 
+
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.LifelogDao
+import com.example.lifelogapp.formatDaylogs
 
 class HistoryDetailViewModel (
     dataSource: LifelogDao,
@@ -12,12 +15,18 @@ class HistoryDetailViewModel (
 
     val database = dataSource
 
-    private var each_log = MutableLiveData<Lifelog?>()
+    private var newStatus = MutableLiveData<Lifelog?>()
 
-    val day_log = database.getDayLog()
+    val daylogs = database.getDayLogs()
 
-
-
-
-
+    val daylogsString = Transformations.map(daylogs) { daylogs ->
+        formatDaylogs(daylogs, application.resources)
     }
+
+
+
+
+
+
+}
+

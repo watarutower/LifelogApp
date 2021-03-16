@@ -75,7 +75,7 @@
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/button_confirm"
+                        android:text="@string/button_submit"
                         android:layout_marginLeft="25dp"
 
                         android:onClick="@{() -> updateViewModel.onSubmitClicked()}"
