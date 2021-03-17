@@ -20,7 +20,7 @@ class HistoryDetailFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         val binding: FragmentHistoryDetailBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_history_detail, container, false)
+                inflater, R.layout.fragment_history_detail, container, false)
 
         val application = requireNotNull(this.activity).application
 
@@ -28,8 +28,8 @@ class HistoryDetailFragment : Fragment() {
         val viewModelFactory = HistoryDetailViewModelFactory(dataSource, application)
 
         var historyDetailViewModel =
-            ViewModelProvider(
-                this, viewModelFactory).get(HistoryDetailViewModel::class.java)
+                ViewModelProvider(
+                        this, viewModelFactory).get(HistoryDetailViewModel::class.java)
 
         binding.historyDetailViewModel = historyDetailViewModel
 

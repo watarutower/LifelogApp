@@ -19,14 +19,8 @@ class HistoryDetailViewModel (
 
     val daylog = database.getDayLogs()
 
-    val daylogsString = Transformations.map(daylog) { daylogs ->
-        formatDaylogs(daylogs, application.resources)
-    }
-
-
-
-
-
-
+//    val daylogsString = Transformations.map(daylog) { daylogs ->
+//        formatDaylogs(daylogs, application.resources)
+//    }
 }
 
