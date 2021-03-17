@@ -20,20 +20,14 @@ class UpdateViewModel (
 
     val database = dataSource
 
-
     private val _navigateToHome = MutableLiveData<Boolean?>()
 
     val navigateToHome: LiveData<Boolean?>
         get() = _navigateToHome
 
-    private val _updateComment = MutableLiveData<String?>()
-
-    val updateComment: LiveData<String?>
-        get() = _updateComment
-
     var editText: String= ""
 
-    var sliderFigures: Float = 1f
+    var sliderFigures: Float? = null
 
 
     private suspend fun insert(eachStatus: Lifelog) {

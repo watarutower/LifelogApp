@@ -54,7 +54,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="15dp"
                     android:stepSize="1"
-                    android:value="@{updateViewModel.SliderFigures}"/>
+                    android:value="@={updateViewModel.sliderFigures}"/>
 
 
                 <LinearLayout
