@@ -31,6 +31,6 @@ fun formatDaylogs(daylogs: List<Lifelog>, resources: Resources): Spanned {
             return Html.fromHtml(sb.toString())
         }
     }
-
-
 }
+
+data class commentData(var comment: String = "")

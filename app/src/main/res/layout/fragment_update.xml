@@ -10,6 +10,11 @@
             name="updateViewModel"
             type="com.example.lifelogapp.ui.update.UpdateViewModel" />
     </data>
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="myComment"-->
+<!--            type="com.example.lifelogapp.UtilKt" />-->
+<!--    </data>-->
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
@@ -43,11 +48,14 @@
                     android:id="@+id/continuousSlider"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:value="50"
+
                     android:valueFrom="0"
                     android:valueTo="100"
                     android:layout_marginTop="30dp"
-                    android:layout_marginBottom="15dp"/>
+                    android:layout_marginBottom="15dp"
+                    android:stepSize="1"
+                    android:value="@{updateViewModel.SliderFigures}"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -57,17 +65,19 @@
 
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/new_comment"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:elevation="40dp"
                         android:ems="10"
                         android:hint="@string/hint_comment"
-                        android:inputType="textMultiLine|textPersonName"
+                        android:inputType="textMultiLine|text"
                         android:singleLine="false"
-                        android:textAlignment="viewStart" />
+                        android:textAlignment="viewStart"
+                        android:text="@={updateViewModel.editText}"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/submit_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
