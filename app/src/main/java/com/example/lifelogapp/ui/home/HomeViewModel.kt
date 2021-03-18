@@ -17,7 +17,7 @@ class HomeViewModel (
 
     val database = dataSource
 
-    private var aStatus = MutableLiveData<Lifelog?>()
+//    private var aStatus = MutableLiveData<Lifelog?>()
     //for adapter
     val daylog = database.getDayLogs()
 
@@ -33,15 +33,24 @@ class HomeViewModel (
 //
 
 //    private var aStatus: Lifelog? = null
-    init {
-        initializeStatus()
-    }
+//    init {
+//        initializeStatus()
+//    }
 
-    private fun initializeStatus() {
-        viewModelScope.launch {
-            aStatus.value = getStatusFromDatabase()
-        }
+//    private fun initializeStatus() {
+//        viewModelScope.launch {
+//            aStatus.value = getStatusFromDatabase()
+//        }
+//    }
+
+    var newSta = Lifelog()
+    fun onNewSta() {
+    viewModelScope.launch{
+
+        newSta = database.getOneStatus()
     }
+}
+
 
     private suspend fun getStatusFromDatabase(): Lifelog? {
         var funStatus = database.getOneStatus()
@@ -64,7 +73,7 @@ class HomeViewModel (
 //    val imageUrl: LiveData<Int?>
 //        get() = _imageUrl
  init {
-        qualityToImage(aStatus.value?.oneCondition)
+        qualityToImage(newSta.oneCondition)
     }
 
         private fun qualityToImage(quality: Int?) {
