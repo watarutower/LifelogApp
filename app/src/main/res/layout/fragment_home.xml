@@ -65,11 +65,12 @@
                             android:layout_height="194dp"
                             android:contentDescription="@string/status_section"
                             android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/ic_baseline_tag_faces_24"
 
-                            app:imageUrl="@{statuslog}"
                             />
 
                     </LinearLayout>
+<!--                    app:imageUrl="@{statuslog}"-->
                     <!--                            app:srcCompat="@drawable/ic_baseline_tag_faces_24"-->
 
                     <LinearLayout
