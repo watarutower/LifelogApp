@@ -6,14 +6,13 @@
         <variable
             name="homeViewModel"
             type="com.example.lifelogapp.ui.home.HomeViewModel" />
-        <variable
-            name="statuslog"
-            type="com.example.lifelogapp.database.Lifelog"/>
-    </data>
 
+    </data>
 <!--    <variable-->
-<!--        name="qualityImage"-->
-<!--        type="com.example.lifelogapp.database.Lifelog"/>-->
+<!--    name="statuslog"-->
+<!--    type="com.example.lifelogapp.database.Lifelog"/>-->
+
+
     <ScrollView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -65,13 +64,11 @@
                             android:layout_height="194dp"
                             android:contentDescription="@string/status_section"
                             android:scaleType="fitCenter"
-                            app:srcCompat="@drawable/ic_baseline_tag_faces_24"
-
-                            />
+                            app:imageResource="@{homeViewModel.imageUrl}" />
 
                     </LinearLayout>
 <!--                    app:imageUrl="@{statuslog}"-->
-                    <!--                            app:srcCompat="@drawable/ic_baseline_tag_faces_24"-->
+                    <!-- app:srcCompat="@drawable/ic_baseline_tag_faces_24"-->
 
                     <LinearLayout
                         android:layout_width="match_parent"

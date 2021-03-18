@@ -2,6 +2,7 @@ package com.example.lifelogapp
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
+import android.net.Uri
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.example.lifelogapp.database.Lifelog
+import java.net.URI
 import java.text.SimpleDateFormat
 
 @SuppressLint("SimpleDateFormat")
@@ -31,6 +33,17 @@ fun ImageView.setImageUrl(item: Lifelog?) {
         })
     }
 }
+
+//  全然ダメ
+//data class Image(val uri: Uri =  R.drawable.ic_sentiment_very_dissatisfied_24px)
+//
+//@BindingAdapter("imageURL")
+//fun ImageView.imageURI(uri: URI) {
+//    Glide.with(this)
+//            .load(uri)
+//            .into(this)
+//}
+
 //@BindingAdapter("bind:imageUrl")
 //fun loadImage(view: ImageView, url: String?) {
 //    Glide.with(view.getContext()).load(url).into(view)

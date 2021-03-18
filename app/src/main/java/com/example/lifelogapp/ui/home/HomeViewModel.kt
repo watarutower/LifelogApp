@@ -35,16 +35,16 @@ class HomeViewModel (
     var statuslog = aStatus
 
 
-//    var imageUrl: String? = "R.drawable.ic_baseline_star_border_24"
+    var imageUrl = R.drawable.ic_baseline_star_border_24
 
 //    init {
 //        aStatus = database.getOneStatus()
 ////        qualityToImage(aStatus?.oneCondition)
 //    }
 
-    private val _imageUrl = MutableLiveData<Int>()
-    val imageUrl: LiveData<Int?>
-        get() = _imageUrl
+//    private val _imageUrl = MutableLiveData<Int>()
+//    val imageUrl: LiveData<Int?>
+//        get() = _imageUrl
 
 
 
