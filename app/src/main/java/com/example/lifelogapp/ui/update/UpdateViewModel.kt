@@ -27,7 +27,7 @@ class UpdateViewModel (
 
     var editText: String= ""
 
-    var sliderFigures: Float? = null
+    var sliderFigures: Float = 0F
 
 
     private suspend fun insert(eachStatus: Lifelog) {

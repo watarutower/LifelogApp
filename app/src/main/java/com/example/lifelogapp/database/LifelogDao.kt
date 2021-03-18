@@ -1,6 +1,7 @@
 package com.example.lifelogapp.database
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -31,7 +32,8 @@ interface LifelogDao {
      * Selects and returns the latest status.
      */
     @Query("SELECT * FROM each_status_table ORDER BY statusId DESC LIMIT 1")
-    fun getOneStatus(): Lifelog?
+    suspend fun getOneStatus(): Lifelog
+//    MutableLiveData<Lifelog?>
 
     /**
      * Selects and returns the night with given statusId.

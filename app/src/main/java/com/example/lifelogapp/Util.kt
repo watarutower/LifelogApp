@@ -56,22 +56,25 @@ fun ImageView.setImageUrl(item: Lifelog?) {
 //
 //}
 
-//fun qualityToImage(quality: Int?) :String{
+//fun qualityToImage(quality: Int?) :Int{
 //    when(quality) {
-//        in 0..10 -> {
-//            R.drawable.ic_sentiment_very_dissatisfied_24px
-//            return
-//        }
+//        in 0..10 ->
+//            return R.drawable.ic_sentiment_very_dissatisfied_24px
 //
-//        in 11..34 -> R.drawable.ic_sentiment_dissatisfied_black_18dp
-//        in 35..69 -> R.drawable.ic_sentiment_neutral_24px
+//        in 11..34 ->
+//            return R.drawable.ic_sentiment_dissatisfied_black_18dp
+//        in 35..69 ->
+//            return R.drawable.ic_sentiment_neutral_24px
 //
-//        in 70..85 -> R.drawable.ic_sentiment_satisfied_24px
+//        in 70..85 ->
+//            return R.drawable.ic_sentiment_satisfied_24px
 //
-//        in 86..100 -> R.drawable.ic_sentiment_very_satisfied_24px
-//        else -> R.drawable.ic_baseline_autorenew_24
+//        in 86..100 ->
+//            return R.drawable.ic_sentiment_very_satisfied_24px
+//        else ->
+//            return R.drawable.ic_baseline_autorenew_24
 //    }
-
+//
 
 
 
