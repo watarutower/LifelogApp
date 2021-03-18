@@ -49,7 +49,7 @@ class UpdateViewModel (
 //          _updateComment.value = editText
 
             val newStatus = Lifelog()
-            newStatus.oneCondition = sliderFigures
+            newStatus.oneCondition = sliderFigures?.toInt()
 
             newStatus.oneComment = editText
             insert(newStatus)

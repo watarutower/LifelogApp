@@ -5,6 +5,9 @@ import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
 import com.example.lifelogapp.database.Lifelog
 import java.text.SimpleDateFormat
 
@@ -13,7 +16,66 @@ fun convertLongToDateString(systemTime: Long): String {
     return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm")
         .format(systemTime).toString()
 }
+@BindingAdapter("imageUrl")
+fun ImageView.setImageUrl(item: Lifelog?) {
+    item?.let {
+        setImageResource(when (item.oneCondition) {
+            in 0..10 -> R.drawable.ic_sentiment_very_dissatisfied_24px
+            in 11..34 -> R.drawable.ic_sentiment_dissatisfied_black_18dp
+            in 35..69 -> R.drawable.ic_sentiment_neutral_24px
 
+            in 70..85 -> R.drawable.ic_sentiment_satisfied_24px
+
+            in 86..100 -> R.drawable.ic_sentiment_very_satisfied_24px
+            else -> R.drawable.ic_baseline_autorenew_24
+        })
+    }
+}
+//@BindingAdapter("bind:imageUrl")
+//fun loadImage(view: ImageView, url: String?) {
+//    Glide.with(view.getContext()).load(url).into(view)
+//}
+
+
+//@BindingAdapter({"bind:imageUrl"})
+//fun loadImage(view: ImageView, url: String?) {
+//    Glide.with(view.getContext()).load(url).into(view)
+//
+//}
+
+//fun qualityToImage(quality: Int?) :String{
+//    when(quality) {
+//        in 0..10 -> {
+//            R.drawable.ic_sentiment_very_dissatisfied_24px
+//            return
+//        }
+//
+//        in 11..34 -> R.drawable.ic_sentiment_dissatisfied_black_18dp
+//        in 35..69 -> R.drawable.ic_sentiment_neutral_24px
+//
+//        in 70..85 -> R.drawable.ic_sentiment_satisfied_24px
+//
+//        in 86..100 -> R.drawable.ic_sentiment_very_satisfied_24px
+//        else -> R.drawable.ic_baseline_autorenew_24
+//    }
+
+
+
+
+
+
+
+//fun convertNumericQualityToImage(quality: Float, resources: Resources): String {
+//    setImageResource(when (item.sleepQuality) {
+//        -1 -> qualityString = "--"
+//        0 -> qualityString = resources.getString(R.string.zero_very_bad)
+//        1 -> qualityString = resources.getString(R.string.one_poor)
+//        2 -> qualityString = resources.getString(R.string.two_soso)
+//        4 -> qualityString = resources.getString(R.string.four_pretty_good)
+//        5 -> qualityString = resources.getString(R.string.five_excellent)
+//    }
+//    return qualityString
+//}
 
 fun formatDaylogs(daylogs: List<Lifelog>, resources: Resources): Spanned {
     val sb = StringBuilder()
@@ -32,5 +94,6 @@ fun formatDaylogs(daylogs: List<Lifelog>, resources: Resources): Spanned {
         }
     }
 }
+
 
 data class commentData(var comment: String = "")

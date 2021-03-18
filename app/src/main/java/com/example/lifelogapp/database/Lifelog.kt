@@ -12,7 +12,7 @@ data class Lifelog(
     var statusId: Long = 0L,
 
     @ColumnInfo(name = "condition")
-    var oneCondition: Float? = null,
+    var oneCondition: Int? = null,
 //
 //    @ColumnInfo(name = "one_mind")
 //    val oneMind: Int? = null ,
