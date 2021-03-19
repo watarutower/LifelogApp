@@ -17,7 +17,7 @@ class HomeViewModel (
 
     val database = dataSource
 
-//    private var aStatus = MutableLiveData<Lifelog?>()
+    //    private var aStatus = MutableLiveData<Lifelog?>()
     //for adapter
     val daylog = database.getDayLogs()
 
@@ -43,19 +43,21 @@ class HomeViewModel (
 //        }
 //    }
 
-    var newSta = Lifelog()
-    fun onNewSta() {
-    viewModelScope.launch{
-
-        newSta = database.getOneStatus()
-    }
-}
+    var newSta = database.getOneStatus()
 
 
-    private suspend fun getStatusFromDatabase(): Lifelog? {
-        var funStatus = database.getOneStatus()
-        return funStatus
-    }
+//    fun onNewSta() {
+//    viewModelScope.launch{
+//
+//        newSta = database.getOneStatus()
+//    }
+//}
+
+
+//    private suspend fun getStatusFromDatabase(): Lifelog? {
+//        var funStatus = database.getOneStatus()
+//        return funStatus
+//    }
 
 //    var statuslog = aStatus
 
@@ -73,24 +75,24 @@ class HomeViewModel (
 //    val imageUrl: LiveData<Int?>
 //        get() = _imageUrl
  init {
-        qualityToImage(newSta.oneCondition)
+        qualityToImage(77)
     }
 
-        private fun qualityToImage(quality: Int?) {
+    private fun qualityToImage(quality: Int?) {
 
-            when (quality) {
+        when (quality) {
 
-                in 0..10 -> imageUrl = R.drawable.ic_sentiment_very_dissatisfied_24px
+            in 0..10 -> imageUrl = R.drawable.ic_sentiment_very_dissatisfied_24px
 
-                in 11..34 -> imageUrl = R.drawable.ic_sentiment_dissatisfied_black_18dp
-                in 35..69 -> imageUrl = R.drawable.ic_sentiment_neutral_24px
+            in 11..34 -> imageUrl = R.drawable.ic_sentiment_dissatisfied_black_18dp
+            in 35..69 -> imageUrl = R.drawable.ic_sentiment_neutral_24px
 
-                in 70..85 -> imageUrl = R.drawable.ic_sentiment_satisfied_24px
+            in 70..85 -> imageUrl = R.drawable.ic_sentiment_satisfied_24px
 
-                in 86..100 -> imageUrl = R.drawable.ic_sentiment_very_satisfied_24px
-                else -> imageUrl
-            }
+            in 86..100 -> imageUrl = R.drawable.ic_sentiment_very_satisfied_24px
+            else -> imageUrl
         }
+    }
 
 
 
