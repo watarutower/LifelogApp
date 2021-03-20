@@ -11,6 +11,21 @@ interface LifelogDao {
 
     @Insert
     suspend fun insert(newStatus: Lifelog )
+    /**
+     * Selects and returns all rows in the table,
+     *
+     * sorted by start time in descending order.
+     */
+    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC")
+    fun getDayLogs(): LiveData<List<Lifelog>>
+    /**
+     * Selects and returns the latest status.
+     */
+
+
+    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC LIMIT 1")
+    fun getOneStatus(): LiveData<Lifelog>
+//    MutableLiveData<Lifelog?>
 
     /** まだ不明
      * Selects and returns the row that matches the supplied start time, which is our key.
@@ -21,24 +36,16 @@ interface LifelogDao {
     suspend fun get(key: Long): Lifelog
 
     /**
-     * Selects and returns all rows in the table,
-     *
-     * sorted by start time in descending order.
-     */
-    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC")
-    fun getDayLogs(): LiveData<List<Lifelog>>
-
-    /**
-     * Selects and returns the latest status.
-     */
-    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC LIMIT 1")
-    fun getOneStatus(): LiveData<Lifelog>
-//    MutableLiveData<Lifelog?>
-
-    /**
      * Selects and returns the night with given statusId.
      */
     @Query("SELECT * from each_status_table WHERE statusId = :key")
     fun getStatusWithId(key: Long): LiveData<Lifelog>
+//
+//    @Query("SELECT condition FROM each_status_table ORDER BY statusId DESC LIMIT 1")
+
+    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC")
+    fun getDayLogsList(): List<Lifelog>
+
+
 }
 
