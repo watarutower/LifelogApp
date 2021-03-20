@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable
+            name="daylife"
+            type="com.example.lifelogapp.database.Lifelog"/>
+        <variable
+            name="clickListener"
+            type="com.example.lifelogapp.ui.historyindex.HistoryIndexListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

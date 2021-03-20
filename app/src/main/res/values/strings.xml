@@ -32,5 +32,6 @@
     <string name="button_cancel">Cancel</string>
     <string name="app_title">LifelogApp</string>
     <string name="status_section">status section</string>
+    <string name="header_text">TEMPORARY_MONTH</string>
 
 </resources>

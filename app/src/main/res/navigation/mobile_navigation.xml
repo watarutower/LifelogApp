@@ -15,19 +15,28 @@
             />
         <action
             android:id="@+id/action_fragment_home_to_fragment_activitylog"
-            app:destination="@id/fragent_activitylog" />
-        <action
-            android:id="@+id/action_fragment_home_to_fragment_history_detail"
-            app:destination="@id/fragment_history_detail" />
+            app:destination="@id/fragment_activitylog" />
         <action
             android:id="@+id/action_fragment_home_to_fragment_mypage"
             app:destination="@id/fragment_mypage" />
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_history_index"
+            app:destination="@id/fragment_history_index" />
     </fragment>
 
     <fragment
-        android:id="@+id/fragent_activitylog"
+        android:id="@+id/fragment_activitylog"
         android:name="com.example.lifelogapp.ui.activitylog.ActivityLogFragment"
         tools:layout="@layout/fragment_activitylog" />
+
+    <fragment
+        android:id="@+id/fragment_history_index"
+        android:name="com.example.lifelogapp.ui.historyindex.HistoryIndexFragment"
+        tools:layout="@layout/fragment_history_index" >
+        <action
+            android:id="@+id/action_fragment_history_index_to_fragment_history_detail"
+            app:destination="@id/fragment_history_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_history_detail"
@@ -49,4 +58,5 @@
             android:id="@+id/action_fragment_update_to_fragment_home"
             app:destination="@id/fragment_home" />
     </fragment>
+
 </navigation>

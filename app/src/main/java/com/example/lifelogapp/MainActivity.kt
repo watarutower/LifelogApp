@@ -49,11 +49,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_activitylog  -> {
 
-                    navController.navigate(R.id.fragent_activitylog)
+                    navController.navigate(R.id.fragment_activitylog)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_history_detail -> {
-                    navController.navigate(R.id.fragment_history_detail)
+                R.id.navigation_history_index -> {
+                    navController.navigate(R.id.fragment_history_index)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_mypage -> {
