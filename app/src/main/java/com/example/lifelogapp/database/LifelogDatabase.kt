@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Lifelog::class], version = 7, exportSchema = false)
+@Database(entities = [Lifelog::class], version = 1, exportSchema = false)
 abstract class LifelogDatabase : RoomDatabase() {
 
     abstract val lifeLogDao: LifelogDao
@@ -22,7 +22,7 @@ abstract class LifelogDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         LifelogDatabase::class.java,
-                        "lifelog_database"
+                        "lifelog_history_database"
                     )
                         .fallbackToDestructiveMigration()
                         .build()

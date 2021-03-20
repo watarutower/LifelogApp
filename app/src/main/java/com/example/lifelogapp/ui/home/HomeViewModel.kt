@@ -9,11 +9,12 @@ import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.LifelogDao
 import com.example.lifelogapp.formatDaylogs
 import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 
 class HomeViewModel (
-        dataSource: LifelogDao,
-        application: Application) : ViewModel() {
+    dataSource: LifelogDao,
+    application: Application) : ViewModel() {
 
     val database = dataSource
 
@@ -24,27 +25,42 @@ class HomeViewModel (
 //
 //    val aDaylog = daylogList[0]
 
+//val aStatus: LiveData<Lifelog?>
+//    get() = _aStatus
+
+    val _aStatus = MutableLiveData<Lifelog?>()
+
+    init {
+        initializeAStatus()
+    }
+
+    private fun initializeAStatus() {
+        viewModelScope.launch {
+            var theStatus = database.getOneStatus()
+            _aStatus.value = theStatus
+        }
+    }
 
 
-    var imageUrl = R.drawable.ic_baseline_star_border_24
 
-// init {
-//        qualityToImage(aDaylog?.oneCondition)
-//    }
+     var i: Int = qualityToImage(_aStatus.value?.oneCondition)
 
-    private fun qualityToImage(quality: Int?) {
+    var imageUrl:Int = i
+//    var imageUrl: Int by Delegates.notNull()
+
+    fun qualityToImage(quality: Int?): Int {
 
         when (quality) {
+            in 0..10 -> return  R.drawable.ic_sentiment_very_dissatisfied_24px
 
-            in 0..10 -> imageUrl = R.drawable.ic_sentiment_very_dissatisfied_24px
 
-            in 11..34 -> imageUrl = R.drawable.ic_sentiment_dissatisfied_black_18dp
-            in 35..69 -> imageUrl = R.drawable.ic_sentiment_neutral_24px
+            in 11..34 -> return  R.drawable.ic_sentiment_dissatisfied_black_18dp
+            in 35..69 -> return  R.drawable.ic_sentiment_neutral_24px
 
-            in 70..85 -> imageUrl = R.drawable.ic_sentiment_satisfied_24px
+            in 70..85 -> return R.drawable.ic_sentiment_satisfied_24px
 
-            in 86..100 -> imageUrl = R.drawable.ic_sentiment_very_satisfied_24px
-            else -> imageUrl
+            in 86..100 -> return  R.drawable.ic_sentiment_very_satisfied_24px
+            else -> return R.drawable.ic_baseline_autorenew_24
         }
     }
 

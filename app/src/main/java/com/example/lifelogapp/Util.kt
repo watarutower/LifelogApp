@@ -34,6 +34,21 @@ fun ImageView.setImageUrl(item: Lifelog?) {
     }
 }
 
+//fun qualityToImage(quality: Int?) {
+//    when (quality) {
+//
+//        in 0..10 -> imageUrl = R.drawable.ic_sentiment_very_dissatisfied_24px
+//
+//        in 11..34 -> imageUrl = R.drawable.ic_sentiment_dissatisfied_black_18dp
+//        in 35..69 -> imageUrl = R.drawable.ic_sentiment_neutral_24px
+//
+//        in 70..85 -> imageUrl = R.drawable.ic_sentiment_satisfied_24px
+//
+//        in 86..100 -> imageUrl = R.drawable.ic_sentiment_very_satisfied_24px
+//        else -> imageUrl
+//    }
+//}
+
 //  全然ダメ
 //data class Image(val uri: Uri =  R.drawable.ic_sentiment_very_dissatisfied_24px)
 //
