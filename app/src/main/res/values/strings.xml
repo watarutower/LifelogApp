@@ -33,5 +33,6 @@
     <string name="app_title">LifelogApp</string>
     <string name="status_section">status section</string>
     <string name="header_text">TEMPORARY_MONTH</string>
+    <string name="text_history_index">This is HistoryIndex Fragment</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.lifelogapp.ui.history
+package com.example.lifelogapp.ui.historyindex
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lifelogapp.R
 import com.example.lifelogapp.database.LifelogDatabase
-
 import com.example.lifelogapp.databinding.FragmentHistoryIndexBinding
+
+
 import com.example.lifelogapp.ui.historyindex.HistoryIndexAdapter
 import com.example.lifelogapp.ui.historyindex.HistoryIndexListener
 import com.example.lifelogapp.ui.historyindex.HistoryIndexViewModel
@@ -42,11 +43,11 @@ class HistoryIndexFragment : Fragment() {
 
             historyIndexViewModel.onDayClicked(statusId)
         })
-        binding.daysIndex.adapter = adapter
+        binding.statusIndex.adapter = adapter
 
-        historyIndexViewModel.daylogs.observe(viewLifecycleOwner, Observer {
+        historyIndexViewModel.dayLogs.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.addHeaderAndSubmitList(it)
+                adapter.submitList(it)
             }
         })
         binding.setLifecycleOwner(this)

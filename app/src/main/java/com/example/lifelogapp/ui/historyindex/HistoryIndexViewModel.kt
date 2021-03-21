@@ -17,10 +17,15 @@ class HistoryIndexViewModel(dataSource: LifelogDao,
     val navigateToHistoryDetail
         get() = _navigateToHistoryDetail
 
-    fun onHistoryDetailNavigated() {
-        _navigateToHistoryDetail.value = null
-    }
+
     fun onDayClicked(id: Long) {
         _navigateToHistoryDetail.value = id
     }
+
+//    fun onHistoryDetailNavigated() {
+//        _navigateToHistoryDetail.value = null
+//    }
+
+
+
 }
