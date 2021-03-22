@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey
 import org.w3c.dom.Text
 import java.time.LocalDateTime
 
+
+
 @Entity(tableName = "each_status_table")
 data class Lifelog(
     @PrimaryKey(autoGenerate = true)
