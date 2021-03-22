@@ -31,10 +31,11 @@ fun TextView.formatDaylogs(item: Lifelog?) {
         text = convertLongToDateString(item.submitTime)
     }
 
-    @BindingAdapter("daysIndex")
-    fun TextView.setDays(item: Lifelog) {
-        text = toString(item)
-    }
+
+}
+@BindingAdapter("daysIndex")
+fun TextView.setDays(item: String) {
+    text = item
 }
 //
 //@BindingAdapter("sleepDurationFormatted2")

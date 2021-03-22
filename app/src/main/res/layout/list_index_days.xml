@@ -6,81 +6,69 @@
     <data>
         <variable
             name="dayindex"
-            type="com.example.lifelogapp.database.Lifelog"/>
+            type="String"/>
         <variable
             name="clickListener"
             type="com.example.lifelogapp.ui.historyindex.HistoryIndexListener" />
     </data>
+    <!--        <variable-->
+    <!--            name="dayindex"-->
+    <!--            type="com.example.lifelogapp.database.Lifelog"/>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
- >
-<!--    android:onClick="@{() -> clickListener.onClick(dayIndex)}"-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/quality_image"-->
-<!--            android:layout_width="@dimen/icon_size"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginBottom="8dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:newCondition="@{daystatus}"-->
-<!--            tools:text="77" />-->
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(dayIndex)}">
 
         <TextView
             android:id="@+id/day_index"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/quality_image"
-            app:layout_constraintTop_toTopOf="@+id/quality_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Time is appearing"
             app:daysIndex="@{dayindex}"/>
 
-<!--        <TextView-->
-<!--            android:id="@+id/quality_string"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/sleep_length"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/sleep_length"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/sleep_length"-->
-<!--            tools:text="Excellent!!!"-->
-<!--            app:newComment="@{daystatus}"/>-->
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+        <!--        <TextView-->
+        <!--            android:id="@+id/quality_string"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/sleep_length"-->
+        <!--            app:layout_constraintHorizontal_bias="0.0"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/sleep_length"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/sleep_length"-->
+        <!--            tools:text="Excellent!!!"-->
+        <!--            app:newComment="@{daystatus}"/>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
-<!--<ImageView-->
-<!--android:id="@+id/quality_image"-->
-<!--android:layout_width="@dimen/icon_size"-->
-<!--android:layout_height="60dp"-->
-<!--android:layout_marginStart="16dp"-->
-<!--android:layout_marginTop="8dp"-->
-<!--android:layout_marginBottom="8dp"-->
-<!--app:layout_constraintBottom_toBottomOf="parent"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toTopOf="parent"-->
-<!--tools:srcCompat="@drawable/ic_sentiment_satisfied_24px"-->
-<!--app:statusImage="@{daylife}"/>-->
+    <!--<ImageView-->
+    <!--android:id="@+id/quality_image"-->
+    <!--android:layout_width="@dimen/icon_size"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:layout_marginStart="16dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--tools:srcCompat="@drawable/ic_sentiment_satisfied_24px"-->
+    <!--app:statusImage="@{daylife}"/>-->
 
-<!--<TextView-->
-<!--android:id="@+id/quality_string"-->
-<!--android:layout_width="100dp"-->
-<!--android:layout_height="40dp"-->
-<!--android:textAlignment="center"-->
-<!--app:layout_constraintBottom_toBottomOf="parent"-->
-<!--app:layout_constraintEnd_toEndOf="@+id/quality_image"-->
-<!--app:layout_constraintHorizontal_bias="0.0"-->
-<!--app:layout_constraintStart_toStartOf="@+id/quality_image"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/quality_image"-->
-<!--tools:text="Excellent!!!"-->
-<!--app:logTimeFormatted="@{daylife}" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/quality_string"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:textAlignment="center"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="@+id/quality_image"-->
+    <!--app:layout_constraintHorizontal_bias="0.0"-->
+    <!--app:layout_constraintStart_toStartOf="@+id/quality_image"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/quality_image"-->
+    <!--tools:text="Excellent!!!"-->
+    <!--app:logTimeFormatted="@{daylife}" />-->

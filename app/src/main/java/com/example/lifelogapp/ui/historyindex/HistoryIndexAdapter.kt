@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 
 
 class HistoryIndexAdapter(val clickListener: HistoryIndexListener):
-        ListAdapter<Lifelog, HistoryIndexAdapter.ViewHolder>(HistoryIndexDiffCallback()) {
+        ListAdapter<String, HistoryIndexAdapter.ViewHolder>(HistoryIndexDiffCallback()) {
 
 //    --------------------------
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -35,7 +35,7 @@ class HistoryIndexAdapter(val clickListener: HistoryIndexListener):
     class ViewHolder private constructor(val binding: ListIndexDaysBinding)
         : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Lifelog, clickListener: HistoryIndexListener) {
+        fun bind(item: String, clickListener: HistoryIndexListener) {
             binding.dayindex = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -52,19 +52,19 @@ class HistoryIndexAdapter(val clickListener: HistoryIndexListener):
 
 }
 //    -----------------------
-class HistoryIndexDiffCallback : DiffUtil.ItemCallback<Lifelog>() {
-    override fun areItemsTheSame(oldItem: Lifelog, newItem: Lifelog): Boolean {
+class HistoryIndexDiffCallback : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
     @SuppressLint("DiffUtilEquals")
-    override fun areContentsTheSame(oldItem: Lifelog, newItem: Lifelog): Boolean {
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 }
 
 //    --------------------------
-class HistoryIndexListener(val clickListener: (statusId: Lifelog) -> Unit) {
-    fun onClick(oneStatus: Lifelog) = clickListener(oneStatus)
+class HistoryIndexListener(val clickListener: (statusId: String) -> Unit) {
+    fun onClick(oneStatus: String) = clickListener(oneStatus)
 }
 
 

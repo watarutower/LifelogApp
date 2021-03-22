@@ -43,7 +43,11 @@
         android:name="com.example.lifelogapp.ui.historydetail.HistoryDetailFragment"
         tools:layout="@layout/fragment_history_detail"
 
-        />
+        >
+        <argument
+            android:name="dayLogsKey"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_mypage"

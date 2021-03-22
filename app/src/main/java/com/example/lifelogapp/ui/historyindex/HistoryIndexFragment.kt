@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lifelogapp.R
 import com.example.lifelogapp.database.LifelogDatabase
@@ -27,7 +29,7 @@ class HistoryIndexFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         val binding: FragmentHistoryIndexBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_history_index, container, false)
+                inflater, R.layout.fragment_history_index, container, false)
 
         val application = requireNotNull(this.activity).application
 
@@ -35,13 +37,14 @@ class HistoryIndexFragment : Fragment() {
         val viewModelFactory = HistoryIndexViewModelFactory(dataSource, application)
 
         var historyIndexViewModel =
-            ViewModelProvider(
-                this, viewModelFactory).get(HistoryIndexViewModel::class.java)
+                ViewModelProvider(
+                        this, viewModelFactory).get(HistoryIndexViewModel::class.java)
 
         binding.historyIndexViewModel = historyIndexViewModel
 
-        val adapter = HistoryIndexAdapter(HistoryIndexListener { statusId ->
-            historyIndexViewModel.onDayClicked(statusId)
+        val adapter = HistoryIndexAdapter(HistoryIndexListener { dayIndex ->
+            Toast.makeText(context, "${dayIndex}", Toast.LENGTH_SHORT).show()
+            historyIndexViewModel.onDayClicked(dayIndex)
         })
         binding.statusIndex.adapter = adapter
 
@@ -51,6 +54,16 @@ class HistoryIndexFragment : Fragment() {
             }
         })
         binding.setLifecycleOwner(this)
+
+        historyIndexViewModel.navigateToHistoryDetail.observe(viewLifecycleOwner, Observer { specificDay ->
+            specificDay?.let {
+
+                this.findNavController().navigate(
+                        HistoryIndexFragmentDirections
+                                .actionFragmentHistoryIndexToFragmentHistoryDetail(specificDay))
+                historyIndexViewModel.onHistoryDetailNavigated()
+            }
+        })
 
 //        val root = inflater.inflate(R.layout.fragment_history, container, false)
 //        val textView: TextView = root.findViewById(R.id.text_history)

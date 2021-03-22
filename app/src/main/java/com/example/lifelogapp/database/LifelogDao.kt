@@ -39,7 +39,7 @@ interface LifelogDao {
      * Selects and returns the night with given statusId.
      */
     @Query("SELECT * from each_status_table WHERE statusId = :key")
-    fun getStatusWithId(key: Long): LiveData<Lifelog>
+    fun getStatusWithId(key: String): LiveData<List<Lifelog>>
 //
 //    @Query("SELECT condition FROM each_status_table ORDER BY statusId DESC LIMIT 1")
 
@@ -48,7 +48,7 @@ interface LifelogDao {
 
 
     @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY statusId DESC")
-    fun getStatusByDay(): LiveData<List<Lifelog>>
+    fun getStatusByDay(): LiveData<List<String>>
 
 }
 

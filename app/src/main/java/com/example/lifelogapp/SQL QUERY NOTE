@@ -2,3 +2,12 @@ select datetime(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') f
 
 select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')
 from each_status_table order by statusId desc ;
+
+めも
+select statusId,condition,comment,date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')
+from each_status_table order by statusId desc ;
+
+
+日付指定！
+select statusId,condition,comment,date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')
+from each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = '2021-03-21'order by statusId desc ;

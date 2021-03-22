@@ -16,18 +16,18 @@ class HistoryIndexViewModel(dataSource: LifelogDao,
     val dayIndex = database.getStatusByDay()
 
 
-    private val _navigateToHistoryDetail = MutableLiveData<Lifelog>()
+    private val _navigateToHistoryDetail = MutableLiveData<String>()
     val navigateToHistoryDetail
         get() = _navigateToHistoryDetail
 
 
-    fun onDayClicked(id: Lifelog) {
-        _navigateToHistoryDetail.value = id
+    fun onDayClicked(day: String) {
+        _navigateToHistoryDetail.value = day
     }
 
-//    fun onHistoryDetailNavigated() {
-//        _navigateToHistoryDetail.value = null
-//    }
+    fun onHistoryDetailNavigated() {
+        _navigateToHistoryDetail.value = null
+    }
 
 
 
