@@ -36,7 +36,7 @@ class HistoryIndexAdapter(val clickListener: HistoryIndexListener):
         : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: Lifelog, clickListener: HistoryIndexListener) {
-            binding.daystatus = item
+            binding.dayindex = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
@@ -54,7 +54,7 @@ class HistoryIndexAdapter(val clickListener: HistoryIndexListener):
 //    -----------------------
 class HistoryIndexDiffCallback : DiffUtil.ItemCallback<Lifelog>() {
     override fun areItemsTheSame(oldItem: Lifelog, newItem: Lifelog): Boolean {
-        return oldItem.statusId == newItem.statusId
+        return oldItem == newItem
     }
     @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: Lifelog, newItem: Lifelog): Boolean {
@@ -63,8 +63,8 @@ class HistoryIndexDiffCallback : DiffUtil.ItemCallback<Lifelog>() {
 }
 
 //    --------------------------
-class HistoryIndexListener(val clickListener: (statusId: Long) -> Unit) {
-    fun onClick(oneStatus: Lifelog) = clickListener(oneStatus.statusId)
+class HistoryIndexListener(val clickListener: (statusId: Lifelog) -> Unit) {
+    fun onClick(oneStatus: Lifelog) = clickListener(oneStatus)
 }
 
 

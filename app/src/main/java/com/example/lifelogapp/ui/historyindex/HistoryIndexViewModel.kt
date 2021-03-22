@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.LifelogDao
 
 class HistoryIndexViewModel(dataSource: LifelogDao,
@@ -12,15 +13,15 @@ class HistoryIndexViewModel(dataSource: LifelogDao,
 
 //    val dayLogs = database.getDayLogs()
 
-    val dayIndex = database.getDayLogsList()
+    val dayIndex = database.getStatusByDay()
 
 
-    private val _navigateToHistoryDetail = MutableLiveData<Long>()
+    private val _navigateToHistoryDetail = MutableLiveData<Lifelog>()
     val navigateToHistoryDetail
         get() = _navigateToHistoryDetail
 
 
-    fun onDayClicked(id: Long) {
+    fun onDayClicked(id: Lifelog) {
         _navigateToHistoryDetail.value = id
     }
 

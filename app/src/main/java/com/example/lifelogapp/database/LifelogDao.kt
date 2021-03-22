@@ -48,7 +48,7 @@ interface LifelogDao {
 
 
     @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY statusId DESC")
-    fun getStatusByDay(): LiveData<List<String>>
+    fun getStatusByDay(): LiveData<List<Lifelog>>
 
 }
 

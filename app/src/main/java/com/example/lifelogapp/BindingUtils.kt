@@ -33,7 +33,7 @@ fun TextView.formatDaylogs(item: Lifelog?) {
 
     @BindingAdapter("daysIndex")
     fun TextView.setDays(item: Lifelog) {
-        text = convertLongToDateString(item.submitTime)
+        text = toString(item)
     }
 }
 //
