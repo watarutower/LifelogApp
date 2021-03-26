@@ -1,72 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
         <variable
             name="historyDetailViewModel"
             type="com.example.lifelogapp.ui.historydetail.HistoryDetailViewModel" />
     </data>
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/text_history_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="72dp"
-            android:layout_marginEnd="8dp"
-            android:text="@{historyDetailViewModel.theDay}"
-            android:textAlignment="textStart"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="2021.02.26" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/day_comment_title"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="8dp"
-            android:elevation="40dp"
-            android:text="Today is gonna be the day, that they gonna thow it back to you" />
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="134dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/detail_constraint"
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.historydetail.HistoryDetailFragment">
+            android:layout_height="wrap_content"
+            android:elevation="50dp">
 
+            <TextView
+                android:id="@+id/text_history_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{historyDetailViewModel.theDay}"
+                android:textAlignment="textStart"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2021.02.26" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="14dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_history_detail">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:elevation="40dp"
+                            android:text="Today is gonna be the day, that they gonna throw it back to you"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/edit_write"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:text="@{historyDetailViewModel.editWrite}"
+                            android:visibility="gone"
+                            />
+
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/write_button"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/diary_write"
+                        android:textAlignment="center"
+                  />
+                </LinearLayout>
+<!--                android:onClick="@{() -> historyDetailViewModel.onWriteClicked()}"-->
+            </com.google.android.material.card.MaterialCardView>
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/day_status_list"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/detail_constraint"
+                app:layout_constraintTop_toBottomOf="@+id/card"
                 app:layout_constraintVertical_bias="1.0"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+
+    </ScrollView>
+
 </layout>

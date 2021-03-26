@@ -35,5 +35,6 @@
     <string name="header_text">TEMPORARY_MONTH</string>
     <string name="text_history_index">This is HistoryIndex Fragment</string>
     <string name="day_comment_title">How was your day?</string>
+    <string name="diary_write">Write</string>
 
 </resources>
