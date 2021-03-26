@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.lifelogapp.R
 import com.example.lifelogapp.database.LifelogDatabase
 import com.example.lifelogapp.databinding.FragmentHistoryDetailBinding
+import com.example.lifelogapp.ui.historyindex.HistoryIndexFragmentDirections
 
 class HistoryDetailFragment : Fragment() {
 
@@ -41,6 +43,13 @@ class HistoryDetailFragment : Fragment() {
             it?.let {
                 adapter.submitList(it)
             }
+        })
+
+        historyDetailViewModel.navigateToWriteReview.observe(viewLifecycleOwner, Observer { day ->
+            this.findNavController().navigate(
+                    HistoryDetailFragmentDirections.actionFragmentHistoryDetailToFragmentWriteReview(day))
+                historyDetailViewModel.onWriteReviewNavigated()
+
         })
 
         binding.setLifecycleOwner(this)

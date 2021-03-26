@@ -45,7 +45,7 @@ interface LifelogDao {
 //    fun getStatusWithId(key: String): LiveData<List<Lifelog>>
 
     @Query("SELECT * FROM each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = :key order by statusId asc")
-    fun getStatusWithId(key: String): LiveData<List<Lifelog>>
+    fun getStatusWithId(key: String?): LiveData<List<Lifelog>>
 //    @Query("SELECT condition FROM each_status_table ORDER BY statusId DESC LIMIT 1")
 
     @Query("SELECT * FROM each_status_table ORDER BY statusId DESC")

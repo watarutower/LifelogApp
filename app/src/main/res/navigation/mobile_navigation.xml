@@ -41,12 +41,27 @@
     <fragment
         android:id="@+id/fragment_history_detail"
         android:name="com.example.lifelogapp.ui.historydetail.HistoryDetailFragment"
-        tools:layout="@layout/fragment_history_detail"
-
-        >
+        tools:layout="@layout/fragment_history_detail">
         <argument
             android:name="dayLogsKey"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_fragment_history_detail_to_fragment_write_review"
+            app:destination="@id/fragment_write_review" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_write_review"
+        android:name="com.example.lifelogapp.ui.writereview.WriteReviewFragment"
+        tools:layout="@layout/fragment_write_review">
+        <argument
+            android:name="dayLogsKey"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_fragment_write_review_to_fragment_history_detail"
+            app:destination="@id/fragment_history_detail" />
     </fragment>
 
     <fragment

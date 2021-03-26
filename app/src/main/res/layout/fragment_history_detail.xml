@@ -66,18 +66,19 @@
                             android:layout_margin="8dp"
                             android:elevation="40dp"
                             android:text="Today is gonna be the day, that they gonna throw it back to you"
-                            android:textSize="14sp" />
-
-                        <EditText
-                            android:id="@+id/edit_write"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="textPersonName"
-                            android:text="@{historyDetailViewModel.editWrite}"
-                            android:visibility="gone"
+                            android:textSize="14sp"
                             />
 
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/edit_write"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="100dp"-->
+<!--                            android:ems="10"-->
+<!--                            android:inputType="textPersonName"-->
+<!--                            android:hint="Write your day here"-->
+
+<!--                            />-->
                     </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -87,7 +88,7 @@
 
                 </LinearLayout>
 
-                    <com.google.android.material.button.MaterialButton
+                    <Button
                         android:id="@+id/write_button"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
@@ -95,9 +96,11 @@
                         android:layout_marginEnd="8dp"
                         android:text="@string/diary_write"
                         android:textAlignment="center"
+                        android:onClick="@{() -> historyDetailViewModel.onWriteClicked(historyDetailViewModel.theDay)}"
                   />
+
                 </LinearLayout>
-<!--                android:onClick="@{() -> historyDetailViewModel.onWriteClicked()}"-->
+<!--                -->
             </com.google.android.material.card.MaterialCardView>
 
 
