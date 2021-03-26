@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.lifelogapp.database.LifelogDao
 
 class HistoryDetailViewModelFactory (
-    private val dataSource: LifelogDao,
-    private val application: Application
+        private val dayLogsKey: String,
+    private val dataSource: LifelogDao
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun<T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HistoryDetailViewModel::class.java)) {
-            return HistoryDetailViewModel(dataSource, application) as T
+            return HistoryDetailViewModel(dayLogsKey,dataSource) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

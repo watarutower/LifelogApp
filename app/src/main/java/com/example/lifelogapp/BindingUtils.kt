@@ -11,7 +11,7 @@ import java.util.*
 
 @BindingAdapter("submitTime")
 fun TextView.setTime(item: Lifelog) {
-    text = convertLongToDateString(item.submitTime)
+    text = convertLongToTimeString(item.submitTime)
 }
 
 @BindingAdapter("newCondition")

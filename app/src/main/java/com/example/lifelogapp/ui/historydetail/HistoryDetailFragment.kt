@@ -23,9 +23,10 @@ class HistoryDetailFragment : Fragment() {
                 inflater, R.layout.fragment_history_detail, container, false)
 
         val application = requireNotNull(this.activity).application
+        val arguments = HistoryDetailFragmentArgs.fromBundle(arguments)
 
         val dataSource = LifelogDatabase.getInstance(application).lifeLogDao
-        val viewModelFactory = HistoryDetailViewModelFactory(dataSource, application)
+        val viewModelFactory = HistoryDetailViewModelFactory(arguments.dayLogsKey, dataSource)
 
         var historyDetailViewModel =
                 ViewModelProvider(

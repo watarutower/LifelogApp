@@ -18,6 +18,16 @@ fun convertLongToDateString(systemTime: Long): String {
     return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm")
         .format(systemTime).toString()
 }
+
+@SuppressLint("SimpleDateFormat")
+fun convertLongToTimeString(systemTime: Long): String {
+    return SimpleDateFormat("HH:mm")
+            .format(systemTime).toString()
+}
+
+
+
+
 @BindingAdapter("imageUrl")
 fun ImageView.setImageUrl(item: Lifelog?) {
     item?.let {

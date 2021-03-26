@@ -10,14 +10,14 @@ import com.example.lifelogapp.database.LifelogDao
 import com.example.lifelogapp.formatDaylogs
 
 class HistoryDetailViewModel (
-    dataSource: LifelogDao,
-    application: Application) : ViewModel() {
+        private val dayLogsKey: String = "",
+    dataSource: LifelogDao) : ViewModel() {
 
     val database = dataSource
 
     private var newStatus = MutableLiveData<Lifelog?>()
 
-    val daylog = database.getDayLogs()
+    val daylog = database.getStatusWithId(dayLogsKey)
 
 //    val daylogsString = Transformations.map(daylog) { daylogs ->
 //        formatDaylogs(daylogs, application.resources)
