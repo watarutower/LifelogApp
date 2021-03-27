@@ -38,5 +38,6 @@
     <string name="diary_write">Write</string>
     <string name="text_how_was_your_day">How was your day?</string>
     <string name="text_test">Today is gonna be the day, that they gonna throw it back to you</string>
+    <string name="title_worklog">Activity</string>
 
 </resources>

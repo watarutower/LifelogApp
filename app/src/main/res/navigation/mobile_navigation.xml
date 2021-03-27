@@ -14,8 +14,8 @@
             app:destination="@id/fragment_update"
             />
         <action
-            android:id="@+id/action_fragment_home_to_fragment_activitylog"
-            app:destination="@id/fragment_activitylog" />
+            android:id="@+id/action_fragment_home_to_fragment_worklog"
+            app:destination="@id/fragment_worklog" />
         <action
             android:id="@+id/action_fragment_home_to_fragment_mypage"
             app:destination="@id/fragment_mypage" />
@@ -25,9 +25,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_activitylog"
-        android:name="com.example.lifelogapp.ui.activitylog.ActivityLogFragment"
-        tools:layout="@layout/fragment_activitylog" />
+        android:id="@+id/fragment_worklog"
+        android:name="com.example.lifelogapp.ui.worklog.WorkLogFragment"
+        tools:layout="@layout/fragment_work_log" />
 
     <fragment
         android:id="@+id/fragment_history_index"

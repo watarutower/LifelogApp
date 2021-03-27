@@ -7,9 +7,9 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_activitylog"
+        android:id="@+id/navigation_worklog"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_activitylog" />
+        android:title="@string/title_worklog" />
 
     <item
         android:id="@+id/navigation_history_index"

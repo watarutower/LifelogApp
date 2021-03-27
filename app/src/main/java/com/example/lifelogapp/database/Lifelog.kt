@@ -41,3 +41,14 @@ data class Preview(
         @ColumnInfo(name = "review_comment")
         var reviewComment: String? = ""
 )
+
+@Entity(tableName = "each_work_log_table")
+data class WorkLog(
+        @PrimaryKey(autoGenerate = true)
+        var workId: Long = 0L,
+
+        @ColumnInfo(name = "start_time_milli")
+        val startTimeMilli: Long = System.currentTimeMillis(),
+
+        @ColumnInfo(name = "end_time_milli")
+        var endTimeMilli: Long = startTimeMilli)

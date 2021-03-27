@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.lifelogapp.convertLongToDateString
 import com.example.lifelogapp.database.Lifelog
+import com.example.lifelogapp.database.WorkLog
 import com.example.lifelogapp.formatDaylogs
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,6 +38,18 @@ fun TextView.formatDaylogs(item: Lifelog?) {
 fun TextView.setDays(item: String) {
     text = item
 }
+
+//    WorkLogsのアダプター
+@BindingAdapter("startTime")
+fun TextView.setStartTime(item: WorkLog) {
+    text = convertLongToTimeString(item.startTimeMilli)
+}
+
+@BindingAdapter("finishTime")
+fun TextView.setFinishTime(item: WorkLog) {
+    text = convertLongToTimeString(item.endTimeMilli)
+}
+
 //
 //@BindingAdapter("sleepDurationFormatted2")
 //fun TextView.sleepDurationFormatted2(item: SleepNight?) {

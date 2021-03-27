@@ -1,31 +1,10 @@
 package com.example.lifelogapp
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.lifelogapp.ui.activitylog.ActivityLogFragment
-
-import com.example.lifelogapp.ui.home.HomeFragment
-
-import com.example.lifelogapp.ui.mypage.MyPageFragment
-import com.example.lifelogapp.ui.update.UpdateFragment
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.slider.Slider
-import com.google.android.material.snackbar.Snackbar
 
 //import com.example.lifelogapp.databinding.ActivityMainBinding
 
@@ -47,9 +26,9 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.fragment_home)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_activitylog  -> {
+                R.id.navigation_worklog  -> {
 
-                    navController.navigate(R.id.fragment_activitylog)
+                    navController.navigate(R.id.fragment_worklog)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_history_index -> {

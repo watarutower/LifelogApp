@@ -40,6 +40,8 @@ class HomeFragment : Fragment() {
 
         binding.homeViewModel = homeViewModel
 
+        binding.setLifecycleOwner(this)
+
         val adapter = HomeAdapter()
         binding.dayStatusList.adapter = adapter
 

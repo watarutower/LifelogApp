@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="workLogViewModel"
+            type="com.example.lifelogapp.ui.worklog.WorkLogViewModel" />
+    </data>
+
+    <ScrollView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="134dp">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/a_log_constraint1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="55dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/a_log_constraint2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/a_log_constraint1">
+
+    <TextView
+        android:id="@+id/title_worklog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="WorkLogPage"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/a_log_constraint2" />
+
+        <Button
+            android:id="@+id/start_button"
+            android:text="Start"
+            android:layout_width="113dp"
+            android:layout_height="113dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginBottom="44dp"
+            android:enabled="@{workLogViewModel.startButtonVisible}"
+            android:onClick="@{() -> workLogViewModel.onStart()}"
+            app:layout_constraintEnd_toStartOf="@+id/finish_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_worklog"
+            app:layout_constraintVertical_bias="1.0"
+
+            />
+
+<!--        <Button-->
+<!--        android:id="@+id/break_button"-->
+<!--            android:text="Break"-->
+<!--            android:layout_width="113dp"-->
+<!--            android:layout_height="113dp"-->
+<!--            android:layout_marginStart="52dp"-->
+<!--            android:layout_marginTop="88dp"-->
+<!--            android:layout_marginBottom="44dp"-->
+<!--            android:enabled="@{workLogViewModel.breakButtonVisible}"-->
+<!--            android:onClick="@{() -> workLogViewModel.onBreak()}"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/finish_button"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/title_worklog"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+<!--    <Button-->
+<!--        android:id="@+id/restart_button"-->
+<!--        android:text="Restart"-->
+<!--        android:layout_width="113dp"-->
+<!--        android:layout_height="113dp"-->
+<!--        android:layout_marginStart="52dp"-->
+<!--        android:layout_marginTop="88dp"-->
+<!--        android:layout_marginBottom="44dp"-->
+<!--        android:enabled="@{workLogViewModel.restartButtonVisible}"-->
+<!--        android:onClick="@{() -> workLogViewModel.onRestart()}"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/finish_button"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/title_worklog" />-->
+
+        <Button
+            android:id="@+id/finish_button"
+            android:layout_width="113dp"
+            android:layout_height="113dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="44dp"
+            android:text="Finish"
+            android:enabled="@{workLogViewModel.finishButtonVisible}"
+            android:onClick="@{() -> workLogViewModel.onFinish()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.697"
+            app:layout_constraintStart_toEndOf="@+id/start_button"
+            app:layout_constraintTop_toBottomOf="@+id/title_worklog" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/day_work_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toBottomOf="@+id/a_log_constraint2"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintVertical_bias="1.0" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+</layout>

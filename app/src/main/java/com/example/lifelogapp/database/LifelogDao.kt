@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface LifelogDao {
@@ -56,11 +57,28 @@ interface LifelogDao {
     @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY statusId DESC")
     fun getStatusByDay(): LiveData<List<String>>
 
+//   -------- history detail
     @Insert
     suspend fun insert(newPreview: Preview)
 
     @Query("SELECT review_comment FROM preview_table WHERE the_date = :day ORDER BY dateId DESC LIMIT 1")
     fun getReviewComment(day: String?): String?
+
+//    ----Work Log
+    @Insert
+    suspend fun insert(work: WorkLog)
+
+    @Update
+    suspend fun update(work: WorkLog)
+
+    @Query("SELECT * FROM each_work_log_table ORDER BY workId DESC LIMIT 1")
+    suspend fun getWorkLog(): WorkLog?
+
+    @Query("SELECT * FROM each_work_log_table ORDER BY workId DESC")
+    fun getWorkedLogs(): LiveData<List<WorkLog>>
+
+
+
 }
 //@Dao interface PreviewDao {
 //
