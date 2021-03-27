@@ -25,3 +25,19 @@ data class Lifelog(
     @ColumnInfo(name = "submit_time")
     val submitTime: Long =  System.currentTimeMillis()
 )
+
+
+@Entity(tableName = "preview_table")
+data class Preview(
+        @PrimaryKey(autoGenerate = true)
+        var dateId: Long = 0L,
+
+        @ColumnInfo(name ="flag")
+        var flag: Long = 0L,
+
+        @ColumnInfo(name = "the_date")
+        var theDate: String? = "",
+
+        @ColumnInfo(name = "review_comment")
+        var reviewComment: String? = ""
+)

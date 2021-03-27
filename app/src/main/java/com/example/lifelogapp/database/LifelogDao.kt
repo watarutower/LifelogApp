@@ -11,6 +11,7 @@ interface LifelogDao {
 
     @Insert
     suspend fun insert(newStatus: Lifelog )
+
     /**
      * Selects and returns all rows in the table,
      *
@@ -55,5 +56,12 @@ interface LifelogDao {
     @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY statusId DESC")
     fun getStatusByDay(): LiveData<List<String>>
 
-}
+    @Insert
+    suspend fun insert(newPreview: Preview)
 
+    @Query("SELECT review_comment FROM preview_table WHERE the_date = :day ORDER BY dateId DESC LIMIT 1")
+    fun getReviewComment(day: String?): String?
+}
+//@Dao interface PreviewDao {
+//
+//}

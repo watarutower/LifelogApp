@@ -45,11 +45,18 @@ class HistoryDetailFragment : Fragment() {
             }
         })
 
-        historyDetailViewModel.navigateToWriteReview.observe(viewLifecycleOwner, Observer { day ->
-            this.findNavController().navigate(
-                    HistoryDetailFragmentDirections.actionFragmentHistoryDetailToFragmentWriteReview(day))
-                historyDetailViewModel.onWriteReviewNavigated()
+//        historyDetailViewModel.theComment.observe(viewLifecycleOwner, Observer {
+//            it?.let {
+//
+//            }
+//        })
 
+        historyDetailViewModel.navigateToWriteReview.observe(viewLifecycleOwner, Observer { day ->
+            day?.let {
+                this.findNavController().navigate(
+                        HistoryDetailFragmentDirections.actionFragmentHistoryDetailToFragmentWriteReview(day))
+                historyDetailViewModel.onWriteReviewNavigated()
+            }
         })
 
         binding.setLifecycleOwner(this)

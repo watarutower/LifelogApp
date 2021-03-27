@@ -16,6 +16,7 @@ import com.example.lifelogapp.database.LifelogDao
 import com.example.lifelogapp.database.LifelogDatabase
 import com.example.lifelogapp.databinding.FragmentUpdateBinding
 import com.example.lifelogapp.databinding.FragmentWriteReviewBinding
+import com.example.lifelogapp.ui.historydetail.HistoryDetailFragmentDirections
 import com.example.lifelogapp.ui.historydetail.HistoryDetailViewModel
 
 
@@ -42,13 +43,13 @@ class WriteReviewFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
 
-//        writeReviewViewModel.navigateToHistoryDetail.observe(viewLifecycleOwner, Observer { navigate ->
-//            navigate?.let {
-//                val navController = findNavController()
-//                navController.navigate(R.id.action_fragment_write_review_to_fragment_history_detail)
-//                writeReviewViewModel.doneNavigating()
-//            }
-//        })
+        writeReviewViewModel.navigateToHistoryDetail.observe(viewLifecycleOwner, Observer { day ->
+            day?.let {
+                this.findNavController().navigate(
+                        WriteReviewFragmentDirections.actionFragmentWriteReviewToFragmentHistoryDetail(day))
+                writeReviewViewModel.doneNavigating()
+            }
+        })
 
         return binding.root
     }

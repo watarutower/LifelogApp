@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.*
 import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.LifelogDao
+import com.example.lifelogapp.database.Preview
 import com.example.lifelogapp.formatDaylogs
 import kotlinx.coroutines.launch
 
@@ -18,15 +19,28 @@ class HistoryDetailViewModel (
 
     private var newStatus = MutableLiveData<Lifelog?>()
 
+
     val daylog = database.getStatusWithId(dayLogsKey)
 
     val theDay = dayLogsKey
 
+//    うまくいかないのはここです
+//    val theComment = database.getReviewComment(dayLogsKey)
+
+//    init{
+//        theComment.value?.reviewComment
+//        }
+
+    val template = "How was your day?"
+
+//init {
+//    viewModelScope.launch {
+//        reviewC = database.getComment(theDay)
+//    }
+//}
+
     val navigateToWriteReview: LiveData<String?>
-    get() = _navigateToWriteReview
-
-
-
+        get() = _navigateToWriteReview
 
     val _navigateToWriteReview = MutableLiveData<String?>()
 
@@ -36,7 +50,16 @@ class HistoryDetailViewModel (
         fun onWriteClicked(day: String?) {
             _navigateToWriteReview.value = day
         }
+//    class WriteReviewListener(val clickListener: (statusId: String) -> Unit) {
+//        fun onClick(oneStatus: String) {
+//            clickListener(oneStatus)
+//        }
+//    }
+
 }
+
+
+
 //
 //    var textVisibility = View.VISIBLE
 //    var writeButtonVisibility = View.VISIBLE

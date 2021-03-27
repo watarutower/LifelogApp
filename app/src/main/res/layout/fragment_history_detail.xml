@@ -7,6 +7,7 @@
         <variable
             name="historyDetailViewModel"
             type="com.example.lifelogapp.ui.historydetail.HistoryDetailViewModel" />
+
     </data>
 
     <ScrollView
@@ -37,6 +38,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="2021.02.26" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{historyDetailViewModel.template}"
+                tools:layout_editor_absoluteX="132dp"
+                tools:layout_editor_absoluteY="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_history_detail"
+                tools:text="@string/text_test"/>
+<!--            historyDetailViewModel.theComment ??-->
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card"
@@ -46,7 +60,7 @@
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_history_detail">
+                app:layout_constraintTop_toBottomOf="@+id/textView">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -65,7 +79,8 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
                             android:elevation="40dp"
-                            android:text="Today is gonna be the day, that they gonna throw it back to you"
+                            android:text="@string/text_test"
+                            tools:text="@string/text_test"
                             android:textSize="14sp"
                             />
 
@@ -117,6 +132,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/card"
                 app:layout_constraintVertical_bias="1.0"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
