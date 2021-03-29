@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.fragment_history_index)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_mypage -> {
-                    navController.navigate(R.id.fragment_mypage)
-                    return@OnNavigationItemSelectedListener true
-                }
+//                R.id.navigation_mypage -> {
+//                    navController.navigate(R.id.fragment_mypage)
+//                    return@OnNavigationItemSelectedListener true
+//                }
 
             }
             false

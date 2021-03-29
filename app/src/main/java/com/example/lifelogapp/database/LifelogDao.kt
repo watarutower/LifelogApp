@@ -25,8 +25,8 @@ interface LifelogDao {
      */
 
 
-    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC LIMIT 1")
-    suspend fun getOneStatus(): Lifelog?
+    @Query("SELECT condition FROM each_status_table ORDER BY statusId DESC LIMIT 1")
+    fun getOneStatus(): Int
 //    MutableLiveData<Lifelog?>
 
     /** まだ不明
