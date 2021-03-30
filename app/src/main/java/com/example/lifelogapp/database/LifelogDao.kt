@@ -64,6 +64,16 @@ interface LifelogDao {
     @Query("SELECT review_comment FROM preview_table WHERE the_date = :day ORDER BY dateId DESC LIMIT 1")
     suspend fun getReviewComment(day: String?): String?
 
+    @Query("SELECT * FROM preview_table WHERE the_date = :day ORDER BY dateId DESC LIMIT 1")
+    suspend fun getOnePreview(day: String?): Preview
+
+    //    WriteReview
+    @Query("SELECT review_comment FROM preview_table WHERE the_date = :day ORDER BY dateId DESC LIMIT 1")
+    suspend fun getLastComment(day: String?): String?
+
+    @Update
+    suspend fun update(preview: Preview)
+
 //    ----Work Log
     @Insert
     suspend fun insert(work: WorkLog)

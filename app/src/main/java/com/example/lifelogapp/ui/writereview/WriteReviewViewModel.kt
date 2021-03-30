@@ -22,7 +22,7 @@ class WriteReviewViewModel (
 //
 //    val daylog = database.getStatusWithId(dayLogsKey)
 //
-//    val theDay = dayLogsKey
+    val theDay = dayLogsKey
 //
 //    val editWrite = ""
 //
@@ -54,6 +54,18 @@ class WriteReviewViewModel (
             _navigateToHistoryDetail.value = dayLogsKey
         }
     }
+
+//    fun onReviseClicked() {
+//        viewModelScope.launch {
+//            val revisedPreview = _getOnePreview.value
+//            revisedPreview?.reviewComment = editText.value
+//            if (revisedPreview != null) {
+//                update(revisedPreview)
+//            }
+//            _navigateToHistoryDetail.value = dayLogsKey
+//        }
+//
+//    }
 
 
 

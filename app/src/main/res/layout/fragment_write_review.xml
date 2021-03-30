@@ -9,74 +9,194 @@
             name="writeReviewViewModel"
             type="com.example.lifelogapp.ui.writereview.WriteReviewViewModel" />
     </data>
-    <!--    <data>-->
-    <!--        <variable-->
-    <!--            name="myComment"-->
-    <!--            type="com.example.lifelogapp.UtilKt" />-->
-    <!--    </data>-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="50dp">
 
+    <TextView
+        android:id="@+id/write_Review_the_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="8dp"
+        android:text="@{writeReviewViewModel.theDay}"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2021.02.26" />
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp">
+        android:layout_margin="14dp"
+        android:elevation="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/write_Review_the_day">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-
-            <!-- Title, secondary and supporting text -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_how_was_your_day"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textStyle="bold" />
-
-                <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+                <EditText
+                    android:id="@+id/new_comment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
 
-
-                    <EditText
-                        android:id="@+id/new_comment"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:elevation="40dp"
-                        android:ems="10"
-                        android:hint="@string/hint_comment"
-                        android:inputType="textMultiLine|text"
-                        android:singleLine="false"
-                        android:textAlignment="viewStart"
-                        android:text="@={writeReviewViewModel.editText}"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/submit_button"
+                    android:minHeight="150dp"
+                    android:hint="@string/hint_comment"
+                    android:inputType="textMultiLine|text"
+                    android:singleLine="false"
+                    android:textAlignment="viewStart"
+                    android:text="@={writeReviewViewModel.editText}"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal">
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/button_submit"
-                        android:layout_marginLeft="25dp"
+                    android:text="@string/button_submit"
+                    android:layout_marginLeft="25dp"
 
-                        android:onClick="@{() -> writeReviewViewModel.onSubmitClicked()}"
-                        style="?attr/borderlessButtonStyle"
-                        />
-
+                    android:onClick="@{() -> writeReviewViewModel.onSubmitClicked()}"
+                    style="?attr/borderlessButtonStyle"
+                    />
             </LinearLayout>
-        </LinearLayout>
-
-
-
-
+            </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+
+<!--<layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools">-->
+
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="writeReviewViewModel"-->
+<!--            type="com.example.lifelogapp.ui.writereview.WriteReviewViewModel" />-->
+<!--    </data>-->
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:layout_editor_absoluteX="160dp"-->
+<!--        tools:layout_editor_absoluteY="134dp">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/container"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="50dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/write_Review_the_day"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="72dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:text="@{writeReviewViewModel.theDay}"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:textSize="24sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                tools:text="2021.02.26" />-->
+
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:id="@+id/card"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="14dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/write_Review_the_day">-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="16dp">-->
+
+<!--                    &lt;!&ndash; Title, secondary and supporting text &ndash;&gt;-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        >-->
+
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/new_comment"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:elevation="40dp"-->
+<!--                            android:ems="10"-->
+<!--                            android:hint="@string/hint_comment"-->
+<!--                            android:inputType="textMultiLine|text"-->
+<!--                            android:minHeight="150dp"-->
+<!--                            android:singleLine="false"-->
+<!--                            android:textAlignment="viewStart"-->
+<!--                            android:text="@{writeReviewViewModel.editText}"-->
+<!--                            />-->
+<!--                    </LinearLayout>-->
+<!--&lt;!&ndash;                    app:takeOverComment="@{writeReviewViewModel.commentFetch}"&ndash;&gt;-->
+<!--                    &lt;!&ndash;            android:takeOverComment="@{writeReviewViewModel.commentFetch}"&ndash;&gt;-->
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/submit_button"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="8dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <com.google.android.material.button.MaterialButton-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/button_submit"-->
+<!--                            android:layout_marginLeft="25dp"-->
+<!--                            android:layout_gravity="end"-->
+<!--                            android:onClick="@{() -> writeReviewViewModel.onSubmitClicked()}"-->
+<!--                            style="?attr/borderlessButtonStyle"-->
+<!--                            />-->
+<!--&lt;!&ndash;                        <com.google.android.material.button.MaterialButton&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:text="@string/button_revise"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_gravity="end"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:onClick="@{() -> writeReviewViewModel.onReviseClicked()}"&ndash;&gt;-->
+<!--&lt;!&ndash;                            style="?attr/borderlessButtonStyle"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            />&ndash;&gt;-->
+
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
+
+
+
+<!--            </com.google.android.material.card.MaterialCardView>-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    </ScrollView>-->
+<!--</layout>-->
 
