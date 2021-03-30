@@ -15,7 +15,7 @@ class WriteReviewViewModel (
 
     var editText: String?= ""
 
-    val _commentFetch = MutableLiveData<String?>("")
+    val previewFetch = MutableLiveData(Preview())
 
     init{
         initializeLastComment()
@@ -23,39 +23,35 @@ class WriteReviewViewModel (
 
     private fun initializeLastComment(){
         viewModelScope.launch {
-            val lastComment = database.getLastComment(dayLogsKey)
-            _commentFetch.value = lastComment
+            val onePreview = database.getOnePreview(dayLogsKey)
+            previewFetch.value = onePreview
         }
     }
-    val commentFetch: LiveData<String?> = Transformations.map(_commentFetch) {
+    val commentFetch: LiveData<String?> = Transformations.map(previewFetch) {
         when {
-            it != null -> _commentFetch.value
+            it != null -> previewFetch.value?.reviewComment
             else -> ""
         }
     }
 
-
-
     val theDay = dayLogsKey
-//
-//    val editWrite = ""
-//
+
     val navigateToHistoryDetail: LiveData<String?>
         get() = _navigateToHistoryDetail
 
     val _navigateToHistoryDetail = MutableLiveData<String?>()
-//
-//    fun onWriteClicked(){
 
     private suspend fun insert(newPreview: Preview) {
         database.insert(newPreview)
     }
 
+    private suspend fun update(newPreview: Preview?) {
+        database.update(newPreview)
+    }
+
     fun doneNavigating() {
         _navigateToHistoryDetail.value = null
     }
-
-
 
     fun onSubmitClicked() {
         viewModelScope.launch {
@@ -69,17 +65,16 @@ class WriteReviewViewModel (
         }
     }
 
-//    fun onReviseClicked() {
-//        viewModelScope.launch {
-//            val revisedPreview = _getOnePreview.value
-//            revisedPreview?.reviewComment = editText.value
-//            if (revisedPreview != null) {
-//                update(revisedPreview)
-//            }
-//            _navigateToHistoryDetail.value = dayLogsKey
-//        }
-//
-//    }
+    fun onReviseClicked() {
+        viewModelScope.launch {
+            val revisedPreview = previewFetch
+            revisedPreview.value?.reviewComment = editText
+
+                update(revisedPreview.value)
+
+            _navigateToHistoryDetail.value = dayLogsKey
+        }
+    }
 
 
 

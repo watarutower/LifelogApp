@@ -72,7 +72,7 @@ interface LifelogDao {
     suspend fun getLastComment(day: String?): String?
 
     @Update
-    suspend fun update(preview: Preview)
+    suspend fun update(preview: Preview?)
 
 //    ----Work Log
     @Insert

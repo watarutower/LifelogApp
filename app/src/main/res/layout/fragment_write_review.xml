@@ -78,6 +78,13 @@
                     android:onClick="@{() -> writeReviewViewModel.onSubmitClicked()}"
                     style="?attr/borderlessButtonStyle"
                     />
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_revise"
+                    android:onClick="@{() -> writeReviewViewModel.onReviseClicked()}"
+                    style="?attr/borderlessButtonStyle"
+                    />
             </LinearLayout>
             </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
