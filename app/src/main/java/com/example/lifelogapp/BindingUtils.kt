@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -81,6 +82,11 @@ object BindingUtils {
 
     @BindingAdapter("dayComment")
     @JvmStatic fun dayComment(view: TextView, review: String) {
+        view.setText(formatReview(review))
+    }
+
+    @BindingAdapter("carryOverComment")
+    @JvmStatic fun takeOverComment(view: EditText, review: String) {
         view.setText(formatReview(review))
     }
 }

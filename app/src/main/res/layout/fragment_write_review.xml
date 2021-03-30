@@ -60,6 +60,7 @@
                     android:inputType="textMultiLine|text"
                     android:singleLine="false"
                     android:textAlignment="viewStart"
+                    app:carryOverComment="@{writeReviewViewModel.commentFetch}"
                     android:text="@={writeReviewViewModel.editText}"/>
             </LinearLayout>
             <LinearLayout

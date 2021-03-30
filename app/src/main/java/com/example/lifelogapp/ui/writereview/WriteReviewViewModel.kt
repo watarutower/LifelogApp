@@ -1,9 +1,6 @@
 package com.example.lifelogapp.ui.writereview
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.LifelogDao
 import com.example.lifelogapp.database.Preview
@@ -18,10 +15,27 @@ class WriteReviewViewModel (
 
     var editText: String?= ""
 
-//    private var newStatus = MutableLiveData<Lifelog?>()
-//
-//    val daylog = database.getStatusWithId(dayLogsKey)
-//
+    val _commentFetch = MutableLiveData<String?>("")
+
+    init{
+        initializeLastComment()
+    }
+
+    private fun initializeLastComment(){
+        viewModelScope.launch {
+            val lastComment = database.getLastComment(dayLogsKey)
+            _commentFetch.value = lastComment
+        }
+    }
+    val commentFetch: LiveData<String?> = Transformations.map(_commentFetch) {
+        when {
+            it != null -> _commentFetch.value
+            else -> ""
+        }
+    }
+
+
+
     val theDay = dayLogsKey
 //
 //    val editWrite = ""
