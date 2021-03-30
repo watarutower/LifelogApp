@@ -28,7 +28,7 @@
     <string name="fab">for what it\'s worth</string>
     <string name="dialog_message">this is dialog message!!</string>
     <string name="hint_comment">Comment here</string>
-    <string name="button_submit">Submit</string>
+    <string name="button_submit">SUBMIT</string>
     <string name="button_cancel">Cancel</string>
     <string name="app_title">LifelogApp</string>
     <string name="status_section">status section</string>
@@ -40,5 +40,7 @@
     <string name="text_test">Today is gonna be the day, that they gonna throw it back to you</string>
     <string name="title_worklog">Activity</string>
     <string name="button_revise">REVISE</string>
+    <string name="button_submit_update">submit</string>
+    <string name="button_update">UPDATE</string>
 
 </resources>

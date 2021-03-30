@@ -76,6 +76,21 @@ class WriteReviewViewModel (
         }
     }
 
+    val submitButtonVisible = Transformations.map (previewFetch){
+        when {
+            previewFetch.value?.reviewComment== null -> 0
+            else -> 8
+        }
+    }
+
+    val updateButtonVisible = Transformations.map (previewFetch){
+        when {
+            previewFetch.value?.reviewComment== null -> 8
+            else -> 0
+        }
+    }
+
+
 
 
 //    }

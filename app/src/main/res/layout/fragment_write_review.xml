@@ -74,17 +74,26 @@
                     android:layout_height="wrap_content"
                     android:text="@string/button_submit"
                     android:layout_marginLeft="25dp"
-
+                    android:visibility="@{writeReviewViewModel.submitButtonVisible}"
                     android:onClick="@{() -> writeReviewViewModel.onSubmitClicked()}"
                     style="?attr/borderlessButtonStyle"
                     />
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button_revise"
+                    android:text="@string/button_update"
+                    android:visibility="@{writeReviewViewModel.updateButtonVisible}"
                     android:onClick="@{() -> writeReviewViewModel.onReviseClicked()}"
                     style="?attr/borderlessButtonStyle"
                     />
+
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/button_cancel"-->
+<!--                    android:onClick="@{() -> writeReviewViewModel.onReviseClicked()}"-->
+<!--                    style="?attr/borderlessButtonStyle"-->
+<!--                    />-->
             </LinearLayout>
             </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
