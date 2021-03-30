@@ -21,30 +21,14 @@ class HomeViewModel (
     //for adapter
     val daylog = database.getDayLogs()
 
-//    val daylogList = database.getDayLogsList()
-//
-//    val aDaylog = daylogList[0]
-
     init {
         initializeAStatus()
     }
-
-//     var gotStatus = database.getOneStatus()
 
 val _aStatus = MutableLiveData<Int>(0)
 val aStatus: LiveData<Int>
     get() = _aStatus
 
-
-//init {
-//    _aStatus.value = gotStatus
-//}
-
-
-//
-//    init {
-//        initializeAStatus()
-//    }
     private fun initializeAStatus() {
         viewModelScope.launch {
             var theStatus = database.getOneStatus()
@@ -52,61 +36,16 @@ val aStatus: LiveData<Int>
         }
     }
 
-//    private val _qualityImage = MutableLiveData<Int?>(0)
-//    val likes: LiveData<Int?> = _qualityImage
-
     val conditionQuality: LiveData<ConditionQuality?> = Transformations.map(_aStatus) {
         when {
             it in 0..19 -> ConditionQuality.VERY_DISSATISFIED
             it in 20..39 -> ConditionQuality.DISSATISFIED
-            it in 40..59 -> ConditionQuality.NEUTRAL
-            it in 60..79 -> ConditionQuality.SATISFIED
+            it in 40..59 -> ConditionQuality.SATISFIED
+            it in 60..79 -> ConditionQuality.SMILE
             it in 80..100 -> ConditionQuality.VERY_SATISFIED
             else -> ConditionQuality.NO_STATUS
         }
     }
-
-
-
-
-
-//    private val imageUrl = MutableLiveData(0)
-
-
-
-//    var i :Int? = 0
-//    init{
-//    i = _aStatus.value?.oneCondition
-//    }
-//
-//    init {
-//        _qualityImage.value = i
-//    }
-
-
-
-//    var imageUrl:Int = i
-//    var imageUrl: Int by Delegates.notNull()
-
-
-
-
-
-//    fun qualityToImage(quality: Int?): Int {
-//
-//        when (quality) {
-//            in 0..10 -> return  R.drawable.ic_sentiment_very_dissatisfied_24px
-//
-//
-//            in 11..34 -> return  R.drawable.ic_sentiment_dissatisfied_black_18dp
-//            in 35..69 -> return  R.drawable.ic_sentiment_neutral_24px
-//
-//            in 70..85 -> return R.drawable.ic_sentiment_satisfied_24px
-//
-//            in 86..100 -> return  R.drawable.ic_sentiment_very_satisfied_24px
-//            else -> return R.drawable.ic_baseline_autorenew_24
-//        }
-//    }
 
     private val _navigateToUpdate = MutableLiveData<Boolean?>()
 
@@ -114,7 +53,7 @@ val aStatus: LiveData<Int>
         get() = _navigateToUpdate
 
     fun doneNavigating() {
-        _navigateToUpdate.value = null
+        _navigateToUpdate.value = false
     }
 
     fun onFabClicked() {
@@ -127,6 +66,7 @@ enum class ConditionQuality {
     DISSATISFIED,
     NEUTRAL,
     SATISFIED,
+    SMILE,
     VERY_SATISFIED,
     NO_STATUS
 }

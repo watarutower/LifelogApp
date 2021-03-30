@@ -59,7 +59,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel.navigateToUpdate.observe(viewLifecycleOwner,
                 Observer<Boolean?> {navigate ->
-                    navigate?.let{
+                    if(navigate==true)let{
                         val navController = findNavController()
                         navController.navigate(R.id.action_fragment_home_to_fragment_update)
                         homeViewModel.doneNavigating()

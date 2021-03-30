@@ -71,10 +71,39 @@ fun TextView.setFinishTime(item: WorkLog) {
 
 object BindingUtils {
 
-    @BindingAdapter("app:statusImage")
+    @BindingAdapter("statusImage")
     @JvmStatic fun statusImage(view: ImageView, conditionQuality: ConditionQuality) {
         view.setImageDrawable(getDrawableConditionQuality(conditionQuality, view.context))
     }
+}
+
+fun getDrawableConditionQuality(conditionQuality: ConditionQuality, context: Context): Drawable? {
+    return when (conditionQuality) {
+        ConditionQuality.VERY_DISSATISFIED -> {
+            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_very_dissatisfied_24px)
+        }
+        ConditionQuality.DISSATISFIED -> {
+            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_dissatisfied_black_18dp)
+        }
+        ConditionQuality.NEUTRAL -> {
+            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_neutral_24px)
+        }
+        ConditionQuality.SATISFIED -> {
+            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_satisfied_24px)
+        }
+        ConditionQuality.SMILE -> {
+            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_very_satisfied_black_18dp)
+        }
+
+        ConditionQuality.VERY_SATISFIED -> {
+            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_very_satisfied_24px)
+        }
+        else -> {
+            ContextCompat.getDrawable(context, R.drawable.ic_baseline_autorenew_24)
+        }
+    }
+}
+
 
 
 
@@ -95,27 +124,3 @@ object BindingUtils {
 //            })
 //        }
 //    }
-}
-
-fun getDrawableConditionQuality(conditionQuality: ConditionQuality, context: Context): Drawable? {
-    return when (conditionQuality) {
-        ConditionQuality.VERY_DISSATISFIED -> {
-            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_very_dissatisfied_24px)
-        }
-        ConditionQuality.DISSATISFIED -> {
-            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_dissatisfied_black_18dp)
-        }
-        ConditionQuality.NEUTRAL -> {
-            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_neutral_24px)
-        }
-        ConditionQuality.SATISFIED -> {
-            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_satisfied_24px)
-        }
-        ConditionQuality.VERY_SATISFIED -> {
-            ContextCompat.getDrawable(context, R.drawable.ic_sentiment_very_satisfied_24px)
-        }
-        else -> {
-            ContextCompat.getDrawable(context, R.drawable.ic_baseline_autorenew_24)
-        }
-    }
-}
