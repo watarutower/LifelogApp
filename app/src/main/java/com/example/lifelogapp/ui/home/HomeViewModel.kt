@@ -57,11 +57,11 @@ val aStatus: LiveData<Int>
 
     val conditionQuality: LiveData<ConditionQuality?> = Transformations.map(_aStatus) {
         when {
-            it in 0..10 -> ConditionQuality.VERY_DISSASTISFIED
-            it in 11..34 -> ConditionQuality.VERY_DISSASTISFIED
-            it in 35..69 -> ConditionQuality.NEUTRAL
-            it in 70..85 -> ConditionQuality.SATISFIED
-            it in 86..100 -> ConditionQuality.VERY_SATISFIED
+            it in 0..19 -> ConditionQuality.VERY_DISSATISFIED
+            it in 20..39 -> ConditionQuality.DISSATISFIED
+            it in 40..59 -> ConditionQuality.NEUTRAL
+            it in 60..79 -> ConditionQuality.SATISFIED
+            it in 80..100 -> ConditionQuality.VERY_SATISFIED
             else -> ConditionQuality.NO_STATUS
         }
     }
@@ -114,7 +114,7 @@ val aStatus: LiveData<Int>
         get() = _navigateToUpdate
 
     fun doneNavigating() {
-        _navigateToUpdate.value = null!!
+        _navigateToUpdate.value = null
     }
 
     fun onFabClicked() {
@@ -123,8 +123,8 @@ val aStatus: LiveData<Int>
 }
 
 enum class ConditionQuality {
-    VERY_DISSASTISFIED,
-    DEISSATISRFIED,
+    VERY_DISSATISFIED,
+    DISSATISFIED,
     NEUTRAL,
     SATISFIED,
     VERY_SATISFIED,

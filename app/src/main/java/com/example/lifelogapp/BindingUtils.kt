@@ -99,10 +99,10 @@ object BindingUtils {
 
 fun getDrawableConditionQuality(conditionQuality: ConditionQuality, context: Context): Drawable? {
     return when (conditionQuality) {
-        ConditionQuality.VERY_DISSASTISFIED -> {
+        ConditionQuality.VERY_DISSATISFIED -> {
             ContextCompat.getDrawable(context, R.drawable.ic_sentiment_very_dissatisfied_24px)
         }
-        ConditionQuality.DEISSATISRFIED -> {
+        ConditionQuality.DISSATISFIED -> {
             ContextCompat.getDrawable(context, R.drawable.ic_sentiment_dissatisfied_black_18dp)
         }
         ConditionQuality.NEUTRAL -> {
