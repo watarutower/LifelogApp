@@ -24,14 +24,28 @@ class HistoryDetailViewModel (
 
     val theDay = dayLogsKey
 
-//    うまくいかないのはここです
-//    val theComment = database.getReviewComment(dayLogsKey)
 
-//    init{
-//        theComment.value?.reviewComment
-//        }
+    val _reviewComment = MutableLiveData<String?>("")
+//    val reviewComment: LiveData<String?>
+//        get() = _reviewComment
 
+    init{
+        initilizeComment()
+        }
+    private fun initilizeComment() {
+    viewModelScope.launch {
+        var theComment = database.getReviewComment(dayLogsKey)
+        _reviewComment.value = theComment
+    }
+}
     val template = "How was your day?"
+
+    val reviewComment: LiveData<String?> = Transformations.map(_reviewComment) {
+     when {
+         it != null -> _reviewComment.value
+         else -> "I can't do it now"
+     }
+    }
 
 //init {
 //    viewModelScope.launch {

@@ -2,6 +2,9 @@ package com.example.lifelogapp
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -74,6 +77,24 @@ object BindingUtils {
     @BindingAdapter("statusImage")
     @JvmStatic fun statusImage(view: ImageView, conditionQuality: ConditionQuality) {
         view.setImageDrawable(getDrawableConditionQuality(conditionQuality, view.context))
+    }
+
+    @BindingAdapter("dayComment")
+    @JvmStatic fun dayComment(view: TextView, review: String) {
+        view.setText(formatReview(review))
+    }
+}
+
+fun formatReview (review: String): Spanned {
+    val sb = StringBuilder()
+    sb.apply{
+        append(review)
+    }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        @Suppress("DEPRECATION")
+        return Html.fromHtml(sb.toString())
     }
 }
 
