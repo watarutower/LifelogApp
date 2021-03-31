@@ -1,15 +1,9 @@
 package com.example.lifelogapp.ui.home
 
 import android.app.Application
-import android.view.View
-import android.widget.ImageView
 import androidx.lifecycle.*
-import com.example.lifelogapp.R
-import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.LifelogDao
-import com.example.lifelogapp.formatDaylogs
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
 
 
 class HomeViewModel (

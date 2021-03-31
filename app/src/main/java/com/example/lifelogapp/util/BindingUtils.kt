@@ -1,4 +1,4 @@
-package com.example.lifelogapp
+package com.example.lifelogapp.util
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -10,13 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import com.example.lifelogapp.convertLongToDateString
+import com.example.lifelogapp.R
 import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.WorkLog
-import com.example.lifelogapp.formatDaylogs
 import com.example.lifelogapp.ui.home.ConditionQuality
-import java.text.SimpleDateFormat
-import java.util.*
 
 @BindingAdapter("submitTime")
 fun TextView.setTime(item: Lifelog) {
@@ -37,7 +34,8 @@ fun TextView.setComment(item: Lifelog) {
 @BindingAdapter("logTimeFormatted")
 fun TextView.formatDaylogs(item: Lifelog?) {
     item?.let {
-        text = convertLongToDateString(item.submitTime)
+        text =
+            convertLongToDateString(item.submitTime)
     }
 
 

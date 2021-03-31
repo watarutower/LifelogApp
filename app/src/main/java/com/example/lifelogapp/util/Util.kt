@@ -1,16 +1,14 @@
-package com.example.lifelogapp
+package com.example.lifelogapp.util
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
-import android.net.Uri
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
+import com.example.lifelogapp.R
 import com.example.lifelogapp.database.Lifelog
-import java.net.URI
 import java.text.SimpleDateFormat
 
 @SuppressLint("SimpleDateFormat")

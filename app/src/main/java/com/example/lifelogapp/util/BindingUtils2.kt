@@ -1,4 +1,4 @@
-package com.example.lifelogapp
+package com.example.lifelogapp.util
 
 import android.widget.ImageView
 import android.widget.TextView

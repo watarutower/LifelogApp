@@ -37,10 +37,12 @@
     <string name="day_comment_title">How was your day?</string>
     <string name="diary_write">Write</string>
     <string name="text_how_was_your_day">How was your day?</string>
-    <string name="text_test">Today is gonna be the day, that they gonna throw it back to you</string>
+    <string name="text_test">Today is gonna be the day</string>
     <string name="title_worklog">Activity</string>
     <string name="button_revise">REVISE</string>
     <string name="button_submit_update">submit</string>
     <string name="button_update">UPDATE</string>
+    <string name="lifelog_app_id">lifelog_app</string>
+    <string name="lifelogapp">LifeLogApp</string>
 
 </resources>

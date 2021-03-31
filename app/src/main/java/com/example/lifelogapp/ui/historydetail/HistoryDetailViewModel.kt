@@ -1,13 +1,9 @@
 package com.example.lifelogapp.ui.historydetail
 
 
-import android.app.Application
-import android.view.View
 import androidx.lifecycle.*
 import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.LifelogDao
-import com.example.lifelogapp.database.Preview
-import com.example.lifelogapp.formatDaylogs
 import kotlinx.coroutines.launch
 
 
