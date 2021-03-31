@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.navigation.findNavController
+import com.example.lifelogapp.ui.home.HomeFragment
+import com.example.lifelogapp.ui.update.UpdateFragment
 
 //import com.example.lifelogapp.databinding.ActivityMainBinding
 
@@ -45,6 +47,13 @@ class MainActivity : AppCompatActivity() {
             false
         }
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+//        必要？？
+//        if (savedInstanceState == null) {
+//            supportFragmentManager.beginTransaction()
+//                    .replace(R.id.container, UpdateFragment.newInstance())
+//                    .commitNow()
+//        }
     }
 
 

@@ -44,5 +44,6 @@
     <string name="button_update">UPDATE</string>
     <string name="lifelog_app_id">lifelog_app</string>
     <string name="lifelogapp">LifeLogApp</string>
+    <string name="notification_channel_description">Lifelog reminder</string>
 
 </resources>
