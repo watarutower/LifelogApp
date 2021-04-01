@@ -41,57 +41,49 @@
                 app:layout_constraintTop_toTopOf="@+id/container">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="179dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:minHeight="170dp"
-                    android:paddingTop="16dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="4dp"
-                    android:paddingBottom="16dp"
-                    android:weightSum="2"
-                    android:orientation="vertical">
+
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+
+                    <!-- Title, secondary and supporting text -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textStyle="bold" />
 
                     <LinearLayout
-
-                        android:layout_width="150dp"
-                        android:minHeight="160dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <!-- Title, secondary and supporting text -->
-                        <TextView
+                        <!-- Media -->
+                        <ImageView
+                            android:id="@+id/imageView"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/title"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            android:textStyle="bold" />
+                            android:layout_height="120dp"
+                            android:contentDescription="@string/status_section"
+                            android:scaleType="fitCenter"
+                            app:statusImage="@{homeViewModel.conditionQuality}"
+                            tools:srcCompat="@drawable/ic_sentiment_satisfied_24px" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <!-- Media -->
-                            <ImageView
-                                android:id="@+id/imageView"
-                                android:layout_width="match_parent"
-                                android:layout_height="120dp"
-                                android:contentDescription="@string/status_section"
-                                android:scaleType="fitCenter"
-                                app:statusImage="@{homeViewModel.conditionQuality}"
-                                tools:srcCompat="@drawable/ic_sentiment_satisfied_24px" />
-
-
-                        </LinearLayout>
-
-                        <!--                    app:imageUrl="@{statuslog}"-->
-                        <!-- app:srcCompat="@drawable/ic_baseline_tag_faces_24"-->
 
                     </LinearLayout>
+
+                    <!--                    app:imageUrl="@{statuslog}"-->
+                    <!-- app:srcCompat="@drawable/ic_baseline_tag_faces_24"-->
+
+
                     <LinearLayout
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
