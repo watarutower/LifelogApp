@@ -9,16 +9,15 @@
             type="com.example.lifelogapp.ui.home.HomeViewModel" />
 
     </data>
-<!--    <variable-->
-<!--    name="statuslog"-->
-<!--    type="com.example.lifelogapp.database.Lifelog"/>-->
+    <!--    <variable-->
+    <!--    name="statuslog"-->
+    <!--    type="com.example.lifelogapp.database.Lifelog"/>-->
 
 
     <ScrollView
-        android:id="@+id/scrollview_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="60dp"
         tools:layout_editor_absoluteX="160dp"
         tools:layout_editor_absoluteY="134dp">
 
@@ -41,55 +40,62 @@
                 app:layout_constraintTop_toTopOf="@+id/container">
 
                 <LinearLayout
-                    android:layout_width="179dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:minHeight="170dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="vertical"
+                    android:minHeight="200dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="4dp"
+                    android:paddingBottom="4dp"
                     android:weightSum="2">
 
-
-                    <!-- Title, secondary and supporting text -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/title"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textStyle="bold" />
-
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+
+                        android:layout_width="155dp"
+                        android:layout_height="match_parent"
+                        android:minHeight="170dp"
                         android:orientation="vertical">
 
-                        <!-- Media -->
-                        <ImageView
-                            android:id="@+id/imageView"
+                        <!-- Title, secondary and supporting text -->
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            android:contentDescription="@string/status_section"
-                            android:scaleType="fitCenter"
-                            app:statusImage="@{homeViewModel.conditionQuality}"
-                            tools:srcCompat="@drawable/ic_sentiment_satisfied_24px" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/title"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textStyle="bold" />
 
+                        <LinearLayout
+                            android:layout_width="135dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Media -->
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="match_parent"
+                                android:layout_height="135dp"
+                                android:contentDescription="@string/status_section"
+                                android:scaleType="fitCenter"
+                                app:statusImage="@{homeViewModel.conditionQuality}"
+                                tools:srcCompat="@drawable/ic_sentiment_satisfied_24px" />
+
+
+                        </LinearLayout>
+
+                        <!--                    app:imageUrl="@{statuslog}"-->
+                        <!-- app:srcCompat="@drawable/ic_baseline_tag_faces_24"-->
 
                     </LinearLayout>
-
-                    <!--                    app:imageUrl="@{statuslog}"-->
-                    <!-- app:srcCompat="@drawable/ic_baseline_tag_faces_24"-->
-
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="4dp"
                             android:text="@string/text_test"
 
                             android:textStyle="bold" />
@@ -100,27 +106,28 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:padding="16dp">-->
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                android:padding="16dp">-->
 
-<!--                &lt;!&ndash; Title, secondary and supporting text &ndash;&gt;-->
+            <!--                &lt;!&ndash; Title, secondary and supporting text &ndash;&gt;-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="0dp"-->
-<!--                    android:elevation="8dp"-->
-<!--                    android:inputType="textMultiLine"-->
-<!--                    android:singleLine="false"-->
-<!--                    android:text="@string/supporting_text"-->
-<!--                    android:textAlignment="viewStart"-->
-<!--                    android:textAppearance="?attr/textAppearanceBody2"-->
-<!--                    android:textColor="?android:attr/textColorSecondary" />-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="0dp"-->
+            <!--                    android:elevation="8dp"-->
+            <!--                    android:inputType="textMultiLine"-->
+            <!--                    android:singleLine="false"-->
+            <!--                    android:text="@string/supporting_text"-->
+            <!--                    android:textAlignment="viewStart"-->
+            <!--                    android:textAppearance="?attr/textAppearanceBody2"-->
+            <!--                    android:textColor="?android:attr/textColorSecondary" />-->
 
-<!--            </LinearLayout>-->
+            <!--            </LinearLayout>-->
+
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -129,12 +136,10 @@
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card"
                 app:layout_constraintVertical_bias="1.0" />
-
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/extended_fab"
@@ -143,11 +148,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="140dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="140dp"
                 android:contentDescription="@string/fab_description"
                 android:onClick="@{() -> homeViewModel.onFabClicked()}"
-
-                app:elevation="16dp"
                 app:icon="@drawable/ic_baseline_autorenew_24"
                 app:iconPadding="0dp"
                 app:iconSize="35dp"
@@ -156,7 +159,6 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card" />
-<!--            android:text="@string/fab_update"-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
