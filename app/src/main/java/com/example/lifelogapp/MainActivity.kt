@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.fragment_history_index)
                     return@OnNavigationItemSelectedListener true
                 }
-                else -> {
-                    navView.visibility = View.GONE
-                }
+//                else -> {
+//                    navView.visibility = View.GONE
+//                }
 //                R.id.navigation_mypage -> {
 //                    navController.navigate(R.id.fragment_mypage)
 //                    return@OnNavigationItemSelectedListener true

@@ -22,7 +22,9 @@ interface LifelogDao {
     fun getDayLogs(): LiveData<List<Lifelog>>
 
 
-
+    //今やってる
+    @Query("SELECT condition FROM each_status_table where submit_time >= (julianday('now') - 2440587.5)*86400.0 - 86400.0")
+    fun getAverageConditionInDay(): Int
     /**
      * Selects and returns the latest status.
      */
