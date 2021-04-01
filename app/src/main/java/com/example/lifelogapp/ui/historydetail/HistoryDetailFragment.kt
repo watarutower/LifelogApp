@@ -15,6 +15,7 @@ import com.example.lifelogapp.R
 import com.example.lifelogapp.database.LifelogDatabase
 import com.example.lifelogapp.databinding.FragmentHistoryDetailBinding
 import com.example.lifelogapp.ui.historyindex.HistoryIndexFragmentDirections
+import com.example.lifelogapp.ui.home.HistoryDetailAdapter
 
 class HistoryDetailFragment : Fragment() {
 
@@ -41,7 +42,7 @@ class HistoryDetailFragment : Fragment() {
 
         historyDetailViewModel.daylog.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                adapter.addHeaderAndSubmitList(it)
             }
         })
 

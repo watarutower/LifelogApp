@@ -47,6 +47,7 @@
     <string name="notification_channel_description">Lifelog reminder</string>
     <string name="timer_running">timer is running</string>
     <string name="notification_text">How\'s your condition?</string>
-    <string name="header_daylogs"><u>Your Recent Logs</u></string>
+    <string name="header_daylogs"><u>Recent Logs</u></string>
+    <string name="header_history_detail"><u>Logs in a Day</u></string>
 
 </resources>

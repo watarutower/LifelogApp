@@ -11,7 +11,7 @@ import com.example.lifelogapp.R
 
 import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.databinding.ListItemDayStatusBinding
-import com.example.lifelogapp.ui.historydetail.HistoryDetailAdapter
+
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -104,6 +104,7 @@ class HomeDiffCallback : DiffUtil.ItemCallback<DataItem>() {
     }
 }
 
+//
 sealed class DataItem {
     data class LifelogItem(val lifeLog: Lifelog): DataItem() {
         override val id = lifeLog.statusId

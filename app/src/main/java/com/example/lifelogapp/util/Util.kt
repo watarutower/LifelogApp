@@ -19,7 +19,7 @@ fun convertLongToDateString(systemTime: Long): String {
 
 @SuppressLint("SimpleDateFormat")
 fun convertLongToTimeString(systemTime: Long): String {
-    return SimpleDateFormat("HH:mm")
+    return SimpleDateFormat("'Time: 'HH:mm")
             .format(systemTime).toString()
 }
 
