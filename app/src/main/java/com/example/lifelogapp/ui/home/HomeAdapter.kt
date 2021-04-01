@@ -26,18 +26,6 @@ class HomeAdapter: ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallba
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
-    fun addHeaderAndSubmitList(list: List<Lifelog>?) {
-        adapterScope.launch {
-            val items = when (list) {
-                null -> listOf(DataItem.Header)
-                else -> listOf (DataItem.Header) + list.map { DataItem.LifelogItem(it)}
-            }
-            withContext(Dispatchers.Main) {
-                submitList(items)
-            }
-        }
-    }
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is ViewHolder -> {
@@ -56,6 +44,18 @@ class HomeAdapter: ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallba
         }
     }
 
+    fun addHeaderAndSubmitList(list: List<Lifelog>?) {
+        adapterScope.launch {
+            val items = when (list) {
+                null -> listOf(DataItem.Header)
+                else -> listOf(DataItem.Header) + list.map { DataItem.LifelogItem(it) }
+            }
+            withContext(Dispatchers.Main) {
+                submitList(items)
+            }
+        }
+    }
+
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
             is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
@@ -63,6 +63,7 @@ class HomeAdapter: ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallba
         }
     }
 
+    //HeaderのためのHolder
     class TextViewHolder(view: View): RecyclerView.ViewHolder(view) {
         companion object {
             fun from(parent: ViewGroup): TextViewHolder {
@@ -94,11 +95,10 @@ class HomeAdapter: ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallba
 
 //    -----------------------
 class HomeDiffCallback : DiffUtil.ItemCallback<DataItem>() {
-
     override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
         return oldItem.id == newItem.id
     }
-
+    @SuppressLint
     override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
         return oldItem == newItem
     }
@@ -108,7 +108,7 @@ sealed class DataItem {
     data class LifelogItem(val lifeLog: Lifelog): DataItem() {
         override val id = lifeLog.statusId
     }
-
+    // データの中身がないのでobject
     object Header : DataItem() {
         override val id = Long.MIN_VALUE
     }

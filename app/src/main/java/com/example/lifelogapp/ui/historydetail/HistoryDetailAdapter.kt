@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.databinding.ListItemDayStatusBinding
+import com.example.lifelogapp.databinding.ListItemTimeStatusBinding
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +25,7 @@ class HistoryDetailAdapter: ListAdapter<Lifelog, HistoryDetailAdapter.ViewHolder
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ListItemDayStatusBinding)
+    class ViewHolder private constructor(val binding: ListItemTimeStatusBinding)
         : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: Lifelog) {
@@ -35,7 +36,7 @@ class HistoryDetailAdapter: ListAdapter<Lifelog, HistoryDetailAdapter.ViewHolder
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemDayStatusBinding.inflate(layoutInflater, parent, false)
+                val binding = ListItemTimeStatusBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }

@@ -20,6 +20,11 @@ fun TextView.setTime(item: Lifelog) {
     text = convertLongToTimeString(item.submitTime)
 }
 
+@BindingAdapter("submitDate")
+fun TextView.seDate(item: Lifelog) {
+    text = convertLongToDateString(item.submitTime)
+}
+
 @BindingAdapter("newCondition")
 fun TextView.setCondition(item: Lifelog) {
     text = item.oneCondition.toString()
