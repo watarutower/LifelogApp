@@ -30,10 +30,12 @@ class UpdateFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
+
         val binding: FragmentUpdateBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_update, container, false)
 
         val application = requireNotNull(this.activity).application
+
         val dataSource = LifelogDatabase.getInstance(application).lifeLogDao
         val viewModelFactory = UpdateViewModelFactory(application, dataSource)
 
