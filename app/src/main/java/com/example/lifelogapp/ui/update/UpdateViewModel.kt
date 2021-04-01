@@ -54,7 +54,7 @@ class UpdateViewModel (private val app: Application,
 
     private val second: Long = 1_000L
     private val minute: Long = 60_000L
-    private val hour: Long = 360_000L
+    private val hour: Long = 3600_000L
 
     private val notifyPendingIntent: PendingIntent
 
@@ -101,9 +101,9 @@ class UpdateViewModel (private val app: Application,
             if (!it) {
                 _startNotification.value = true
 //                テスト用
-//                val testInterval = second * 5
+//                val testInterval = minute * 1
                 val notifyInterval = hour * 1
-
+//                val triggerTime = SystemClock.elapsedRealtime() + testInterval
                 val triggerTime = SystemClock.elapsedRealtime() + notifyInterval
 
 //                val notificationManager =
