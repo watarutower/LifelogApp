@@ -11,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.lifelogapp.MainActivity
 import com.example.lifelogapp.R
 import com.example.lifelogapp.database.LifelogDatabase
@@ -47,7 +49,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel.daylog.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                adapter.addHeaderAndSubmitList(it)
             }
         })
 
@@ -65,6 +67,17 @@ class HomeFragment : Fragment() {
                         homeViewModel.doneNavigating()
                     }
                 })
+
+        val manager = RecyclerView.LayoutManager(activity, 3)
+        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int) =  when (position) {
+                0 -> 3
+                else -> 1
+            }
+        }
+
+
+        binding.dayStatusList.layoutManager = manager
 
         return binding.root
     }

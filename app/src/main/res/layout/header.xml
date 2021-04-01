@@ -3,7 +3,7 @@
     android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/header_text"
+    android:text="@string/header_daylogs"
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:textColor="@color/design_default_color_on_primary"
     android:layout_marginStart="16dp"
