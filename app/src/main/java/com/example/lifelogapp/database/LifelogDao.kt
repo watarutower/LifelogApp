@@ -23,8 +23,6 @@ interface LifelogDao {
 
 
 
-
-
     /**
      * Selects and returns the latest status.
      */

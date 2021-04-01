@@ -101,10 +101,10 @@ class UpdateViewModel (private val app: Application,
             if (!it) {
                 _startNotification.value = true
 //                テスト用
-//                val testInterval = minute * 1
-                val notifyInterval = hour * 1
-//                val triggerTime = SystemClock.elapsedRealtime() + testInterval
-                val triggerTime = SystemClock.elapsedRealtime() + notifyInterval
+                val testInterval = second * 3
+//                val notifyInterval = minute * 1
+                val triggerTime = SystemClock.elapsedRealtime() + testInterval
+//                val triggerTime = SystemClock.elapsedRealtime() + notifyInterval
 
 //                val notificationManager =
 //                        ContextCompat.getSystemService(
