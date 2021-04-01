@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.example.lifelogapp.MainActivity
 import com.example.lifelogapp.R
+import com.example.lifelogapp.ui.update.UpdateFragment
 
 // Notification ID.
 private val NOTIFICATION_ID = 0
@@ -33,5 +34,14 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
             .getString(R.string.lifelogapp))
         .setContentText(messageBody)
 
+            .setContentIntent(contentPendingIntent)
+            .setAutoCancel(true)
+
+
+
     notify(NOTIFICATION_ID, builder.build())
+}
+
+fun NotificationManager.cancelNotifications() {
+    cancelAll()
 }

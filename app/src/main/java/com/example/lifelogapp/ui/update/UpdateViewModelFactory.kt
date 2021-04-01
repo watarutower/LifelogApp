@@ -7,13 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 
 
 class UpdateViewModelFactory (
-    private val dataSource: LifelogDao,
-    private val application: Application
+        private val application: Application,
+    private val dataSource: LifelogDao
+
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun<T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(UpdateViewModel::class.java)) {
-            return UpdateViewModel(dataSource, application) as T
+            return UpdateViewModel(application, dataSource) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

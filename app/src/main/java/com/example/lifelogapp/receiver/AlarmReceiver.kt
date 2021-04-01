@@ -17,7 +17,6 @@ import com.example.lifelogapp.util.sendNotification
 class AlarmReceiver: BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-       Toast.makeText(context, context.getText(R.string.text_test), Toast.LENGTH_SHORT). show()
 
         val notificationManager = ContextCompat.getSystemService(
             context,
@@ -25,23 +24,8 @@ class AlarmReceiver: BroadcastReceiver() {
         ) as NotificationManager
 
         notificationManager.sendNotification(
-            context.getText(R.string.text_test).toString(),
+            context.getText(R.string.notification_text).toString(),
             context
         )
     }
 }
-//val triggerTime = SystemClock.elapsedRealtime() + DateUtils.MINUTE_IN_MILLIS
-//        val notifyIntent = Intent(context, AlarmReceiver::class.java)
-//        val notifyPendingIntent = PendingIntent.getBroadcast(
-//            context,
-//            REQUEST_CODE,
-//            notifyIntent,
-//            PendingIntent.FLAG_UPDATE_CURRENT
-//        )
-//        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//        AlarmManagerCompat.setExactAndAllowWhileIdle(
-//            alarmManager,
-//            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-//            triggerTime,
-//            notifyPendingIntent
-//        )

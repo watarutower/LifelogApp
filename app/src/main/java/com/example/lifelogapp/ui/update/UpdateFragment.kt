@@ -26,7 +26,6 @@ import com.google.android.material.slider.Slider
 import kotlinx.android.synthetic.main.activity_util.*
 
 class UpdateFragment : Fragment() {
-    val mainActivity = MainActivity()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -36,7 +35,7 @@ class UpdateFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = LifelogDatabase.getInstance(application).lifeLogDao
-        val viewModelFactory = UpdateViewModelFactory(dataSource, application)
+        val viewModelFactory = UpdateViewModelFactory(application, dataSource)
 
         val updateViewModel: UpdateViewModel
         updateViewModel = ViewModelProvider(this, viewModelFactory).get(UpdateViewModel::class.java)
@@ -46,19 +45,6 @@ class UpdateFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
 
-//        val submitButton = mainActivity.findViewById<EditText>(R.id.newComment) {
-//            addComment(it)
-//        }
-
-//            fun addComment(view: View) {
-//                binding. apply {
-//                    val thisComment =  newComment.text.toString()
-//                }
-//
-//        }
-
-
-
         updateViewModel.navigateToHome.observe(viewLifecycleOwner, Observer { navigate ->
             navigate?.let {
                 val navController = findNavController()
@@ -66,6 +52,11 @@ class UpdateFragment : Fragment() {
                 updateViewModel.doneNavigating()
             }
         })
+
+        createChannel(
+                getString(R.string.lifelog_app_id),
+                getString(R.string.lifelogapp)
+        )
 
         return binding.root
     }
