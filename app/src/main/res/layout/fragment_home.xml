@@ -15,9 +15,10 @@
 
 
     <ScrollView
+        android:id="@+id/scrollview_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="65dp"
         tools:layout_editor_absoluteX="160dp"
         tools:layout_editor_absoluteY="134dp">
 
@@ -26,8 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="65dp"
-            android:elevation="50dp">
+            android:layout_marginTop="65dp">
 
 
             <com.google.android.material.card.MaterialCardView
@@ -45,7 +45,10 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:minHeight="170dp"
-
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:orientation="vertical"
                     android:weightSum="2">
 
@@ -120,13 +123,13 @@
 <!--            </LinearLayout>-->
 
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/day_status_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
+
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card"
@@ -140,17 +143,20 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="140dp"
+                android:layout_marginBottom="100dp"
                 android:contentDescription="@string/fab_description"
                 android:onClick="@{() -> homeViewModel.onFabClicked()}"
-                android:text="@string/fab_update"
+
                 app:elevation="16dp"
                 app:icon="@drawable/ic_baseline_autorenew_24"
                 app:iconPadding="0dp"
                 app:iconSize="35dp"
+                app:layout_constraintBottom_toBottomOf="@+id/container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card" />
+<!--            android:text="@string/fab_update"-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
