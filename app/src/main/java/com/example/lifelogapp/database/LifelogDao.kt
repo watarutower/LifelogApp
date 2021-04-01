@@ -18,14 +18,16 @@ interface LifelogDao {
      *
      * sorted by start time in descending order.
      */
-    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC")
+    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC LIMIT 20")
     fun getDayLogs(): LiveData<List<Lifelog>>
+
+
+
+
+
     /**
      * Selects and returns the latest status.
      */
-
-
-
     @Query("SELECT condition FROM each_status_table ORDER BY statusId DESC LIMIT 1")
     suspend fun getOneStatus(): Int
 //    MutableLiveData<Lifelog?>
