@@ -23,8 +23,19 @@ interface LifelogDao {
 
 
     //今やってる
-    @Query("SELECT condition FROM each_status_table where submit_time >= (julianday('now') - 2440587.5)*86400.0 - 86400.0")
-    fun getAverageConditionInDay(): Int
+    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (:time-86400000) AND :time")
+    fun getAverageConditionInDay(time: Long): Int
+
+//    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*3) AND 1617348053359")
+//    fun getAverageConditionInThreeDay(): Int
+//
+//    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*7) AND 1617348053359")
+//    fun getAverageConditionInWeekDay(): Int
+//
+//    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*30) AND 1617348053359")
+//    fun getAverageConditionInMonthDay(): Int
+
+
     /**
      * Selects and returns the latest status.
      */

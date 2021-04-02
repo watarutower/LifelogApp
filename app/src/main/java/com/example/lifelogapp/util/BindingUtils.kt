@@ -92,6 +92,11 @@ object BindingUtils {
     @JvmStatic fun takeOverComment(view: EditText, review: String) {
         view.setText(formatReview(review))
     }
+
+    @BindingAdapter("conditionAverage")
+    @JvmStatic fun conditionAverage(view:TextView, average: Int) {
+        view.setText(formatReview(average.toString()))
+    }
 }
 
 fun formatReview (review: String): Spanned {

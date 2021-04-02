@@ -15,20 +15,35 @@ class HomeViewModel (
     //for adapter
     val daylog = database.getDayLogs()
 
+    val _aStatus = MutableLiveData<Int>(0)
+    val aStatus: LiveData<Int>
+        get() = _aStatus
+
+    private val _averageCondition = MutableLiveData<Int>()
+//    val averageCondition: LiveData<Int>
+//        get() = _averageCondition
+
+    private val _averageSelection = MutableLiveData<Int>()
+    val averageSelection: LiveData<Int>
+        get() = _averageSelection
+
     init {
         initializeAStatus()
     }
 
-val _aStatus = MutableLiveData<Int>(0)
-val aStatus: LiveData<Int>
-    get() = _aStatus
+
 
     private fun initializeAStatus() {
         viewModelScope.launch {
             var theStatus = database.getOneStatus()
             _aStatus.value = theStatus
+
+            var theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
+            _averageCondition.value = theCondition
         }
     }
+
+    val averageCondition: LiveData<Int> = Transformations(_averageCondition.value)
 
     val conditionQuality: LiveData<ConditionQuality?> = Transformations.map(_aStatus) {
         when {
@@ -54,9 +69,9 @@ val aStatus: LiveData<Int>
         _navigateToUpdate.value = true
     }
 
-    private val _averageSelection = MutableLiveData<Int>()
-    val averageSelection: LiveData<Int>
-        get() = _averageSelection
+
+
+
 
 
     fun setAverageSelected(timerLengthSelection: Int) {
