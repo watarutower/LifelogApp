@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="homeViewModel"
             type="com.example.lifelogapp.ui.home.HomeViewModel" />
-
     </data>
-    <!--    <variable-->
-    <!--    name="statuslog"-->
-    <!--    type="com.example.lifelogapp.database.Lifelog"/>-->
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp">
 
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card"
                 android:layout_width="match_parent"
@@ -38,122 +31,142 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/container">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:minHeight="200dp"
-                    android:orientation="horizontal"
-                    android:paddingStart="16dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="4dp"
-                    android:paddingBottom="4dp"
-                    android:weightSum="2">
+
 
                     <LinearLayout
-
-                        android:layout_width="155dp"
+                        android:id="@+id/first_const"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:minHeight="170dp"
-                        android:orientation="vertical">
-
-                        <!-- Title, secondary and supporting text -->
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/title"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            android:textStyle="bold" />
+                        android:minHeight="200dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="4dp"
+                        android:paddingBottom="4dp"
+                       >
 
                         <LinearLayout
-                            android:layout_width="135dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="155dp"
+                            android:layout_height="match_parent"
+                            android:minHeight="170dp"
                             android:orientation="vertical">
 
-                            <!-- Media -->
-                            <ImageView
-                                android:id="@+id/imageView"
+                            <!-- Title, secondary and supporting text -->
+                            <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="135dp"
-                                android:contentDescription="@string/status_section"
-                                android:scaleType="fitCenter"
-                                app:statusImage="@{homeViewModel.conditionQuality}"
-                                tools:srcCompat="@drawable/ic_sentiment_satisfied_24px" />
+                                android:layout_height="wrap_content"
+                                android:text="@string/title"
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:textStyle="bold" />
 
+                                <LinearLayout
+                                    android:layout_width="135dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                     <!-- Media -->
+                                        <ImageView
+                                            android:id="@+id/imageView"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="135dp"
+                                            android:contentDescription="@string/status_section"
+                                            android:scaleType="fitCenter"
+                                            app:statusImage="@{homeViewModel.conditionQuality}"
+                                            tools:srcCompat="@drawable/ic_sentiment_satisfied_24px" />
+
+
+                                 </LinearLayout>
 
                         </LinearLayout>
-
-                        <!--                    app:imageUrl="@{statuslog}"-->
-                        <!-- app:srcCompat="@drawable/ic_baseline_tag_faces_24"-->
-
-                    </LinearLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/card_right"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/card_right"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="@id/card_right">
-
-                        <EditText
-                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="4dp"
-                            android:hint="@string/hint_comment"
+                            android:orientation="vertical">
 
-                            android:textStyle="bold" />
-                        </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:layout_constraintTop_toTopOf="@id/card_right">
 
-                        <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="@id/card_right">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            android:text="Average in a day 77"
-                            tools:text="Average in 24 hour 77"/>
-                        </LinearLayout>
+                                    <EditText
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="4dp"
+                                        android:hint="@string/hint_comment"
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                        android:textStyle="bold" />
+                                 </LinearLayout>
 
-                </LinearLayout>
+                                 <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="@id/card_right">
+
+                                     <Spinner
+                                         android:id="@+id/average_spinner"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:entries="@array/average_array"
+                                         android:onItemSelected="@{(parent, view, selection, id)-> homeViewModel.setAverageSelected(selection)}"
+                                         android:prompt="@string/average_prompt"
+                                         android:selectedItemPosition="@{homeViewModel.averageSelection}"
+                                         app:layout_constraintTop_toBottomOf="@id/first_const"
+                                         app:layout_constraintEnd_toEndOf="parent"
+                                         app:layout_constraintStart_toStartOf="parent" />
+
+                                     <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="16dp"
+                                        android:layout_marginBottom="16dp"
+                                        android:layout_gravity="end"
+                                        android:text="77"
+                                        tools:text="77" />
+                                 </LinearLayout>
+                         </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+
 
             </com.google.android.material.card.MaterialCardView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/day_status_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card"
-                app:layout_constraintVertical_bias="1.0" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/extended_fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="140dp"
-                android:layout_marginBottom="140dp"
-                android:contentDescription="@string/fab_description"
-                android:onClick="@{() -> homeViewModel.onFabClicked()}"
-                app:icon="@drawable/ic_baseline_autorenew_24"
-                app:iconPadding="0dp"
-                app:iconSize="35dp"
-                app:layout_constraintBottom_toBottomOf="@+id/container"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card" />
+
+                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/day_status_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/card"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/extended_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="140dp"
+                    android:layout_marginBottom="140dp"
+                    android:contentDescription="@string/fab_description"
+                    android:onClick="@{() -> homeViewModel.onFabClicked()}"
+                    app:icon="@drawable/ic_baseline_autorenew_24"
+                    app:iconPadding="0dp"
+                    app:iconSize="35dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/container"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/card" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
 </layout>

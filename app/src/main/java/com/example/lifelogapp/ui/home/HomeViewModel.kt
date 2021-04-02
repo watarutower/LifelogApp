@@ -53,6 +53,17 @@ val aStatus: LiveData<Int>
     fun onFabClicked() {
         _navigateToUpdate.value = true
     }
+
+    private val _averageSelection = MutableLiveData<Int>()
+    val averageSelection: LiveData<Int>
+        get() = _averageSelection
+
+
+    fun setAverageSelected(timerLengthSelection: Int) {
+        _averageSelection.value = timerLengthSelection
+    }
+
+
 }
 
 enum class ConditionQuality {

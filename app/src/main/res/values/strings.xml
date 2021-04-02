@@ -49,5 +49,6 @@
     <string name="notification_text">How\'s your condition?</string>
     <string name="header_daylogs">Recent Logs</string>
     <string name="header_history_detail">Logs in a Day</string>
+    <string name="average_prompt">Check your condition averages</string>
 
 </resources>
