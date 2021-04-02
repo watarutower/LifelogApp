@@ -18,7 +18,7 @@ interface LifelogDao {
      *
      * sorted by start time in descending order.
      */
-    @Query("SELECT * FROM each_status_table ORDER BY statusId DESC LIMIT 20")
+    @Query("SELECT * FROM each_status_table ORDER BY submit_time DESC LIMIT 20")
     fun getDayLogs(): LiveData<List<Lifelog>>
 
 
@@ -26,14 +26,14 @@ interface LifelogDao {
     @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (:time-86400000) AND :time")
     suspend fun getAverageConditionInDay(time: Long): Float
 
-    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*3) AND 1617348053359")
-    fun getAverageConditionInThreeDay(time: Long): Float
+    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (:time-86400000*3) AND :time")
+    suspend fun getAverageConditionInThreeDay(time: Long): Float
 
-    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*7) AND 1617348053359")
-    fun getAverageConditionInWeek(time: Long): Float
+    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (:time-86400000*7) AND :time")
+    suspend fun getAverageConditionInWeek(time: Long): Float
 
-    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*30) AND 1617348053359")
-    fun getAverageConditionInMonth(time: Long): Float
+    @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (:time-86400000*30) AND :time")
+    suspend fun getAverageConditionInMonth(time: Long): Float
 
 
     /**
@@ -68,7 +68,7 @@ interface LifelogDao {
     fun getDayLogsList(): List<Lifelog>
 
 
-    @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY statusId DESC")
+    @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY submit_time DESC")
     fun getStatusByDay(): LiveData<List<String>>
 
 //   -------- history detail

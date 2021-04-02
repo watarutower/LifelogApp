@@ -43,3 +43,11 @@ SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN 
 ３０日
 SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*30) AND 1617348053359
 
+--インサート文
+INSERT INTO each_status_table (condition, comment,submit_time)VALUES(50,'This is a test',1617375995000- 864000000);
+
+--delete文
+DELETE FROM each_status_table WHERE statusId Between 68 and 73
+
+--時間を見やすくselect 全文
+select statusId,datetime(substr(printf('%d',submit_time),1,10),'unixepoch','localtime'), condition, comment from each_status_table order by submit_time desc

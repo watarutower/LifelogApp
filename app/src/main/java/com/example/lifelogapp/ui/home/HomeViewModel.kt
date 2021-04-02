@@ -15,7 +15,6 @@ class HomeViewModel(private val app: Application,
     //for adapter
     val daylog = database.getDayLogs()
 
-    private val averageLengthOptions: IntArray
 
     val _aStatus = MutableLiveData<Int>(0)
     val aStatus: LiveData<Int>
@@ -26,18 +25,42 @@ class HomeViewModel(private val app: Application,
 //        get() = _averageCondition
 
     private val _averageSelection = MutableLiveData<Int?>()
-//    val averageSelection: LiveData<Int?>
-//        get() = _averageSelection
+    val averageSelection: LiveData<Int?>
+        get() = _averageSelection
 
     init {
         initializeAStatus()
-        averageLengthOptions = app.resources.getIntArray(R.array.days_length_array)
     }
 
     fun setAverageSelected(timerLengthSelection: Int) {
         _averageSelection.value = timerLengthSelection
+        _averageSelection.value?.let {showAverage(it)}
     }
 
+    fun showAverage(averageLengthSelection: Int) {
+      viewModelScope.launch {
+         var theCondition: Float
+          when (averageLengthSelection) {
+             0 -> {
+                 theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
+                 _averageCondition.value = theCondition
+             }
+             1 -> {
+                 theCondition = database.getAverageConditionInThreeDay(System.currentTimeMillis())
+                 _averageCondition.value = theCondition
+             }
+             2 -> {
+                 theCondition = database.getAverageConditionInWeek(System.currentTimeMillis())
+                 _averageCondition.value = theCondition
+             }
+             3 -> {
+                 theCondition = database.getAverageConditionInMonth(System.currentTimeMillis())
+                 _averageCondition.value = theCondition
+             }
+             else -> _averageCondition.value = -77.0F
+         }
+     }
+    }
 
 
 
@@ -58,30 +81,30 @@ class HomeViewModel(private val app: Application,
             else -> -1.0F
         }
     }
-    val averageSelection: LiveData<Int> = Transformations.map(_averageSelection) {
-        viewModelScope.launch {
-            var theCondition: Float
-            when {
-                it == 0 -> {
-                    theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
-                    _averageCondition.value = theCondition
-                }
-                it == 3 -> {
-                    theCondition = database.getAverageConditionInThreeDay(System.currentTimeMillis())
-                    _averageCondition.value = theCondition
-                }
-                it == 7 -> {
-                    theCondition = database.getAverageConditionInWeek(System.currentTimeMillis())
-                    _averageCondition.value = theCondition
-                }
-                it == 30 -> {
-                    theCondition = database.getAverageConditionInMonth(System.currentTimeMillis())
-                    _averageCondition.value = theCondition
-                }
-                else -> _averageCondition.value = -77.0F
-            }
-        }
-    }
+//    val averageSelection: LiveData<Int> = Transformations.map(_averageSelection) {
+//        viewModelScope.launch {
+//            var theCondition: Float
+//            when {
+//                it == 0 -> {
+//                    theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
+//                    _averageCondition.value = theCondition
+//                }
+//                it == 3 -> {
+//                    theCondition = database.getAverageConditionInThreeDay(System.currentTimeMillis())
+//                    _averageCondition.value = theCondition
+//                }
+//                it == 7 -> {
+//                    theCondition = database.getAverageConditionInWeek(System.currentTimeMillis())
+//                    _averageCondition.value = theCondition
+//                }
+//                it == 30 -> {
+//                    theCondition = database.getAverageConditionInMonth(System.currentTimeMillis())
+//                    _averageCondition.value = theCondition
+//                }
+//                else -> _averageCondition.value = -77.0F
+//            }
+//        }
+//    }
 
     val conditionQuality: LiveData<ConditionQuality?> = Transformations.map(_aStatus) {
         when {

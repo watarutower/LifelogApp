@@ -5,17 +5,9 @@
 
     <!--Text values of Average Condition-->
     <string-array name="average_array">
-        <item>Day average</item>
-        <item>3 days average</item>
-        <item>week average</item>
-        <item>Month average</item>
+        <item>DAY AVERAGE</item>
+        <item>3 DAYS AVERAGEe</item>
+        <item>WEEK AVERAGE</item>
+        <item>MONTH AVERAGE</item>
     </string-array>
-
-<!--    Average for condition by days -->
-    <integer-array name="days_length_array">
-        <item>1</item>
-        <item>3</item>
-        <item>7</item>
-        <item>30</item>
-    </integer-array>
 </resources>
