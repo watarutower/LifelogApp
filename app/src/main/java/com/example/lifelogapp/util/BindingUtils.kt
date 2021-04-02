@@ -94,7 +94,7 @@ object BindingUtils {
     }
 
     @BindingAdapter("conditionAverage")
-    @JvmStatic fun conditionAverage(view:TextView, average: Int) {
+    @JvmStatic fun conditionAverage(view:TextView, average: Float) {
         view.setText(formatReview(average.toString()))
     }
 }

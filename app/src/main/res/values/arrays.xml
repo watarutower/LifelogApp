@@ -3,19 +3,19 @@
     <!--These two arrays list cooking time intervals in minutes and the text representing
 	that interval. They need to be in sync when anything added, removed or modified   -->
 
-    <!--Text values of cooking time intervals -->
+    <!--Text values of Average Condition-->
     <string-array name="average_array">
-        <item>Average in a day</item>
-        <item>Average in 3 days</item>
-        <item>Average in a week</item>
-        <item>Average in a month</item>
+        <item>Day average</item>
+        <item>3 days average</item>
+        <item>week average</item>
+        <item>Month average</item>
     </string-array>
-    <!--Cooking time intervals in minutes -->
-<!--    <integer-array name="minutes_array">-->
-<!--        <item>0</item>-->
-<!--        <item>4</item>-->
-<!--        <item>6</item>-->
-<!--        <item>10</item>-->
-<!--        <item>12</item>-->
-<!--    </integer-array>-->
+
+<!--    Average for condition by days -->
+    <integer-array name="days_length_array">
+        <item>1</item>
+        <item>3</item>
+        <item>7</item>
+        <item>30</item>
+    </integer-array>
 </resources>

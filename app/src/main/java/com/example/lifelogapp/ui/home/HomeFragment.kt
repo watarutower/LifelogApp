@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         val application = requireNotNull(this.activity).application
 
         val dataSource = LifelogDatabase.getInstance(application).lifeLogDao
-        val viewModelFactory = HomeViewModelFactory(dataSource, application)
+        val viewModelFactory = HomeViewModelFactory(application, dataSource)
 
         homeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 

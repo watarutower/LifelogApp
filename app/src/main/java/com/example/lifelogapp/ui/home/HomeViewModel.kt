@@ -4,32 +4,40 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.lifelogapp.database.LifelogDao
 import kotlinx.coroutines.launch
+import com.example.lifelogapp.R
 
 
-class HomeViewModel (
-    dataSource: LifelogDao,
-    application: Application) : ViewModel() {
+class HomeViewModel(private val app: Application,
+                    dataSource: LifelogDao): AndroidViewModel(app) {
 
     val database = dataSource
 
     //for adapter
     val daylog = database.getDayLogs()
 
+    private val averageLengthOptions: IntArray
+
     val _aStatus = MutableLiveData<Int>(0)
     val aStatus: LiveData<Int>
         get() = _aStatus
 
-    private val _averageCondition = MutableLiveData<Int>()
+    private val _averageCondition = MutableLiveData<Float>(0.0F)
 //    val averageCondition: LiveData<Int>
 //        get() = _averageCondition
 
-    private val _averageSelection = MutableLiveData<Int>()
-    val averageSelection: LiveData<Int>
-        get() = _averageSelection
+    private val _averageSelection = MutableLiveData<Int?>()
+//    val averageSelection: LiveData<Int?>
+//        get() = _averageSelection
 
     init {
         initializeAStatus()
+        averageLengthOptions = app.resources.getIntArray(R.array.days_length_array)
     }
+
+    fun setAverageSelected(timerLengthSelection: Int) {
+        _averageSelection.value = timerLengthSelection
+    }
+
 
 
 
@@ -38,12 +46,42 @@ class HomeViewModel (
             var theStatus = database.getOneStatus()
             _aStatus.value = theStatus
 
-            var theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
+            val theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
             _averageCondition.value = theCondition
         }
     }
 
-    val averageCondition: LiveData<Int> = Transformations(_averageCondition.value)
+
+    val averageCondition: LiveData<Float> = Transformations.map(_averageCondition) {
+        when {
+            it != null -> _averageCondition.value
+            else -> -1.0F
+        }
+    }
+    val averageSelection: LiveData<Int> = Transformations.map(_averageSelection) {
+        viewModelScope.launch {
+            var theCondition: Float
+            when {
+                it == 0 -> {
+                    theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
+                    _averageCondition.value = theCondition
+                }
+                it == 3 -> {
+                    theCondition = database.getAverageConditionInThreeDay(System.currentTimeMillis())
+                    _averageCondition.value = theCondition
+                }
+                it == 7 -> {
+                    theCondition = database.getAverageConditionInWeek(System.currentTimeMillis())
+                    _averageCondition.value = theCondition
+                }
+                it == 30 -> {
+                    theCondition = database.getAverageConditionInMonth(System.currentTimeMillis())
+                    _averageCondition.value = theCondition
+                }
+                else -> _averageCondition.value = -77.0F
+            }
+        }
+    }
 
     val conditionQuality: LiveData<ConditionQuality?> = Transformations.map(_aStatus) {
         when {
@@ -74,9 +112,6 @@ class HomeViewModel (
 
 
 
-    fun setAverageSelected(timerLengthSelection: Int) {
-        _averageSelection.value = timerLengthSelection
-    }
 
 
 }
