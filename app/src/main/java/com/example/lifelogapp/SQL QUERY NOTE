@@ -11,3 +11,35 @@ from each_status_table order by statusId desc ;
 日付指定！
 select statusId,condition,comment,date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')
 from each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = '2021-03-21'order by statusId desc ;
+
+---conditionの平均をとる---
+SELECT * FROM each_status_table where submit_time >= (julianday('now') - 2440587.5)*86400.0 - 86400.0
+
+現在時刻の取り方（currenttimeで）
+SELECT datetime('1617346338', 'unixepoch', 'localtime')
+
+161694180414116
+
+1616924686502
+1616924686502
+
+1617348053359 id 60
+1617292856026 id 56
+
+betweenできた
+SELECT * from each_status_table where submit_time BETWEEN 1617292856026 AND 1617348053359
+
+1日分
+SELECT * from each_status_table where submit_time BETWEEN (1617348053359-86400000) AND 1617348053359
+１日平均decimalたくさん
+SELECT avg(condition) from each_status_table where submit_time BETWEEN (1617348053359-86400000) AND 1617348053359
+
+1日 single decimal
+SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000) AND 1617348053359
+3日
+SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*3) AND 1617348053359
+７日
+SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*7) AND 1617348053359
+３０日
+SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (1617348053359-86400000*30) AND 1617348053359
+
