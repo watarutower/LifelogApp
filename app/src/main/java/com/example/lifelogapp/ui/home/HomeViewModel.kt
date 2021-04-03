@@ -35,17 +35,21 @@ class HomeViewModel(private val app: Application,
     val averageSelection: LiveData<Int?>
         get() = _averageSelection
 
-    private val _textViewVisibility = MutableLiveData<Int?>()
+    private val _refreshDisplay = MutableLiveData<Boolean?>()
+    val refreshDisplay: LiveData<Boolean?>
+        get() = _refreshDisplay
+
+//    private val _textViewVisibility = MutableLiveData<Int?>()
     private val _editTextVisibility = MutableLiveData<Int?>()
 
 
     fun onTextClicked() {
-        _textViewVisibility.value = 8
+//        _textViewVisibility.value = 8
         _editTextVisibility.value = 0
     }
-    val textViewVisibility = Transformations.map (_textViewVisibility) {
-        _textViewVisibility.value
-    }
+//    val textViewVisibility = Transformations.map (_textViewVisibility) {
+//        _textViewVisibility.value
+//    }
 
     private suspend fun insert(newPreview: Preview) {
         database.insert(newPreview)
@@ -54,6 +58,7 @@ class HomeViewModel(private val app: Application,
 //    val memoEditText = Transformations.map(_memoEditText) {
 //        _memoEditText.value
 //    }
+
 
 
     fun onDoneClicked() {
@@ -65,7 +70,8 @@ class HomeViewModel(private val app: Application,
             insert(newMemo)
         }
         _editTextVisibility.value = 8
-        _textViewVisibility.value = 0
+//        _textViewVisibility.value = 0
+        _refreshDisplay.value = true
     }
 
     val editTextVisibility = Transformations.map (_editTextVisibility) {

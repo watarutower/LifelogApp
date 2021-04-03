@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.webkit.WebView
 import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
@@ -62,6 +63,7 @@ class HomeFragment : Fragment() {
 //            }
 //        })
 
+
         homeViewModel.navigateToUpdate.observe(viewLifecycleOwner,
                 Observer<Boolean?> {navigate ->
                     if(navigate==true)let{
@@ -71,6 +73,13 @@ class HomeFragment : Fragment() {
                     }
                 })
 
+        val webView = context?.let { WebView(it) }
+        homeViewModel.refreshDisplay.observe(viewLifecycleOwner,
+        Observer<Boolean?> {
+            if(it==true)let{
+                webView?.reload()
+            }
+        })
 //        val manager = RecyclerView.LayoutManager(activity, 3)
 //        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
 //            override fun getSpanSize(position: Int) =  when (position) {

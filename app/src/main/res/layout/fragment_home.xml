@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="com.example.lifelogapp.util.BindingUtils" />
         <variable
             name="homeViewModel"
             type="com.example.lifelogapp.ui.home.HomeViewModel" />
@@ -89,7 +90,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
-                                android:onClick="@{() -> homeViewModel.onTextClicked()}"
+
                                 android:orientation="vertical"
                                 app:layout_constraintBottom_toTopOf="@id/average_linear"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -116,9 +117,10 @@
                                     android:textSize="14sp"
                                     tools:text="Hold back the river oet me looking your eyes"
                                     android:hint="@string/hint_comment"
+                                    android:onClick="@{() -> homeViewModel.onTextClicked()}"
                                     android:text="@={homeViewModel.editText}"
                                     app:carryOverComment="@{homeViewModel.memoFetch}"
-                                    android:visibility="@{homeViewModel.editTextVisibility}"
+                                    hideKeyboardOnInputDone="@{true}"
                                     />
                                 <Button
                                     android:layout_width="wrap_content"
