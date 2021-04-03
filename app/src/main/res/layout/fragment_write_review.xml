@@ -57,7 +57,7 @@
 
                     android:minHeight="150dp"
                     android:hint="@string/hint_comment"
-                    android:inputType="textMultiLine|text"
+
                     android:singleLine="false"
                     android:textAlignment="viewStart"
                     app:carryOverComment="@{writeReviewViewModel.commentFetch}"

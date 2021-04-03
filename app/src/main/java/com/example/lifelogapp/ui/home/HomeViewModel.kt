@@ -15,13 +15,12 @@ class HomeViewModel(private val app: Application,
                     dataSource: LifelogDao): AndroidViewModel(app) {
 
     val database = dataSource
-
-    //for adapter
+//    アダプター
     val daylog = database.getDayLogs()
 
     val _memoFetch = MutableLiveData<String?>("")
 
-    val _memoEditText = MutableLiveData<String?> ("")
+    var editText: String? = ""
 
     val _aStatus = MutableLiveData<Int>(0)
     val aStatus: LiveData<Int>
@@ -31,14 +30,12 @@ class HomeViewModel(private val app: Application,
 //    val averageCondition: LiveData<Int>
 //        get() = _averageCondition
 
+//    for Spinner
     private val _averageSelection = MutableLiveData<Int?>()
     val averageSelection: LiveData<Int?>
         get() = _averageSelection
 
     private val _textViewVisibility = MutableLiveData<Int?>()
-//    val textViewVisibility: LiveData<Int?>
-//        get() = _textViewVisibility
-
     private val _editTextVisibility = MutableLiveData<Int?>()
 
 
@@ -54,31 +51,26 @@ class HomeViewModel(private val app: Application,
         database.insert(newPreview)
     }
 
-    val memoEditText = Transformations.map(_memoEditText) {
-        _memoEditText.value
-    }
+//    val memoEditText = Transformations.map(_memoEditText) {
+//        _memoEditText.value
+//    }
 
 
     fun onDoneClicked() {
         viewModelScope.launch {
-            _editTextVisibility.value = 8
-            _textViewVisibility.value = 0
-
             val newMemo = Preview()
             newMemo.flag = 0
             newMemo.theDate = ""
-            newMemo.reviewComment = memoEditText.value
+            newMemo.reviewComment = editText
             insert(newMemo)
         }
+        _editTextVisibility.value = 8
+        _textViewVisibility.value = 0
     }
 
     val editTextVisibility = Transformations.map (_editTextVisibility) {
         _editTextVisibility.value
     }
-
-
-
-
 
     init {
         initializeAStatus()
@@ -101,7 +93,7 @@ class HomeViewModel(private val app: Application,
         }
     }
 
-
+//   for Spinner
     fun setAverageSelected(timerLengthSelection: Int) {
         _averageSelection.value = timerLengthSelection
         _averageSelection.value?.let {showAverage(it)}
@@ -132,9 +124,6 @@ class HomeViewModel(private val app: Application,
      }
     }
 
-
-
-
     private fun initializeAStatus() {
         viewModelScope.launch {
             var theStatus = database.getOneStatus()
@@ -152,30 +141,6 @@ class HomeViewModel(private val app: Application,
             else -> -1.0F
         }
     }
-//    val averageSelection: LiveData<Int> = Transformations.map(_averageSelection) {
-//        viewModelScope.launch {
-//            var theCondition: Float
-//            when {
-//                it == 0 -> {
-//                    theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
-//                    _averageCondition.value = theCondition
-//                }
-//                it == 3 -> {
-//                    theCondition = database.getAverageConditionInThreeDay(System.currentTimeMillis())
-//                    _averageCondition.value = theCondition
-//                }
-//                it == 7 -> {
-//                    theCondition = database.getAverageConditionInWeek(System.currentTimeMillis())
-//                    _averageCondition.value = theCondition
-//                }
-//                it == 30 -> {
-//                    theCondition = database.getAverageConditionInMonth(System.currentTimeMillis())
-//                    _averageCondition.value = theCondition
-//                }
-//                else -> _averageCondition.value = -77.0F
-//            }
-//        }
-//    }
 
     val conditionQuality: LiveData<ConditionQuality?> = Transformations.map(_aStatus) {
         when {
@@ -200,11 +165,8 @@ class HomeViewModel(private val app: Application,
     fun onFabClicked() {
         _navigateToUpdate.value = true
     }
-
-
-
-
 }
+
 
 enum class ConditionQuality {
     VERY_DISSATISFIED,

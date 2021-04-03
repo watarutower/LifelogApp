@@ -104,18 +104,20 @@
                                     android:layout_marginTop="4dp"
                                     android:hint="@string/hint_comment"
                                     android:textStyle="bold"
-                                    android:text="@{homeViewModel.memoFetch}"
+                                    app:dayComment="@{homeViewModel.memoFetch}"
                                     android:visibility="@{homeViewModel.textViewVisibility}"
                                     />
 
                                 <EditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:inputType="textMultiLine|text"
                                     android:layout_marginTop="4dp"
                                     android:textSize="14sp"
                                     tools:text="Hold back the river oet me looking your eyes"
                                     android:hint="@string/hint_comment"
-                                    android:text="@{homeViewModel.memoEditText}"
+                                    android:text="@={homeViewModel.editText}"
+                                    app:carryOverComment="@{homeViewModel.memoFetch}"
                                     android:visibility="@{homeViewModel.editTextVisibility}"
                                     />
                                 <Button
