@@ -51,3 +51,21 @@ DELETE FROM each_status_table WHERE statusId Between 68 and 73
 
 --時間を見やすくselect 全文
 select statusId,datetime(substr(printf('%d',submit_time),1,10),'unixepoch','localtime'), condition, comment from each_status_table order by submit_time desc
+
+--epoch time to datetime
+SELECT datetime(1617462895, 'unixepoch', 'localtime')
+1	2021-04-04 00:14:55
+
+SELECT strftime('%s','2021-04-04 00:14:55')
+SELECT strftime('%s','2021-04-04')
+-> 1617494400 (localtimeになってない)
+-> local timeを抜いて表示
+SELECT datetime(1617494400, 'unixepoch')
+
+現在時刻（テスト用）1617462895 localtimeじゃないとずれるので注意
+current timeでとると -> 1617465074639/1000
+
+SELECT strftime('%s', date( 1617462895, 'unixepoch', 'localtime')) - 1617462895
+	-> 31505
+
+select  strftime('%s',date( 1617462895, 'unixepoch', 'localtime'))

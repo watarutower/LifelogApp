@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_fragment_home_to_fragment_history_index"
             app:destination="@id/fragment_history_index" />
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_write_review"
+            app:destination="@id/fragment_write_review" />
     </fragment>
 
     <fragment
@@ -62,6 +65,9 @@
         <action
             android:id="@+id/action_fragment_write_review_to_fragment_history_detail"
             app:destination="@id/fragment_history_detail" />
+        <action
+            android:id="@+id/action_fragment_write_review_to_fragment_home"
+            app:destination="@id/fragment_home" />
     </fragment>
 
     <fragment

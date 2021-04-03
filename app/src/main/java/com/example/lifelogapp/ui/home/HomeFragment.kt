@@ -20,7 +20,8 @@ import com.example.lifelogapp.MainActivity
 import com.example.lifelogapp.R
 import com.example.lifelogapp.database.LifelogDatabase
 import com.example.lifelogapp.databinding.FragmentHomeBinding
-import com.example.lifelogapp.ui.historydetail.HistoryDetailViewModelFactory
+
+import com.example.lifelogapp.ui.home.HomeFragmentDirections
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.list_item_day_status.*
@@ -73,11 +74,19 @@ class HomeFragment : Fragment() {
                     }
                 })
 
-        val webView = context?.let { WebView(it) }
-        homeViewModel.refreshDisplay.observe(viewLifecycleOwner,
-        Observer<Boolean?> {
-            if(it==true)let{
-                webView?.reload()
+//        val webView = context?.let { WebView(it) }
+//        homeViewModel.refreshDisplay.observe(viewLifecycleOwner,
+//        Observer<Boolean?> {
+//            if(it==true)let{
+//                webView?.reload()
+//            }
+//        })
+
+        homeViewModel.navigateToDisplayMemo.observe(viewLifecycleOwner, Observer { memo ->
+            memo?.let {
+                this.findNavController().navigate(
+                      HomeFragmentDirections.actionFragmentHomeToFragmentWriteReview(memo))
+                homeViewModel.onDisplayMemoNavigated()
             }
         })
 //        val manager = RecyclerView.LayoutManager(activity, 3)

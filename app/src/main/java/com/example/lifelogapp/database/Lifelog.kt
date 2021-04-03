@@ -47,6 +47,9 @@ data class WorkLog(
         @PrimaryKey(autoGenerate = true)
         var workId: Long = 0L,
 
+//        @ColumnInfo(name = "work_type")
+//        var type: String = "",
+//
         @ColumnInfo(name = "start_time_milli")
         val startTimeMilli: Long = System.currentTimeMillis(),
 

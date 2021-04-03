@@ -91,6 +91,7 @@ object BindingUtils {
         view.setText(formatReview(review))
     }
 
+
     @BindingAdapter("carryOverComment")
     @JvmStatic fun takeOverComment(view: EditText, review: String) {
         view.setText(formatReview(review))
@@ -99,6 +100,11 @@ object BindingUtils {
     @BindingAdapter("conditionAverage")
     @JvmStatic fun conditionAverage(view:TextView, average: Float) {
         view.setText(formatReview(average.toString()))
+    }
+
+    @BindingAdapter("memoComment")
+    @JvmStatic fun memoComment(view: TextView, memo: String) {
+        view.setText(formatMemo(memo))
     }
 
 //    @InverseMethod("HomeMemo")
@@ -128,6 +134,18 @@ fun formatReview (review: String): Spanned {
     val sb = StringBuilder()
     sb.apply{
         append(review)
+    }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        @Suppress("DEPRECATION")
+        return Html.fromHtml(sb.toString())
+    }
+}
+fun formatMemo (memo: String): Spanned {
+    val sb = StringBuilder()
+    sb.apply{
+        append(memo)
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)

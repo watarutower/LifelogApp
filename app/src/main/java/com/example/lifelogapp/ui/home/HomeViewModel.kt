@@ -42,6 +42,19 @@ class HomeViewModel(private val app: Application,
 //    private val _textViewVisibility = MutableLiveData<Int?>()
     private val _editTextVisibility = MutableLiveData<Int?>()
 
+    val memo = "MEMO"
+
+    val navigateToDisplayMemo :LiveData<String?>
+        get() = _navigateToDisplayMemo
+    val _navigateToDisplayMemo = MutableLiveData<String?>()
+
+    fun onDisplayMemoNavigated() {
+        _navigateToDisplayMemo.value = null
+    }
+    fun onDisplayMemoClicked(day: String?) {
+        _navigateToDisplayMemo.value = day
+    }
+
 
     fun onTextClicked() {
 //        _textViewVisibility.value = 8
@@ -95,7 +108,7 @@ class HomeViewModel(private val app: Application,
             it != null -> {
                 _memoFetch.value
             }
-            else -> null
+            else -> "MEMO"
         }
     }
 

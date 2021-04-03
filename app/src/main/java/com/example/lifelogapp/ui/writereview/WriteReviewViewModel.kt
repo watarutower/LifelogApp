@@ -38,8 +38,11 @@ class WriteReviewViewModel (
 
     val navigateToHistoryDetail: LiveData<String?>
         get() = _navigateToHistoryDetail
-
     val _navigateToHistoryDetail = MutableLiveData<String?>()
+
+    val navigateToHome: LiveData<String?>
+        get() = _navigateToHome
+    val _navigateToHome = MutableLiveData<String?>()
 
     private suspend fun insert(newPreview: Preview) {
         database.insert(newPreview)
@@ -55,13 +58,21 @@ class WriteReviewViewModel (
 
     fun onSubmitClicked() {
         viewModelScope.launch {
-            val newReview = Preview()
-            newReview.flag = 1
-            newReview.theDate = dayLogsKey
-            newReview.reviewComment = editText
-            insert(newReview)
-
-            _navigateToHistoryDetail.value = dayLogsKey
+            val newComment = Preview()
+            if(dayLogsKey == "MEMO"){
+                newComment.flag = 0
+                newComment.theDate = dayLogsKey
+                newComment.reviewComment = editText
+                insert(newComment)
+                _navigateToHome.value = dayLogsKey
+            }
+            else {
+                newComment.flag = 1
+                newComment.theDate = dayLogsKey
+                newComment.reviewComment = editText
+                insert(newComment)
+                _navigateToHistoryDetail.value = dayLogsKey
+            }
         }
     }
 
@@ -72,7 +83,11 @@ class WriteReviewViewModel (
 
                 update(revisedPreview.value)
 
-            _navigateToHistoryDetail.value = dayLogsKey
+            if(dayLogsKey =="MEMO"){
+                _navigateToHome.value = dayLogsKey
+            }else {
+                _navigateToHistoryDetail.value = dayLogsKey
+            }
         }
     }
 

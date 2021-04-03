@@ -51,6 +51,14 @@ class WriteReviewFragment : Fragment() {
             }
         })
 
+        writeReviewViewModel.navigateToHome.observe(viewLifecycleOwner, Observer { memo ->
+            memo?.let {
+                this.findNavController().navigate(
+                        WriteReviewFragmentDirections.actionFragmentWriteReviewToFragmentHome())
+                writeReviewViewModel.doneNavigating()
+            }
+        })
+
         return binding.root
     }
 }
