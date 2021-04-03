@@ -1,6 +1,9 @@
 package com.example.lifelogapp.ui.home
 
 import android.app.Application
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.*
 import com.example.lifelogapp.database.LifelogDao
 import kotlinx.coroutines.launch
@@ -28,8 +31,37 @@ class HomeViewModel(private val app: Application,
     val averageSelection: LiveData<Int?>
         get() = _averageSelection
 
+    private val _textViewVisibility = MutableLiveData<Int?>()
+//    val textViewVisibility: LiveData<Int?>
+//        get() = _textViewVisibility
+
+    private val _editTextVisibility = MutableLiveData<Int?>()
+
+
+    fun onTextClicked() {
+        _textViewVisibility.value = 8
+        _editTextVisibility.value = 0
+    }
+    val textViewVisibility = Transformations.map (_textViewVisibility) {
+        _textViewVisibility.value
+    }
+
+    fun onEditTextDone() {
+        _editTextVisibility.value = 8
+        _textViewVisibility.value = 0
+    }
+
+    val editTextVisibility = Transformations.map (_editTextVisibility) {
+        _editTextVisibility.value
+    }
+
+
+
+    val editText: String? = ""
+
     init {
         initializeAStatus()
+        _editTextVisibility.value = 8
     }
 
     fun setAverageSelected(timerLengthSelection: Int) {
@@ -61,6 +93,7 @@ class HomeViewModel(private val app: Application,
          }
      }
     }
+
 
 
 
@@ -129,10 +162,6 @@ class HomeViewModel(private val app: Application,
     fun onFabClicked() {
         _navigateToUpdate.value = true
     }
-
-
-
-
 
 
 

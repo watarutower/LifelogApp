@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -52,6 +54,7 @@ class HomeFragment : Fragment() {
                 adapter.addHeaderAndSubmitList(it)
             }
         })
+
 
 //        homeViewModel.aStatus.observe(viewLifecycleOwner, Observer {
 //            it?.let {it

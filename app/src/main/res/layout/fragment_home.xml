@@ -34,7 +34,7 @@
 
 
                     <LinearLayout
-                        android:id="@+id/first_const"
+                        android:id="@+id/first_linear"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:minHeight="200dp"
@@ -81,27 +81,61 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/card_right"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:minHeight="170dp">
 
-                                <LinearLayout
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:onClick="@{() -> homeViewModel.onTextClicked()}"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toTopOf="@id/average_linear"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintVertical_bias="0.022"
+                                tools:layout_editor_absoluteX="0dp">
+
+                                <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    app:layout_constraintTop_toTopOf="@id/card_right">
+                                    android:layout_marginTop="4dp"
+                                    android:hint="@string/hint_comment"
+                                    android:textStyle="bold"
+                                    android:visibility="@{homeViewModel.textViewVisibility}"
+                                    />
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginTop="4dp"
-                                        android:hint="@string/hint_comment"
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:textSize="14sp"
+                                    tools:text="Hold back the river oet me looking your eyes"
+                                    android:hint="@string/hint_comment"
+                                    android:text="@{homeViewModel.editText}"
+                                    android:visibility="@{homeViewModel.editTextVisibility}"
+                                    />
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/button_done"
+                                    android:layout_gravity="end"
+                                    android:layout_marginLeft="25dp"
+                                    android:onClick="@{() -> homeViewModel.onEditTextDone()}"
+                                    android:visibility="@{homeViewModel.editTextVisibility}"/>
 
-                                        android:textStyle="bold" />
-                                 </LinearLayout>
 
-                                 <LinearLayout
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                     android:id="@+id/average_linear"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
+
                                     app:layout_constraintBottom_toBottomOf="@id/card_right">
 
                                      <Spinner
@@ -112,7 +146,7 @@
                                          android:onItemSelected="@{(parent, view, selection, id)-> homeViewModel.setAverageSelected(selection)}"
                                          android:prompt="@string/average_prompt"
                                          android:selectedItemPosition="@{homeViewModel.averageSelection}"
-                                         app:layout_constraintTop_toBottomOf="@id/first_const"
+                                         app:layout_constraintTop_toBottomOf="@id/first_linear"
                                          app:layout_constraintEnd_toEndOf="parent"
                                          app:layout_constraintStart_toStartOf="parent" />
 
