@@ -8,6 +8,7 @@ import androidx.lifecycle.*
 import com.example.lifelogapp.database.LifelogDao
 import kotlinx.coroutines.launch
 import com.example.lifelogapp.R
+import com.example.lifelogapp.database.Preview
 
 
 class HomeViewModel(private val app: Application,
@@ -18,6 +19,9 @@ class HomeViewModel(private val app: Application,
     //for adapter
     val daylog = database.getDayLogs()
 
+    val _memoFetch = MutableLiveData<String?>("")
+
+    val _memoEditText = MutableLiveData<String?> ("")
 
     val _aStatus = MutableLiveData<Int>(0)
     val aStatus: LiveData<Int>
@@ -46,9 +50,26 @@ class HomeViewModel(private val app: Application,
         _textViewVisibility.value
     }
 
-    fun onEditTextDone() {
-        _editTextVisibility.value = 8
-        _textViewVisibility.value = 0
+    private suspend fun insert(newPreview: Preview) {
+        database.insert(newPreview)
+    }
+
+    val memoEditText = Transformations.map(_memoEditText) {
+        _memoEditText.value
+    }
+
+
+    fun onDoneClicked() {
+        viewModelScope.launch {
+            _editTextVisibility.value = 8
+            _textViewVisibility.value = 0
+
+            val newMemo = Preview()
+            newMemo.flag = 0
+            newMemo.theDate = ""
+            newMemo.reviewComment = memoEditText.value
+            insert(newMemo)
+        }
     }
 
     val editTextVisibility = Transformations.map (_editTextVisibility) {
@@ -57,12 +78,29 @@ class HomeViewModel(private val app: Application,
 
 
 
-    val editText: String? = ""
+
 
     init {
         initializeAStatus()
+        initializeMemo()
         _editTextVisibility.value = 8
     }
+
+    private fun initializeMemo() {
+        viewModelScope.launch {
+            val theMemo = database.getMemo()
+            _memoFetch.value = theMemo
+        }
+    }
+    val memoFetch: LiveData<String?> = Transformations.map(_memoFetch) {
+        when {
+            it != null -> {
+                _memoFetch.value
+            }
+            else -> null
+        }
+    }
+
 
     fun setAverageSelected(timerLengthSelection: Int) {
         _averageSelection.value = timerLengthSelection

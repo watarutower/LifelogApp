@@ -65,11 +65,10 @@
 
 
                     <EditText
-                        android:id="@+id/new_comment"
+                        android:id="@+id/new_memo"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:elevation="40dp"
-                        android:ems="10"
                         android:hint="@string/hint_comment"
                         android:inputType="textMultiLine|text"
                         android:singleLine="false"
