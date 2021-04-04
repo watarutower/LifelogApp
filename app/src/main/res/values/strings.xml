@@ -52,5 +52,6 @@
     <string name="average_prompt">Check your condition averages</string>
     <string name="button_done">DONE</string>
     <string name="text_memo">-MEMO-</string>
+    <string name="header_condition">Condition</string>
 
 </resources>

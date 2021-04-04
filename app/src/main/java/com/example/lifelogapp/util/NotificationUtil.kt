@@ -37,8 +37,6 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
             .setContentIntent(contentPendingIntent)
             .setAutoCancel(true)
 
-
-
     notify(NOTIFICATION_ID, builder.build())
 }
 
