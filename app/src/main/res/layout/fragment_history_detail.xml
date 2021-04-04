@@ -57,6 +57,16 @@
                     android:padding="16dp">
 
 
+                    <Button
+                        android:id="@+id/write_button"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:onClick="@{() -> historyDetailViewModel.onWriteClicked(historyDetailViewModel.theDay)}"
+                        android:text="@string/botton_diary"
+                        android:textAlignment="viewStart" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -68,6 +78,8 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
                             android:elevation="40dp"
+                            android:clickable="true"
+                            android:onClick="@{() -> historyDetailViewModel.onWriteClicked(historyDetailViewModel.theDay)}"
                             app:dayComment="@{historyDetailViewModel.reviewComment}"
                             tools:text="@string/text_test"
                             android:textSize="14sp"
@@ -85,24 +97,6 @@
 
 <!--                            />-->
                     </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal">
-
-                </LinearLayout>
-
-                    <Button
-                        android:id="@+id/write_button"
-                        style="?attr/borderlessButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/diary_write"
-                        android:textAlignment="center"
-                        android:onClick="@{() -> historyDetailViewModel.onWriteClicked(historyDetailViewModel.theDay)}"
-                  />
 
                 </LinearLayout>
 <!--                -->
