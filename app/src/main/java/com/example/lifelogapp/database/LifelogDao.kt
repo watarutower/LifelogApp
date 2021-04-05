@@ -74,9 +74,12 @@ interface LifelogDao {
     @Query("SELECT * FROM each_status_table ORDER BY statusId DESC")
     fun getDayLogsList(): List<Lifelog>
 
-
-    @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY submit_time DESC")
+    @Query("select  distinct substr('SunMonTueWedThuFriSat',strftime('%w', date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') )*3+1,3) || ' ' || date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') from each_status_table order BY submit_time DESC")
     fun getStatusByDay(): LiveData<List<String>>
+//    @Query("select  distinct '(' || substr('SunMonTueWedThuFriSat',strftime('%w', date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') )*3+1,3) || ') ' || date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') from each_status_table order BY submit_time DESC")
+
+//    @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY submit_time DESC")
+//    fun getStatusByDay(): LiveData<List<String>>
 
 //    ---history index---
     @Query("select review_comment from preview_table where the_date = :day")

@@ -17,13 +17,21 @@ class WriteReviewViewModel (
 
     val previewFetch = MutableLiveData(Preview())
 
+    val theDay = if(dayLogsKey != "MEMO"){
+        dayLogsKey?.substring(startIndex = 4)
+    } else {
+        dayLogsKey
+    }
+
+    val withWeekday = dayLogsKey
+
     init{
         initializeLastComment()
     }
 
     private fun initializeLastComment(){
         viewModelScope.launch {
-            val onePreview = database.getOnePreview(dayLogsKey)
+            val onePreview = database.getOnePreview(theDay)
             previewFetch.value = onePreview
         }
     }
@@ -33,8 +41,6 @@ class WriteReviewViewModel (
             else -> ""
         }
     }
-
-    val theDay = dayLogsKey
 
     val navigateToHistoryDetail: LiveData<String?>
         get() = _navigateToHistoryDetail
@@ -68,10 +74,10 @@ class WriteReviewViewModel (
             }
             else {
                 newComment.flag = 1
-                newComment.theDate = dayLogsKey
+                newComment.theDate = theDay
                 newComment.reviewComment = editText
                 insert(newComment)
-                _navigateToHistoryDetail.value = dayLogsKey
+                _navigateToHistoryDetail.value = withWeekday
             }
         }
     }
@@ -86,7 +92,7 @@ class WriteReviewViewModel (
             if(dayLogsKey =="MEMO"){
                 _navigateToHome.value = dayLogsKey
             }else {
-                _navigateToHistoryDetail.value = dayLogsKey
+                _navigateToHistoryDetail.value = withWeekday
             }
         }
     }
@@ -95,7 +101,7 @@ class WriteReviewViewModel (
         if(dayLogsKey =="MEMO"){
             _navigateToHome.value = dayLogsKey
         }else {
-            _navigateToHistoryDetail.value = dayLogsKey
+            _navigateToHistoryDetail.value = withWeekday
         }
     }
 

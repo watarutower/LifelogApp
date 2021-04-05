@@ -15,10 +15,12 @@ class HistoryDetailViewModel (
 
     private var newStatus = MutableLiveData<Lifelog?>()
 
+    val theDay = dayLogsKey?.substring(startIndex = 4)
+    val daylog = database.getStatusWithId(theDay)
 
-    val daylog = database.getStatusWithId(dayLogsKey)
+    val withWeekday = dayLogsKey
 
-    val theDay = dayLogsKey
+
 
     private val _dayAverage = MutableLiveData<Float>(0.0F)
 
@@ -33,7 +35,7 @@ class HistoryDetailViewModel (
 
     private fun initializeConditionAverage() {
         viewModelScope.launch {
-            val theCondition = database.getAverageConditionInADay(dayLogsKey)
+            val theCondition = database.getAverageConditionInADay(theDay)
             _dayAverage.value = theCondition
         }
     }
@@ -41,7 +43,7 @@ class HistoryDetailViewModel (
 
     private fun initilizeComment() {
     viewModelScope.launch {
-        var theComment = database.getReviewComment(dayLogsKey)
+        var theComment = database.getReviewComment(theDay)
         _reviewComment.value = theComment
     }
 }
@@ -50,7 +52,7 @@ class HistoryDetailViewModel (
     val reviewComment: LiveData<String?> = Transformations.map(_reviewComment) {
      when {
          it != null -> _reviewComment.value
-         else -> "I can't do it now"
+         else -> ""
      }
     }
 

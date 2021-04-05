@@ -100,4 +100,3 @@ select substr('SunMonTueWedThuFriSat',strftime('%w','2021-04-04')*3+1,3)
 select  distinct substr('SunMonTueWedThuFriSat',strftime('%w', date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') )*3+1,3) from each_status_table order BY submit_time DESC
 
 曜日と日付をつなげて出す
-select  distinct '(' || substr('SunMonTueWedThuFriSat',strftime('%w', date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') )*3+1,3) || ') ' || date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') from each_status_table order BY submit_time DESC
