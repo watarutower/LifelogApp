@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
 
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_worklog  -> {
-
-                    navController.navigate(R.id.fragment_worklog)
-                    return@OnNavigationItemSelectedListener true
-                }
+//                R.id.navigation_worklog  -> {
+//
+//                    navController.navigate(R.id.fragment_worklog)
+//                    return@OnNavigationItemSelectedListener true
+//                }
                 R.id.navigation_history_index -> {
                     navController.navigate(R.id.fragment_history_index)
                     return@OnNavigationItemSelectedListener true

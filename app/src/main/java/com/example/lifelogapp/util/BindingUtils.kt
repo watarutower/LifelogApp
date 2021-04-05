@@ -87,25 +87,30 @@ object BindingUtils {
     }
 
     @BindingAdapter("dayComment")
-    @JvmStatic fun dayComment(view: TextView, review: String) {
-        view.setText(formatReview(review))
+    @JvmStatic fun TextView.setDayComment(review: String) {
+        text = review
     }
 
 
     @BindingAdapter("carryOverComment")
-    @JvmStatic fun takeOverComment(view: EditText, review: String) {
-        view.setText(formatReview(review))
+    @JvmStatic fun TextView.setTakeOverComment(review: String) {
+       text = review
     }
 
     @BindingAdapter("conditionAverage")
-    @JvmStatic fun conditionAverage(view:TextView, average: Float) {
-        view.setText(formatReview(average.toString()))
+    @JvmStatic fun TextView.setConditionAverage(average: Float) {
+        text = average.toString()
     }
 
     @BindingAdapter("memoComment")
-    @JvmStatic fun memoComment(view: TextView, memo: String) {
-        view.setText(formatMemo(memo))
+    @JvmStatic fun TextView.setMemoComment(memo: String) {
+        text = memo
     }
+//
+//    @BindingAdapter("newComment")
+//    fun TextView.setComment(item: Lifelog) {
+//        text = item.oneComment
+//    }
 
 //    @InverseMethod("HomeMemo")
 //    @JvmStatic fun setHomeMemo(context: Context, value: String?) :String? {

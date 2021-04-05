@@ -12,7 +12,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
+        android:background="@color/backgroundPrimary"
+        android:layout_marginBottom="50dp"
         tools:layout_editor_absoluteX="160dp"
         tools:layout_editor_absoluteY="134dp">
 
@@ -28,186 +29,189 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="14dp"
                 android:minHeight="150dp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/container">
+                <!--                app:cardBackgroundColor="#D1EFF3"-->
 
 
+                <LinearLayout
+                    android:id="@+id/first_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:minHeight="200dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="4dp"
+                    android:paddingBottom="4dp">
 
                     <LinearLayout
-                        android:id="@+id/first_linear"
-                        android:layout_width="match_parent"
+                        android:layout_width="155dp"
                         android:layout_height="match_parent"
-                        android:minHeight="200dp"
-                        android:orientation="horizontal"
-                        android:paddingStart="16dp"
-                        android:paddingTop="16dp"
-                        android:paddingEnd="4dp"
-                        android:paddingBottom="4dp"
-                       >
+                        android:minHeight="170dp"
+                        android:orientation="vertical">
+
+                        <!-- Title, secondary and supporting text -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textStyle="bold" />
+                        <!--                                テキストデザイン-->
+                        <!--                            -->
+                        <!--                            android:textStyle="bold"-->
 
                         <LinearLayout
-                            android:layout_width="155dp"
-                            android:layout_height="match_parent"
-                            android:minHeight="170dp"
+                            android:layout_width="135dp"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <!-- Title, secondary and supporting text -->
+                            <!-- Media -->
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="match_parent"
+                                android:layout_height="135dp"
+                                android:contentDescription="@string/status_section"
+                                android:scaleType="fitCenter"
+                                android:clickable="true"
+                                android:onClick="@{() -> homeViewModel.onFabClicked()}"
+                                app:statusImage="@{homeViewModel.conditionQuality}"
+                                tools:srcCompat="@drawable/ic_sentiment_satisfied_24px" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_right"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="170dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="@{() -> homeViewModel.onDisplayMemoClicked(homeViewModel.memo)}"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toTopOf="@id/average_linear"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.022"
+                            tools:layout_editor_absoluteX="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/title"
-                                android:textAppearance="?attr/textAppearanceHeadline6"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:text="@string/text_memo" />
 
-                                <LinearLayout
-                                    android:layout_width="135dp"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:hint="@string/hint_comment"
+                                android:textAlignment="textStart"
+                                app:memoComment="@{homeViewModel.memoFetch}" />
+                            <!--                                android:visibility="@{homeViewModel.textViewVisibility}"-->
+                            <!--                                <EditText-->
+                            <!--                                    android:layout_width="match_parent"-->
+                            <!--                                    android:layout_height="wrap_content"-->
+                            <!--                                    android:inputType="textMultiLine|text"-->
+                            <!--                                    android:layout_marginTop="4dp"-->
+                            <!--                                    android:textSize="14sp"-->
+                            <!--                                    tools:text="Hold back the river oet me looking your eyes"-->
+                            <!--                                    android:hint="@string/hint_comment"-->
+                            <!--                                    android:onClick="@{() -> homeViewModel.onTextClicked()}"-->
+                            <!--                                    android:text="@={homeViewModel.editText}"-->
+                            <!--                                    app:carryOverComment="@{homeViewModel.memoFetch}"-->
+                            <!--                                    hideKeyboardOnInputDone="@{true}"-->
+                            <!--                                    />-->
+                            <!--                                <Button-->
+                            <!--                                    android:layout_width="wrap_content"-->
+                            <!--                                    android:layout_height="wrap_content"-->
+                            <!--                                    android:text="@string/button_done"-->
+                            <!--                                    android:layout_gravity="end"-->
+                            <!--                                    android:layout_marginLeft="25dp"-->
+                            <!--                                    android:onClick="@{() -> homeViewModel.onDoneClicked()}"-->
+                            <!--                                    android:visibility="@{homeViewModel.editTextVisibility}"/>-->
 
-                                     <!-- Media -->
-                                        <ImageView
-                                            android:id="@+id/imageView"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="135dp"
-                                            android:contentDescription="@string/status_section"
-                                            android:scaleType="fitCenter"
-                                            app:statusImage="@{homeViewModel.conditionQuality}"
-                                            tools:srcCompat="@drawable/ic_sentiment_satisfied_24px" />
-
-
-                                 </LinearLayout>
 
                         </LinearLayout>
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/card_right"
+
+                        <LinearLayout
+                            android:id="@+id/average_linear"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:minHeight="170dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            app:layout_constraintBottom_toBottomOf="@id/card_right">
+
+                            <Spinner
+                                android:id="@+id/average_spinner"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:onClick="@{() -> homeViewModel.onDisplayMemoClicked(homeViewModel.memo)}"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toTopOf="@id/average_linear"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_gravity="end"
+                                android:entries="@array/average_array"
+                                android:onItemSelected="@{(parent, view, selection, id)-> homeViewModel.setAverageSelected(selection)}"
+                                android:prompt="@string/average_prompt"
+                                android:selectedItemPosition="@{homeViewModel.averageSelection}"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintVertical_bias="0.022"
-                                tools:layout_editor_absoluteX="0dp">
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/first_linear" />
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-
-                                    android:text="@string/text_memo"/>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
-                                    android:hint="@string/hint_comment"
-                                    android:textAlignment="textStart"
-                                    app:memoComment="@{homeViewModel.memoFetch}"/>
-<!--                                android:visibility="@{homeViewModel.textViewVisibility}"-->
-<!--                                <EditText-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:inputType="textMultiLine|text"-->
-<!--                                    android:layout_marginTop="4dp"-->
-<!--                                    android:textSize="14sp"-->
-<!--                                    tools:text="Hold back the river oet me looking your eyes"-->
-<!--                                    android:hint="@string/hint_comment"-->
-<!--                                    android:onClick="@{() -> homeViewModel.onTextClicked()}"-->
-<!--                                    android:text="@={homeViewModel.editText}"-->
-<!--                                    app:carryOverComment="@{homeViewModel.memoFetch}"-->
-<!--                                    hideKeyboardOnInputDone="@{true}"-->
-<!--                                    />-->
-<!--                                <Button-->
-<!--                                    android:layout_width="wrap_content"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:text="@string/button_done"-->
-<!--                                    android:layout_gravity="end"-->
-<!--                                    android:layout_marginLeft="25dp"-->
-<!--                                    android:onClick="@{() -> homeViewModel.onDoneClicked()}"-->
-<!--                                    android:visibility="@{homeViewModel.editTextVisibility}"/>-->
-
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                     android:id="@+id/average_linear"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-
-                                    app:layout_constraintBottom_toBottomOf="@id/card_right">
-
-                                     <Spinner
-                                         android:id="@+id/average_spinner"
-                                         android:layout_width="wrap_content"
-                                         android:layout_height="wrap_content"
-                                         android:entries="@array/average_array"
-                                         android:onItemSelected="@{(parent, view, selection, id)-> homeViewModel.setAverageSelected(selection)}"
-                                         android:prompt="@string/average_prompt"
-                                         android:selectedItemPosition="@{homeViewModel.averageSelection}"
-                                         app:layout_constraintTop_toBottomOf="@id/first_linear"
-                                         app:layout_constraintEnd_toEndOf="parent"
-                                         app:layout_constraintStart_toStartOf="parent" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="end"
-                                    android:layout_marginEnd="16dp"
-                                    android:layout_marginBottom="16dp"
-                                    app:conditionAverage="@{homeViewModel.averageCondition}"
-                                    tools:text="77" />
-                                <!--                                     app:conditionAverage="@{homeViewModel.averageCondition}"-->
-                                 </LinearLayout>
-                         </androidx.constraintlayout.widget.ConstraintLayout>
-                    </LinearLayout>
-
-
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="16dp"
+                                app:conditionAverage="@{homeViewModel.averageCondition}"
+                                tools:text="77" />
+                            <!--                                     app:conditionAverage="@{homeViewModel.averageCondition}"-->
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/day_status_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card"
+                app:layout_constraintVertical_bias="1.0" />
 
-                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/day_status_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/card"
-                    app:layout_constraintVertical_bias="1.0" />
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/extended_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="125dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="140dp"
+                android:contentDescription="@string/fab_description"
+                android:onClick="@{() -> homeViewModel.onFabClicked()}"
 
-                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                    android:id="@+id/extended_fab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="140dp"
-                    android:layout_marginBottom="140dp"
-                    android:contentDescription="@string/fab_description"
-                    android:onClick="@{() -> homeViewModel.onFabClicked()}"
-                    app:icon="@drawable/ic_baseline_autorenew_24"
-                    app:iconPadding="0dp"
-                    app:iconSize="35dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/container"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/card" />
+                app:icon="@drawable/ic_baseline_autorenew_24"
+                app:iconSize="35dp"
+                app:layout_constraintBottom_toBottomOf="@+id/container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
