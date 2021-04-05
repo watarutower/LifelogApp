@@ -43,7 +43,7 @@ class HistoryIndexFragment : Fragment() {
         binding.historyIndexViewModel = historyIndexViewModel
 
         val adapter = HistoryIndexAdapter(HistoryIndexListener { dayIndex ->
-            Toast.makeText(context, "${dayIndex}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(context, "${dayIndex}", Toast.LENGTH_SHORT).show()
             historyIndexViewModel.onDayClicked(dayIndex)
         })
         binding.statusIndex.adapter = adapter

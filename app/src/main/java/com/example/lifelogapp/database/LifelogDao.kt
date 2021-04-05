@@ -21,8 +21,7 @@ interface LifelogDao {
     @Query("SELECT * FROM each_status_table ORDER BY submit_time DESC LIMIT 20")
     fun getDayLogs(): LiveData<List<Lifelog>>
 
-
-    //Average呼び出し
+    //home でのaverage
     @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (:time-86400000) AND :time")
     suspend fun getAverageConditionInDay(time: Long): Float
 
@@ -34,6 +33,10 @@ interface LifelogDao {
 
     @Query("SELECT round(avg(condition),1) from each_status_table where submit_time BETWEEN (:time-86400000*30) AND :time")
     suspend fun getAverageConditionInMonth(time: Long): Float
+
+    // history detailでのaverage
+    @Query("select round(avg(condition),1) from each_status_table where submit_time between strftime('%s',:day)*1000 - (strftime('%s',:day, 'localtime') - strftime('%s',:day))*1000 and strftime('%s',:day)*1000 - (strftime('%s',:day, 'localtime') - strftime('%s',:day)) *1000+ 86399000 order by submit_time desc")
+    suspend fun getAverageConditionInADay(day: String?): Float
 
     //Memo呼び出し
     @Query("SELECT review_comment from preview_table where flag = 0 ORDER BY dateId DESC LIMIT 1")

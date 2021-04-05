@@ -110,6 +110,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
                                     android:hint="@string/hint_comment"
+                                    android:textAlignment="textStart"
                                     app:memoComment="@{homeViewModel.memoFetch}"/>
 <!--                                android:visibility="@{homeViewModel.textViewVisibility}"-->
 <!--                                <EditText-->
@@ -158,15 +159,15 @@
                                          app:layout_constraintEnd_toEndOf="parent"
                                          app:layout_constraintStart_toStartOf="parent" />
 
-                                     <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginEnd="16dp"
-                                        android:layout_marginBottom="16dp"
-                                        android:layout_gravity="end"
-                                        app:conditionAverage="@{homeViewModel.averageCondition}"
-                                        tools:text="77" />
-<!--                                     app:conditionAverage="@{homeViewModel.averageCondition}"-->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_marginBottom="16dp"
+                                    app:conditionAverage="@{homeViewModel.averageCondition}"
+                                    tools:text="77" />
+                                <!--                                     app:conditionAverage="@{homeViewModel.averageCondition}"-->
                                  </LinearLayout>
                          </androidx.constraintlayout.widget.ConstraintLayout>
                     </LinearLayout>

@@ -58,7 +58,11 @@ SELECT datetime(1617462895, 'unixepoch', 'localtime')
 
 SELECT strftime('%s','2021-04-04 00:14:55')
 SELECT strftime('%s','2021-04-04')
--> 1617494400 (localtimeになってない)
+1	1617494400
+
+×SELECT strftime('%s','2021-04-04','localtime')
+->×	1617526800
+
 -> local timeを抜いて表示
 SELECT datetime(1617494400, 'unixepoch')
 
@@ -69,3 +73,23 @@ SELECT strftime('%s', date( 1617462895, 'unixepoch', 'localtime')) - 1617462895
 	-> 31505
 
 select  strftime('%s',date( 1617462895, 'unixepoch', 'localtime'))
+
+select * from each_status_table where submit_time between strftime('%s','2021-04-04') and strftime('%s','2021-04-04') + 86399
+
+select  statusId,datetime(substr(printf('%d',submit_time),1,10),'unixepoch', 'localtime'), condition, comment from each_status_table where submit_time between strftime('%s','2021-04-04')*1000 and strftime('%s','2021-04-04')*1000 + 86399000 order by submit_time desc
+
+select strftime('%s','2021-04-04', 'localtime')*1000
+1617526800000
+SELECT datetime(1617526800, 'unixepoch')
+1	2021-04-04 09:00:00
+
+local時間の差分（９時間算出）
+select strftime('%s','2021-04-04', 'localtime') - strftime('%s','2021-04-04')
+select (strftime('%s','2021-04-04', 'localtime') - strftime('%s','2021-04-04'))*1000
+
+日付から１日分のlog引き出し
+select  statusId,datetime(substr(printf('%d',submit_time),1,10),'unixepoch', 'localtime'), condition, comment from each_status_table where submit_time between strftime('%s','2021-04-04')*1000 - (strftime('%s','2021-04-04', 'localtime')*1000 - strftime('%s','2021-04-04')*1000)and strftime('%s','2021-04-04')*1000 - (strftime('%s','2021-04-04', 'localtime')*1000 - strftime('%s','2021-04-04')*1000)+ 86399000 order by submit_time desc
+select  statusId,datetime(substr(printf('%d',submit_time),1,10),'unixepoch', 'localtime'), condition, comment from each_status_table where submit_time between strftime('%s','2021-04-04')*1000 - (strftime('%s','2021-04-04', 'localtime') - strftime('%s','2021-04-04'))*1000 and strftime('%s','2021-04-04')*1000 - (strftime('%s','2021-04-04', 'localtime') - strftime('%s','2021-04-04')) *1000+ 86399000 order by submit_time desc
+
+１日内での平均!!!
+select round(avg(condition),1) from each_status_table where submit_time between strftime('%s','2021-04-04')*1000 - (strftime('%s','2021-04-04', 'localtime') - strftime('%s','2021-04-04'))*1000 and strftime('%s','2021-04-04')*1000 - (strftime('%s','2021-04-04', 'localtime') - strftime('%s','2021-04-04')) *1000+ 86399000 order by submit_time desc
