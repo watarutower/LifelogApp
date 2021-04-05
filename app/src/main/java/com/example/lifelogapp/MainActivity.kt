@@ -12,11 +12,10 @@ import com.example.lifelogapp.ui.home.HomeFragment
 import com.example.lifelogapp.ui.update.UpdateFragment
 import com.google.android.material.navigation.NavigationView
 
-//import com.example.lifelogapp.databinding.ActivityMainBinding
+
 
 
 class MainActivity : AppCompatActivity() {
-//    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,17 +60,9 @@ class MainActivity : AppCompatActivity() {
             } else {
                 navView.visibility = View.GONE
             }
-
         }
-
     }
 }
-//        必要？？
-//        if (savedInstanceState == null) {
-//            supportFragmentManager.beginTransaction()
-//                    .replace(R.id.container, UpdateFragment.newInstance())
-//                    .commitNow()
-//        }
 
 
 

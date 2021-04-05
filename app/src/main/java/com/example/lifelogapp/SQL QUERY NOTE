@@ -93,3 +93,8 @@ select  statusId,datetime(substr(printf('%d',submit_time),1,10),'unixepoch', 'lo
 
 １日内での平均!!!
 select round(avg(condition),1) from each_status_table where submit_time between strftime('%s','2021-04-04')*1000 - (strftime('%s','2021-04-04', 'localtime') - strftime('%s','2021-04-04'))*1000 and strftime('%s','2021-04-04')*1000 - (strftime('%s','2021-04-04', 'localtime') - strftime('%s','2021-04-04')) *1000+ 86399000 order by submit_time desc
+
+select substr('SunMonTueWedThuFriSat',strftime('%w','1617526800')*3+1,3)
+select substr('SunMonTueWedThuFriSat',strftime('%w','2021-04-04')*3+1,3)
+
+select  distinct substr('SunMonTueWedThuFriSat',strftime('%w', date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') )*3+1,3) from each_status_table order BY submit_time DESC
