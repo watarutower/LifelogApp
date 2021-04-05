@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LifelogApp</string>
+    <string name="app_name">Lifelog Diary</string>
     <string name="title_home">Home</string>
     <string name="title_activitylog">ActivityLog</string>
     <string name="title_history">History</string>
@@ -30,7 +30,6 @@
     <string name="hint_comment">Comment here</string>
     <string name="button_submit">SUBMIT</string>
     <string name="button_cancel">Cancel</string>
-    <string name="app_title">LifelogApp</string>
     <string name="status_section">status section</string>
     <string name="header_text">TEMPORARY_MONTH</string>
     <string name="text_history_index">Your Lifelog History</string>

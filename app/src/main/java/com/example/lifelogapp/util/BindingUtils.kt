@@ -18,6 +18,8 @@ import com.example.lifelogapp.database.Lifelog
 import com.example.lifelogapp.database.WorkLog
 import com.example.lifelogapp.ui.home.ConditionQuality
 
+//  recyclerviewのアダプター
+
 @BindingAdapter("submitTime")
 fun TextView.setTime(item: Lifelog) {
     text = convertLongToTimeString(item.submitTime)
@@ -38,16 +40,14 @@ fun TextView.setComment(item: Lifelog) {
     text = item.oneComment
 }
 
-
 @BindingAdapter("logTimeFormatted")
 fun TextView.formatDaylogs(item: Lifelog?) {
     item?.let {
         text =
             convertLongToDateString(item.submitTime)
     }
-
-
 }
+
 @BindingAdapter("daysIndex")
 fun TextView.setDays(item: String) {
     text = item
@@ -64,20 +64,7 @@ fun TextView.setFinishTime(item: WorkLog) {
     text = convertLongToTimeString(item.endTimeMilli)
 }
 
-//
-//@BindingAdapter("sleepDurationFormatted2")
-//fun TextView.sleepDurationFormatted2(item: SleepNight?) {
-//    item?.let {
-//        text = formatNights2(item, context.resources)
-//    }
-//}
-//
-//@BindingAdapter("sleepQualityString")
-//fun TextView.setSleepQualityString(item: SleepNight?) {
-//    item?.let {
-//        text = convertNumericQualityToString(item.sleepQuality, context.resources)
-//    }
-//}
+
 
 object BindingUtils {
 
@@ -106,16 +93,6 @@ object BindingUtils {
     @JvmStatic fun TextView.setMemoComment(memo: String) {
         text = memo
     }
-//
-//    @BindingAdapter("newComment")
-//    fun TextView.setComment(item: Lifelog) {
-//        text = item.oneComment
-//    }
-
-//    @InverseMethod("HomeMemo")
-//    @JvmStatic fun setHomeMemo(context: Context, value: String?) :String? {
-//        return value
-//    }
 
     @BindingAdapter("hideKeyboardOnInputDone")
     @JvmStatic fun hideKeyboardOnInputDone(view: EditText, enabled: Boolean) {
@@ -186,24 +163,3 @@ fun getDrawableConditionQuality(conditionQuality: ConditionQuality, context: Con
         }
     }
 }
-
-
-
-
-
-//    @BindingAdapter("statusImage")
-//    @JvmStatic
-//    fun ImageView.setSleepImage(item: Lifelog?) {
-//        item?.let {
-//            setImageResource(when (item.oneCondition) {
-//                in 0..10 -> R.drawable.ic_sentiment_very_dissatisfied_24px
-//                in 11..34 -> R.drawable.ic_sentiment_dissatisfied_black_18dp
-//                in 35..69 -> R.drawable.ic_sentiment_neutral_24px
-//
-//                in 70..85 -> R.drawable.ic_sentiment_satisfied_24px
-//
-//                in 86..100 -> R.drawable.ic_sentiment_very_satisfied_24px
-//                else -> R.drawable.ic_baseline_autorenew_24
-//            })
-//        }
-//    }

@@ -119,29 +119,6 @@
                                 android:hint="@string/hint_comment"
                                 android:textAlignment="textStart"
                                 app:memoComment="@{homeViewModel.memoFetch}" />
-                            <!--                                android:visibility="@{homeViewModel.textViewVisibility}"-->
-                            <!--                                <EditText-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:inputType="textMultiLine|text"-->
-                            <!--                                    android:layout_marginTop="4dp"-->
-                            <!--                                    android:textSize="14sp"-->
-                            <!--                                    tools:text="Hold back the river oet me looking your eyes"-->
-                            <!--                                    android:hint="@string/hint_comment"-->
-                            <!--                                    android:onClick="@{() -> homeViewModel.onTextClicked()}"-->
-                            <!--                                    android:text="@={homeViewModel.editText}"-->
-                            <!--                                    app:carryOverComment="@{homeViewModel.memoFetch}"-->
-                            <!--                                    hideKeyboardOnInputDone="@{true}"-->
-                            <!--                                    />-->
-                            <!--                                <Button-->
-                            <!--                                    android:layout_width="wrap_content"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:text="@string/button_done"-->
-                            <!--                                    android:layout_gravity="end"-->
-                            <!--                                    android:layout_marginLeft="25dp"-->
-                            <!--                                    android:onClick="@{() -> homeViewModel.onDoneClicked()}"-->
-                            <!--                                    android:visibility="@{homeViewModel.editTextVisibility}"/>-->
-
 
                         </LinearLayout>
 
@@ -169,10 +146,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="end"
+                                android:layout_gravity="center"
                                 android:layout_marginEnd="16dp"
                                 android:layout_marginBottom="16dp"
                                 android:textStyle="bold"
+                                android:textSize="16sp"
                                 app:conditionAverage="@{homeViewModel.averageCondition}"
                                 tools:text="77" />
                             <!--                                     app:conditionAverage="@{homeViewModel.averageCondition}"-->

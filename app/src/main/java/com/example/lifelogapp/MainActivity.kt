@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
                     return@OnNavigationItemSelectedListener true
                 }
+                //未実装
 //                R.id.navigation_worklog  -> {
 //
 //                    navController.navigate(R.id.fragment_worklog)
@@ -42,9 +43,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.fragment_history_index)
                     return@OnNavigationItemSelectedListener true
                 }
-//                else -> {
-//                    navView.visibility = View.GONE
-//                }
+//               未実装
 //                R.id.navigation_mypage -> {
 //                    navController.navigate(R.id.fragment_mypage)
 //                    return@OnNavigationItemSelectedListener true
