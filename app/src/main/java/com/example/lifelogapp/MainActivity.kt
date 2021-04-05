@@ -6,6 +6,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.example.lifelogapp.ui.home.HomeFragment
 import com.example.lifelogapp.ui.update.UpdateFragment
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_home  -> {
+                R.id.navigation_home -> {
                     navController.navigate(R.id.fragment_home)
 
                     return@OnNavigationItemSelectedListener true
@@ -54,11 +55,18 @@ class MainActivity : AppCompatActivity() {
         }
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
+        navController.addOnDestinationChangedListener { _, nd: NavDestination, _ ->
+            if (nd.id == R.id.fragment_home || nd.id == R.id.fragment_history_index
+                    || nd.id == R.id.fragment_history_detail) {
+                navView.visibility = View.VISIBLE
+            } else {
+                navView.visibility = View.GONE
+            }
 
+        }
 
     }
-
-
+}
 //        必要？？
 //        if (savedInstanceState == null) {
 //            supportFragmentManager.beginTransaction()
@@ -69,4 +77,3 @@ class MainActivity : AppCompatActivity() {
 
 
 
-}

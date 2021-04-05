@@ -91,6 +91,15 @@ class WriteReviewViewModel (
         }
     }
 
+    fun onCancelClicked() {
+        if(dayLogsKey =="MEMO"){
+            _navigateToHome.value = dayLogsKey
+        }else {
+            _navigateToHistoryDetail.value = dayLogsKey
+        }
+    }
+
+
     val submitButtonVisible = Transformations.map (previewFetch){
         when {
             previewFetch.value?.reviewComment== null -> 0

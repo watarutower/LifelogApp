@@ -72,7 +72,6 @@
                         android:layout_height="100dp"
                         android:hint="@string/hint_comment"
                         android:textSize="14sp"
-                        android:inputType="textMultiLine|text"
                         android:singleLine="false"
                         android:textAlignment="viewStart"
                         android:text="@={updateViewModel.editText}"/>

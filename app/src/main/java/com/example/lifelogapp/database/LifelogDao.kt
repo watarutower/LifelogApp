@@ -78,6 +78,12 @@ interface LifelogDao {
     @Query("select distinct date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')from each_status_table order BY submit_time DESC")
     fun getStatusByDay(): LiveData<List<String>>
 
+//    ---history index---
+    @Query("select review_comment from preview_table where the_date = :day")
+    fun getDayComment(day: String?): String
+
+
+
 //   -------- history detail
     @Insert
     suspend fun insert(newPreview: Preview)
