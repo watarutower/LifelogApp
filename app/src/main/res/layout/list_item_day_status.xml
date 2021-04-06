@@ -24,7 +24,6 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/set_time" />
 
-
         <TextView
             android:id="@+id/set_time"
             android:layout_width="0dp"
@@ -64,9 +63,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:newCondition="@{daystatus}"
             tools:text="77" />
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

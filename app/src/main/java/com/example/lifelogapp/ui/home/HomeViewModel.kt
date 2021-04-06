@@ -27,8 +27,6 @@ class HomeViewModel(private val app: Application,
         get() = _aStatus
 
     private val _averageCondition = MutableLiveData<Float>(0.0F)
-//    val averageCondition: LiveData<Int>
-//        get() = _averageCondition
 
 //    for Spinner
     private val _averageSelection = MutableLiveData<Int?>()
@@ -60,19 +58,10 @@ class HomeViewModel(private val app: Application,
 //        _textViewVisibility.value = 8
         _editTextVisibility.value = 0
     }
-//    val textViewVisibility = Transformations.map (_textViewVisibility) {
-//        _textViewVisibility.value
-//    }
 
     private suspend fun insert(newPreview: Preview) {
         database.insert(newPreview)
     }
-
-//    val memoEditText = Transformations.map(_memoEditText) {
-//        _memoEditText.value
-//    }
-
-
 
     fun onDoneClicked() {
         viewModelScope.launch {

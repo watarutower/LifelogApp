@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <data>
         <variable
             name="daystatus"
@@ -65,7 +64,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:newCondition="@{daystatus}"
             tools:text="77" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

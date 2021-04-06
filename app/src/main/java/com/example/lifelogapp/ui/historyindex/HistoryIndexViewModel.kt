@@ -11,12 +11,9 @@ class HistoryIndexViewModel(dataSource: LifelogDao,
                             application: Application) : ViewModel() {
     val database = dataSource
 
-//    val dayLogs = database.getDayLogs()
-
     val dayIndex = database.getStatusByDay()
 
 //    val dayComment = database.getDayComment()
-
 
     private val _navigateToHistoryDetail = MutableLiveData<String?>()
     val navigateToHistoryDetail
