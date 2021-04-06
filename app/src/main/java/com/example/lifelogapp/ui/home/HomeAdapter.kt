@@ -93,7 +93,6 @@ class HomeAdapter: ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallba
 
 }
 
-//    -----------------------
 class HomeDiffCallback : DiffUtil.ItemCallback<DataItem>() {
     override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
         return oldItem.id == newItem.id

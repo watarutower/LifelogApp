@@ -7,16 +7,11 @@
             name="updateViewModel"
             type="com.example.lifelogapp.ui.update.UpdateViewModel" />
     </data>
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="myComment"-->
-<!--            type="com.example.lifelogapp.UtilKt" />-->
-<!--    </data>-->
+
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4EEE6"
-    >
+    android:background="#F4EEE6">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
@@ -31,7 +26,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Title, secondary and supporting text -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +39,6 @@
                 android:orientation="vertical"
                 android:layout_gravity="center">
 
-                <!-- Media -->
                 <com.google.android.material.slider.Slider
                     android:id="@+id/continuousSlider"
                     android:layout_width="wrap_content"
@@ -75,7 +68,9 @@
                         android:singleLine="false"
                         android:textAlignment="viewStart"
                         android:text="@={updateViewModel.editText}"/>
+
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/submit_button"
                     android:layout_width="wrap_content"
@@ -104,16 +99,13 @@
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
         </LinearLayout>
-
-
-
 
     </com.google.android.material.card.MaterialCardView>
 
 </ScrollView>
+
 </layout>
 

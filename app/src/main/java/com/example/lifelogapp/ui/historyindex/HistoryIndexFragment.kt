@@ -65,13 +65,6 @@ class HistoryIndexFragment : Fragment() {
             }
         })
 
-//        val root = inflater.inflate(R.layout.fragment_history, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_history)
-//        historyViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-
-
         return binding.root
     }
 }

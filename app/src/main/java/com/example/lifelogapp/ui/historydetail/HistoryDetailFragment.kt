@@ -46,12 +46,6 @@ class HistoryDetailFragment : Fragment() {
             }
         })
 
-//        historyDetailViewModel.theComment.observe(viewLifecycleOwner, Observer {
-//            it?.let {
-//
-//            }
-//        })
-
         historyDetailViewModel.navigateToWriteReview.observe(viewLifecycleOwner, Observer { day ->
             day?.let {
                 this.findNavController().navigate(
@@ -62,11 +56,6 @@ class HistoryDetailFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
 
-//        val root = inflater.inflate(R.layout.fragment_history, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_history)
-//        historyViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
         return binding.root
     }
 }

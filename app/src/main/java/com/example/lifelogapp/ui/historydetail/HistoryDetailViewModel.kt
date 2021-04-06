@@ -25,8 +25,6 @@ class HistoryDetailViewModel (
     private val _dayAverage = MutableLiveData<Float>(0.0F)
 
     val _reviewComment = MutableLiveData<String?>("")
-//    val reviewComment: LiveData<String?>
-//        get() = _reviewComment
 
     init{
             initilizeComment()
@@ -63,12 +61,6 @@ class HistoryDetailViewModel (
         }
     }
 
-//init {
-//    viewModelScope.launch {
-//        reviewC = database.getComment(theDay)
-//    }
-//}
-
     val navigateToWriteReview: LiveData<String?>
         get() = _navigateToWriteReview
 
@@ -80,59 +72,4 @@ class HistoryDetailViewModel (
         fun onWriteClicked(day: String?) {
             _navigateToWriteReview.value = day
         }
-//    class WriteReviewListener(val clickListener: (statusId: String) -> Unit) {
-//        fun onClick(oneStatus: String) {
-//            clickListener(oneStatus)
-//        }
-//    }
-
 }
-
-
-
-//
-//    var textVisibility = View.VISIBLE
-//    var writeButtonVisibility = View.VISIBLE
-//    var doneButtonVisibility = View.GONE
-//
-//
-//    val editVisibility: LiveData<Int>
-//        get() = _editVisibility
-//
-//    val _editVisibility = MutableLiveData<Int>()
-//
-//
-//    init {
-//        _editVisibility.value = View.GONE
-//    }
-
-//    fun onWriteClicked() {
-//        viewModelScope.launch {
-////            _editVisibility.value = true
-////            editWrite.visibility = View.VISIBLE
-//            _editVisibility.value = View.VISIBLE
-//            textVisibility = View.GONE
-//            writeButtonVisibility = View.GONE
-//            doneButtonVisibility = View.VISIBLE
-//
-//
-//        }
-//    }
-//    fun onDoneClicked() {
-//        viewModelScope.launch {
-//
-//            _editVisibility.value = View.GONE
-//            textVisibility = View.VISIBLE
-//            writeButtonVisibility = View.VISIBLE
-//            doneButtonVisibility = View.GONE
-//
-//
-//        }
-//    }
-
-//    val daylogsString = Transformations.map(daylog) { daylogs ->
-//        formatDaylogs(daylogs, application.resources)
-//    }
-
-
-

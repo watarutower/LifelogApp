@@ -5,15 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-    <!--  あとで使う    android:fitsSystemWindows="true"-->
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
@@ -22,19 +18,14 @@
             android:background="@color/black"
             app:title="@string/app_name"
             app:menu="@menu/drawer_view"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-
-            />
+            style="@style/Widget.MaterialComponents.Toolbar.Primary" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
 
         <fragment
             android:id="@+id/nav_host_fragment"
@@ -54,15 +45,10 @@
             android:layout_height="wrap_content"
             android:background="@color/backgroundPrimary"
             android:visibility="gone"
-
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:menu="@menu/navigation"
             app:layout_constraintHorizontal_bias="0.0" />
-        <!--            app:itemIconTint="@color/backgroundPrimary"-->
-<!--        android:background="?android:attr/windowBackground"-->
-<!--        app:itemTextColor="@color/backgroundPrimary"-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
