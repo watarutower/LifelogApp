@@ -48,7 +48,7 @@ fun ImageView.setImageUrl(item: Lifelog?) {
 
 
 fun convertLongToDateForDaoString(systemTime: Long): String? {
-    return SimpleDateFormat("yyyy-MM-DD")
+    return SimpleDateFormat("yyyy-MM-dd")
             .format(systemTime).toString()
 }
 
