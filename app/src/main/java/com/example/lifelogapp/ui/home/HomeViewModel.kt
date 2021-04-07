@@ -27,7 +27,7 @@ class HomeViewModel(private val app: Application,
     val aStatus: LiveData<Int>
         get() = _aStatus
 
-    private val _averageCondition = MutableLiveData<Float>(0.0F)
+    private val _averageCondition = MutableLiveData<Float?>(0.0F)
 
 //    for Spinner
     private val _averageSelection = MutableLiveData<Int?>()
@@ -110,7 +110,7 @@ class HomeViewModel(private val app: Application,
 
     fun showAverage(averageLengthSelection: Int) {
       viewModelScope.launch {
-         var theCondition: Float
+         var theCondition: Float?
           val timeByDay: String? = convertLongToDateForDaoString(System.currentTimeMillis())
           when (averageLengthSelection) {
              0 -> {
@@ -150,7 +150,7 @@ class HomeViewModel(private val app: Application,
     val averageCondition: LiveData<Float> = Transformations.map(_averageCondition) {
         when {
             it != null -> _averageCondition.value
-            else -> -1.0F
+            else -> 0.0F
         }
     }
 

@@ -37,7 +37,7 @@ interface LifelogDao {
 
     // history detailでの１日ごとのaverage
     @Query("select round(avg(condition),1) from each_status_table where submit_time between strftime('%s',:day)*1000 - (strftime('%s',:day, 'localtime') - strftime('%s',:day))*1000 and strftime('%s',:day)*1000 - (strftime('%s',:day, 'localtime') - strftime('%s',:day)) *1000+ 86399000 order by submit_time desc")
-    suspend fun getAverageConditionInADay(day: String?): Float
+    suspend fun getAverageConditionInADay(day: String?): Float?
 
     //Memo呼び出し
     @Query("SELECT review_comment from preview_table where flag = 0 ORDER BY dateId DESC LIMIT 1")
