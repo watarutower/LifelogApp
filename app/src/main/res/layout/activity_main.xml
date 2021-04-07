@@ -17,8 +17,9 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/black"
             app:title="@string/app_name"
-            app:menu="@menu/drawer_view"
             style="@style/Widget.MaterialComponents.Toolbar.Primary" />
+<!--        メニュー-->
+<!--        app:menu="@menu/drawer_view"-->
 
     </com.google.android.material.appbar.AppBarLayout>
 
