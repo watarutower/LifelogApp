@@ -9,6 +9,7 @@ import com.example.lifelogapp.database.LifelogDao
 import kotlinx.coroutines.launch
 import com.example.lifelogapp.R
 import com.example.lifelogapp.database.Preview
+import com.example.lifelogapp.util.convertLongToDateForDaoString
 
 
 class HomeViewModel(private val app: Application,
@@ -110,9 +111,10 @@ class HomeViewModel(private val app: Application,
     fun showAverage(averageLengthSelection: Int) {
       viewModelScope.launch {
          var theCondition: Float
+          val timeByDay: String? = convertLongToDateForDaoString(System.currentTimeMillis())
           when (averageLengthSelection) {
              0 -> {
-                 theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
+                 theCondition = database.getAverageConditionInADay(timeByDay)
                  _averageCondition.value = theCondition
              }
              1 -> {
@@ -137,7 +139,9 @@ class HomeViewModel(private val app: Application,
             var theStatus = database.getOneStatus()
             _aStatus.value = theStatus
 
-            val theCondition = database.getAverageConditionInDay(System.currentTimeMillis())
+            val dayTime: String? = convertLongToDateForDaoString(System.currentTimeMillis())
+
+            val theCondition = database.getAverageConditionInADay(dayTime)
             _averageCondition.value = theCondition
         }
     }

@@ -23,6 +23,13 @@ fun convertLongToTimeString(systemTime: Long): String {
             .format(systemTime).toString()
 }
 
+//    for dao converting
+//@SuppressLint("SimpleDateFormatDao")
+//fun convertLongToDateForDaoString(systemTime: Long): String {
+//    return SimpleDateFormat("YYYY-MM-DD")
+//            .format(systemTime).toString()
+//}
+
 @BindingAdapter("imageUrl")
 fun ImageView.setImageUrl(item: Lifelog?) {
     item?.let {
@@ -37,6 +44,12 @@ fun ImageView.setImageUrl(item: Lifelog?) {
             else -> R.drawable.ic_baseline_autorenew_24
         })
     }
+}
+
+
+fun convertLongToDateForDaoString(systemTime: Long): String? {
+    return SimpleDateFormat("yyyy-MM-DD")
+            .format(systemTime).toString()
 }
 
 fun formatDaylogs(daylogs: List<Lifelog>, resources: Resources): Spanned {
