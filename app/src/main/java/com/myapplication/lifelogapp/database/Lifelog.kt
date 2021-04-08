@@ -12,15 +12,15 @@ data class Lifelog(
 
     @ColumnInfo(name = "condition")
     var oneCondition: Int = 0,
-//
-//    @ColumnInfo(name = "one_mind")
-//    val oneMind: Int? = null ,
-//
+
     @ColumnInfo(name = "comment")
     var oneComment: String = "",
 
     @ColumnInfo(name = "submit_time")
-    val submitTime: Long =  System.currentTimeMillis()
+    val submitTime: Long =  System.currentTimeMillis(),
+
+    @ColumnInfo(name = "flag")
+    val flag: Int? = -1
 )
 
 
@@ -44,11 +44,15 @@ data class WorkLog(
         @PrimaryKey(autoGenerate = true)
         var workId: Long = 0L,
 
-//        @ColumnInfo(name = "work_type")
-//        var type: String = "",
-//
+        @ColumnInfo(name = "work_label")
+        var type: String = "",
+
         @ColumnInfo(name = "start_time_milli")
         val startTimeMilli: Long = System.currentTimeMillis(),
 
         @ColumnInfo(name = "end_time_milli")
-        var endTimeMilli: Long = startTimeMilli)
+        var endTimeMilli: Long = startTimeMilli,
+
+        @ColumnInfo(name= "comment")
+        var workComment: String? = ""
+)

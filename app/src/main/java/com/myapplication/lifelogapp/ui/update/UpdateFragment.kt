@@ -13,9 +13,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.myapplication.lifelogapp.MainActivity
 import com.myapplication.lifelogapp.R
 import com.myapplication.lifelogapp.database.LifelogDatabase
 import com.myapplication.lifelogapp.databinding.FragmentUpdateBinding
+import com.myapplication.lifelogapp.util.hideKeyboard
 
 class UpdateFragment : Fragment() {
 
@@ -43,7 +45,9 @@ class UpdateFragment : Fragment() {
             navigate?.let {
                 val navController = findNavController()
                 navController.navigate(R.id.action_fragment_update_to_fragment_home)
+                hideKeyboard()
                 updateViewModel.doneNavigating()
+
             }
         })
 
@@ -84,6 +88,8 @@ class UpdateFragment : Fragment() {
     companion object {
         fun newInstance() = UpdateFragment()
     }
+
+
 
 
     }

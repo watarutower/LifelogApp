@@ -9,4 +9,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="backgroundPrimary">#F4EEE6</color>
     <color name="backgroundCard">#65F4E3CA</color>
+
+    <color name="green">#006064</color>
+    <color name="green_light">#428e92</color>
+    <color name="green_dark">#00363a</color>
+
+    <color name="blue">#1565c0</color>
+    <color name="blue_light">#5e92f3</color>
+    <color name="blue_dark">#003c8f</color>
+
+
 </resources>

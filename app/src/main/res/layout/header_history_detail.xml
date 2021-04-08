@@ -13,13 +13,14 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/header_history_detail"
+        android:text=""
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+<!--    android:text="@string/header_history_detail"-->
 
     <TextView
         android:id="@+id/text2"

@@ -103,6 +103,7 @@
                             android:layout_margin="8dp"
                             android:elevation="40dp"
                             android:clickable="true"
+                            android:hint="comment here"
                             android:onClick="@{() -> historyDetailViewModel.onWriteClicked(historyDetailViewModel.withWeekday)}"
                             app:dayComment="@{historyDetailViewModel.reviewComment}"
                             tools:text="@string/text_test"

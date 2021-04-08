@@ -1,12 +1,17 @@
 package com.myapplication.lifelogapp.util
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.Fragment
 import com.myapplication.lifelogapp.R
 import com.myapplication.lifelogapp.database.Lifelog
 import java.text.SimpleDateFormat
@@ -68,6 +73,19 @@ fun formatDaylogs(daylogs: List<Lifelog>, resources: Resources): Spanned {
             return Html.fromHtml(sb.toString())
         }
     }
+}
+
+fun Fragment.hideKeyboard() {
+    view?.let { activity?.hideKeyboard(it) }
+}
+
+fun Activity.hideKeyboard() {
+    hideKeyboard(currentFocus ?: View(this))
+}
+
+fun Context.hideKeyboard(view: View) {
+    val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
 data class commentData(var comment: String = "")

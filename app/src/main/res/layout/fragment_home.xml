@@ -9,7 +9,7 @@
             type="com.myapplication.lifelogapp.ui.home.HomeViewModel" />
     </data>
 
-    <ScrollView
+    <FrameLayout
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,8 +57,10 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+
+                            android:fontFamily="serif"
                             android:text="@string/title"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textColor="#1c1c1c"
                             android:textStyle="bold" />
 
                         <LinearLayout
@@ -168,35 +170,32 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/day_status_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="300dp"
+                android:layout_height="0dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/extended_fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="125dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="140dp"
-                android:contentDescription="@string/fab_description"
-                android:onClick="@{() -> homeViewModel.onFabClicked()}"
-                app:icon="@drawable/ic_baseline_autorenew_24"
-                app:iconSize="35dp"
-                app:layout_constraintBottom_toBottomOf="@+id/container"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card" />
 
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extended_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="30dp"
+            android:contentDescription="@string/fab_description"
+            android:onClick="@{() -> homeViewModel.onFabClicked()}"
+            app:icon="@drawable/ic_baseline_autorenew_24"
+            app:iconSize="35dp"
+            android:layout_gravity="bottom|end"
+            />
+
+    </FrameLayout>
 
 </layout>

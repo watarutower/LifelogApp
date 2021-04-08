@@ -13,6 +13,7 @@ import com.myapplication.lifelogapp.R
 import com.myapplication.lifelogapp.database.LifelogDatabase
 import com.myapplication.lifelogapp.databinding.FragmentUpdateBinding
 import com.myapplication.lifelogapp.databinding.FragmentWriteReviewBinding
+import com.myapplication.lifelogapp.util.hideKeyboard
 
 
 class WriteReviewFragment : Fragment() {
@@ -41,6 +42,7 @@ class WriteReviewFragment : Fragment() {
             day?.let {
                 this.findNavController().navigate(
                         WriteReviewFragmentDirections.actionFragmentWriteReviewToFragmentHistoryDetail(day))
+                hideKeyboard()
                 writeReviewViewModel.doneNavigating()
             }
         })
@@ -49,6 +51,7 @@ class WriteReviewFragment : Fragment() {
             memo?.let {
                 this.findNavController().navigate(
                         WriteReviewFragmentDirections.actionFragmentWriteReviewToFragmentHome())
+                hideKeyboard()
                 writeReviewViewModel.doneNavigating()
             }
         })

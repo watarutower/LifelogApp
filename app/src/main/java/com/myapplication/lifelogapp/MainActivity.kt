@@ -1,7 +1,9 @@
 package com.myapplication.lifelogapp
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -55,7 +57,12 @@ class MainActivity : AppCompatActivity() {
                 navView.visibility = View.GONE
             }
         }
+
+        val activity = MainActivity()
+
     }
+
+
 }
 
 
