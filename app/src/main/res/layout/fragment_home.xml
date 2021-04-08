@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <import type="com.example.lifelogapp.util.BindingUtils" />
+        <import type="com.myapplication.lifelogapp.util.BindingUtils" />
         <variable
             name="homeViewModel"
-            type="com.example.lifelogapp.ui.home.HomeViewModel" />
+            type="com.myapplication.lifelogapp.ui.home.HomeViewModel" />
     </data>
 
     <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundPrimary"
@@ -168,6 +169,7 @@
                 android:id="@+id/day_status_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="300dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="historyIndexViewModel"
-            type="com.example.lifelogapp.ui.historyindex.HistoryIndexViewModel" />
+            type="com.myapplication.lifelogapp.ui.historyindex.HistoryIndexViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

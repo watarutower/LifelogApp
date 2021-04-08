@@ -7,7 +7,7 @@
     <data>
         <variable
             name="workedlogs"
-            type="com.example.lifelogapp.database.WorkLog"/>
+            type="com.myapplication.lifelogapp.database.WorkLog"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

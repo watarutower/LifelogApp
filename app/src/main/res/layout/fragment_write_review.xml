@@ -7,7 +7,7 @@
     <data>
         <variable
             name="writeReviewViewModel"
-            type="com.example.lifelogapp.ui.writereview.WriteReviewViewModel" />
+            type="com.myapplication.lifelogapp.ui.writereview.WriteReviewViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"

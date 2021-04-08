@@ -9,7 +9,7 @@
             type="String"/>
         <variable
             name="clickListener"
-            type="com.example.lifelogapp.ui.historyindex.HistoryIndexListener" />
+            type="com.myapplication.lifelogapp.ui.historyindex.HistoryIndexListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

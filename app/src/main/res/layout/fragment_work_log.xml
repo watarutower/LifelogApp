@@ -6,7 +6,7 @@
     <data>
         <variable
             name="workLogViewModel"
-            type="com.example.lifelogapp.ui.worklog.WorkLogViewModel" />
+            type="com.myapplication.lifelogapp.ui.worklog.WorkLogViewModel" />
     </data>
 
     <ScrollView

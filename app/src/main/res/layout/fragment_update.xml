@@ -5,7 +5,7 @@
     <data>
         <variable
             name="updateViewModel"
-            type="com.example.lifelogapp.ui.update.UpdateViewModel" />
+            type="com.myapplication.lifelogapp.ui.update.UpdateViewModel" />
     </data>
 
 <ScrollView
