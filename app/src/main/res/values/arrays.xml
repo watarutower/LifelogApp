@@ -5,7 +5,7 @@
 
     <!--Text values of Average Condition-->
     <string-array name="average_array">
-        <item> Today</item>
+        <item>Day Average</item>
         <item>in 3 Days</item>
         <item>in a Week</item>
         <item>in a Month</item>

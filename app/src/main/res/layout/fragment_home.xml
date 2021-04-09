@@ -129,11 +129,11 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/text_average"
-                                android:textStyle="bold" />
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="@string/text_average"-->
+<!--                                android:textStyle="bold" />-->
 
                             <Spinner
                                 android:id="@+id/average_spinner"
@@ -144,7 +144,6 @@
                                 android:onItemSelected="@{(parent, view, selection, id)-> homeViewModel.setAverageSelected(selection)}"
                                 android:prompt="@string/average_prompt"
                                 android:selectedItemPosition="@{homeViewModel.averageSelection}"
-                                android:textSize="12sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/first_linear" />
