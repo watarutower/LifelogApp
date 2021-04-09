@@ -47,8 +47,8 @@ class WriteReviewFragment : Fragment() {
             }
         })
 
-        writeReviewViewModel.navigateToHome.observe(viewLifecycleOwner, Observer { memo ->
-            memo?.let {
+        writeReviewViewModel.navigateToHome.observe(viewLifecycleOwner, Observer { navigate ->
+            if(navigate==true)let {
                 this.findNavController().navigate(
                         WriteReviewFragmentDirections.actionFragmentWriteReviewToFragmentHome())
                 hideKeyboard()

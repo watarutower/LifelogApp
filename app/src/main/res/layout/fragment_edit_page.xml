@@ -48,6 +48,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_delete"
+                    android:layout_gravity="end"
+                    android:onClick="@{() -> editPageViewModel.onDeleteClicked()}"
+                    style="?attr/borderlessButtonStyle" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,18 +62,17 @@
                     android:orientation="vertical"
                     android:layout_gravity="center">
 
-<!--                    <EditText-->
-<!--                        android:id="@+id/new_comment"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-
-<!--                        android:minHeight="150dp"-->
-<!--                        android:hint="@string/hint_comment"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:singleLine="false"-->
-<!--                        android:textAlignment="viewStart"-->
-<!--                        app:carryOverComment="@{writeReviewViewModel.commentFetch}"-->
-<!--                        android:text="@={writeReviewViewModel.editText}"/>-->
+                    <EditText
+                        android:id="@+id/new_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="150dp"
+                        android:hint="@string/hint_comment"
+                        android:textSize="14sp"
+                        android:singleLine="false"
+                        android:textAlignment="viewStart"
+                        app:carryOverComment="@{editPageViewModel.commentFetch}"
+                        android:text="@={editPageViewModel.editText}"/>
 
                 </LinearLayout>
 
@@ -87,21 +93,22 @@
 <!--                        android:onClick="@{() -> writeReviewViewModel.onSubmitClicked()}"-->
 <!--                        style="?attr/borderlessButtonStyle" />-->
 
-<!--                    <com.google.android.material.button.MaterialButton-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/button_update"-->
-<!--                        android:visibility="@{writeReviewViewModel.updateButtonVisible}"-->
-<!--                        android:onClick="@{() -> writeReviewViewModel.onReviseClicked()}"-->
-<!--                        style="?attr/borderlessButtonStyle" />-->
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_update"
 
-<!--                    <com.google.android.material.button.MaterialButton-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/button_cancel"-->
-<!--                        android:onClick="@{() -> writeReviewViewModel.onCancelClicked()}"-->
-<!--                        style="?attr/borderlessButtonStyle"-->
-<!--                        />-->
+                        android:onClick="@{() -> editPageViewModel.onUpdateClicked()}"
+                        style="?attr/borderlessButtonStyle" />
+<!--                    android:visibility="@{editPageViewModel.updateButtonVisible}"-->
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_cancel"
+
+                        android:onClick="@{() -> editPageViewModel.onCancelClicked()}"
+                        style="?attr/borderlessButtonStyle" />
+
 
                 </LinearLayout>
 

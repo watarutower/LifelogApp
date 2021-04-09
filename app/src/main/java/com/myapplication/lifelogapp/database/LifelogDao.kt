@@ -1,10 +1,7 @@
 package com.myapplication.lifelogapp.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface LifelogDao {
@@ -19,6 +16,8 @@ interface LifelogDao {
      */
     @Query("SELECT * FROM each_status_table ORDER BY submit_time DESC LIMIT 20")
     fun getDayLogs(): LiveData<List<Lifelog>>
+
+
 
     //home でのaverage
 
@@ -42,6 +41,11 @@ interface LifelogDao {
     @Query("SELECT review_comment from preview_table where flag = 0 ORDER BY dateId DESC LIMIT 1")
     suspend fun getMemo(): String?
 
+    @Update
+    suspend fun update(lifelog: Lifelog?)
+
+    @Query("DELETE FROM each_status_table where statusId = :id")
+    suspend fun delete(id: Long?)
 
     /**
      * Selects and returns the latest status.
@@ -106,6 +110,8 @@ interface LifelogDao {
 
     @Update
     suspend fun update(preview: Preview?)
+
+
 
 //    ----Work Log
     @Insert

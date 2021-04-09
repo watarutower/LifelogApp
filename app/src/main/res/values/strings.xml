@@ -53,5 +53,6 @@
     <string name="text_memo">-MEMO-</string>
     <string name="header_condition">Condition</string>
     <string name="text_average">-CONDITION-</string>
+    <string name="button_delete">delete</string>
 
 </resources>

@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.myapplication.lifelogapp.R
 import com.myapplication.lifelogapp.database.LifelogDao
 import com.myapplication.lifelogapp.database.LifelogDatabase
 import com.myapplication.lifelogapp.databinding.FragmentEditPageBinding
+import com.myapplication.lifelogapp.util.hideKeyboard
 
 
 class EditPageFragment : Fragment() {
@@ -42,6 +45,17 @@ class EditPageFragment : Fragment() {
         binding.editPageViewModel = editPageViewModel
 
         binding.setLifecycleOwner(this)
+
+        editPageViewModel.navigateToHome.observe(viewLifecycleOwner, Observer { navigate ->
+            if(navigate==true)let {
+                this.findNavController().navigate(
+                    EditPageFragmentDirections.actionFragmentEditPageToFragmentHome())
+                    hideKeyboard()
+                    editPageViewModel.doneNavigating()
+            }
+
+        })
+
 
         return binding.root
     }
