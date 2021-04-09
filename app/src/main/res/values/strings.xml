@@ -2,7 +2,7 @@
     <string name="app_name">Lifelog Diary</string>
     <string name="title_home">Home</string>
     <string name="title_activitylog">ActivityLog</string>
-    <string name="title_history">History</string>
+    <string name="title_diary">Diary</string>
     <string name="home_setting">Home</string>
     <string name="notification_setting">notification</string>
     <string name="title_mypage">MyPage</string>
@@ -32,7 +32,7 @@
     <string name="button_cancel">Cancel</string>
     <string name="status_section">status section</string>
     <string name="header_text">TEMPORARY_MONTH</string>
-    <string name="text_history_index">Your Lifelog History</string>
+    <string name="text_lifelog_diaries">Your Lifelog Diaries</string>
     <string name="day_comment_title">How was your day?</string>
     <string name="botton_diary">Diary</string>
     <string name="text_how_was_your_day">How was your day?</string>
@@ -52,6 +52,6 @@
     <string name="button_done">DONE</string>
     <string name="text_memo">-MEMO-</string>
     <string name="header_condition">Condition</string>
-    <string name="text_average">-AVERAGE-</string>
+    <string name="text_average">-CONDITION-</string>
 
 </resources>

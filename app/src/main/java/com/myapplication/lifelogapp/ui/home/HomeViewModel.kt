@@ -154,8 +154,8 @@ class HomeViewModel(private val app: Application,
         when {
             it in 0..19 -> ConditionQuality.VERY_DISSATISFIED
             it in 20..39 -> ConditionQuality.DISSATISFIED
-            it in 40..59 -> ConditionQuality.SATISFIED
-            it in 60..79 -> ConditionQuality.SMILE
+            it in 40..59 -> ConditionQuality.NEUTRAL
+            it in 60..79 -> ConditionQuality.SATISFIED
             it in 80..100 -> ConditionQuality.VERY_SATISFIED
             else -> ConditionQuality.NO_STATUS
         }

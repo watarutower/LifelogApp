@@ -10,7 +10,7 @@
     <item
         android:id="@+id/navigation_history_index"
         android:icon="@drawable/ic_baseline_library_books_24"
-        android:title="@string/title_history" />
+        android:title="@string/title_diary" />
 
 <!--    未完-->
 <!--    <item-->
