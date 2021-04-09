@@ -22,7 +22,7 @@ import java.lang.ClassCastException
 private val ITEM_VIEW_TYPE_HEADER = 0
 private val ITEM_VIEW_TYPE_ITEM = 1
 
-class HomeAdapter: ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallback()){
+class HomeAdapter(val clickListener: HomeListener): ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallback()){
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
@@ -31,7 +31,7 @@ class HomeAdapter: ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallba
             is ViewHolder -> {
 
                 val logItem = getItem(position) as DataItem.LifelogItem
-                holder.bind(logItem.lifeLog)
+                holder.bind(logItem.lifeLog, clickListener)
             }
         }
     }
@@ -77,8 +77,9 @@ class HomeAdapter: ListAdapter<DataItem, RecyclerView.ViewHolder>(HomeDiffCallba
     class ViewHolder private constructor(val binding: ListItemDayStatusBinding)
         : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Lifelog) {
+        fun bind(item: Lifelog, clickListener: HomeListener) {
             binding.daystatus = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -101,6 +102,10 @@ class HomeDiffCallback : DiffUtil.ItemCallback<DataItem>() {
     override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
         return oldItem == newItem
     }
+}
+
+class HomeListener(val clickListener: (statusId: Long) -> Unit) {
+    fun onClick(oneStatus: Lifelog) = clickListener(oneStatus.statusId)
 }
 
 //

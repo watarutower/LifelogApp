@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="editPageViewModel"
+            type="com.myapplication.lifelogapp.ui.editpage.EditPageViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:background="#F4EEE6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="50dp">
+
+        <TextView
+            android:id="@+id/write_Review_the_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="8dp"
+            app:timeInEdit="@{editPageViewModel.timeSubmitted}"
+            android:textAlignment="textStart"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2021.02.26" />
+<!--        android:text="@{editPageViewModel.timeSubmitted}"-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:elevation="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/write_Review_the_day">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/new_comment"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+
+<!--                        android:minHeight="150dp"-->
+<!--                        android:hint="@string/hint_comment"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:singleLine="false"-->
+<!--                        android:textAlignment="viewStart"-->
+<!--                        app:carryOverComment="@{writeReviewViewModel.commentFetch}"-->
+<!--                        android:text="@={writeReviewViewModel.editText}"/>-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/submit_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="end">
+
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/button_submit"-->
+<!--                        android:layout_marginLeft="25dp"-->
+<!--                        android:visibility="@{writeReviewViewModel.submitButtonVisible}"-->
+<!--                        android:onClick="@{() -> writeReviewViewModel.onSubmitClicked()}"-->
+<!--                        style="?attr/borderlessButtonStyle" />-->
+
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/button_update"-->
+<!--                        android:visibility="@{writeReviewViewModel.updateButtonVisible}"-->
+<!--                        android:onClick="@{() -> writeReviewViewModel.onReviseClicked()}"-->
+<!--                        style="?attr/borderlessButtonStyle" />-->
+
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/button_cancel"-->
+<!--                        android:onClick="@{() -> writeReviewViewModel.onCancelClicked()}"-->
+<!--                        style="?attr/borderlessButtonStyle"-->
+<!--                        />-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.myapplication.lifelogapp.R
 import com.myapplication.lifelogapp.database.LifelogDatabase
 import com.myapplication.lifelogapp.databinding.FragmentHomeBinding
+import com.myapplication.lifelogapp.ui.historydetail.HistoryDetailFragmentDirections
 
 class HomeFragment : Fragment() {
 
@@ -34,7 +35,9 @@ class HomeFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
 
-        val adapter = HomeAdapter()
+        val adapter = HomeAdapter(HomeListener { daySatus ->
+            homeViewModel.onDayClicked(daySatus)
+        })
         binding.dayStatusList.adapter = adapter
 
         homeViewModel.daylog.observe(viewLifecycleOwner, Observer {
@@ -58,6 +61,14 @@ class HomeFragment : Fragment() {
                 this.findNavController().navigate(
                       HomeFragmentDirections.actionFragmentHomeToFragmentWriteReview(memo))
                 homeViewModel.onDisplayMemoNavigated()
+            }
+        })
+
+       homeViewModel.navigateToEditPage.observe(viewLifecycleOwner, Observer { id ->
+            id?.let {
+                this.findNavController().navigate(
+                   HomeFragmentDirections.actionFragmentHomeToFragmentEditPage(id))
+                homeViewModel.onEditPageNavigated()
             }
         })
 

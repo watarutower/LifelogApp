@@ -162,9 +162,16 @@ class HomeViewModel(private val app: Application,
     }
 
     private val _navigateToUpdate = MutableLiveData<Boolean?>()
-
     val navigateToUpdate: LiveData<Boolean?>
         get() = _navigateToUpdate
+
+    private val _navigateToEditPage = MutableLiveData<Long?>(null)
+    val navigateToEditPage: LiveData<Long?>
+        get() = _navigateToEditPage
+
+    fun onEditPageNavigated() {
+        _navigateToEditPage.value = null
+    }
 
     fun doneNavigating() {
         _navigateToUpdate.value = false
@@ -172,6 +179,10 @@ class HomeViewModel(private val app: Application,
 
     fun onFabClicked() {
         _navigateToUpdate.value = true
+    }
+
+    fun onDayClicked(Id: Long) {
+        _navigateToEditPage.value = Id
     }
 }
 

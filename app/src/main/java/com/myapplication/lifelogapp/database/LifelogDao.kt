@@ -50,6 +50,9 @@ interface LifelogDao {
     suspend fun getOneStatus(): Int?
 //    MutableLiveData<Lifelog?>
 
+    @Query("SELECT * FROM each_status_table WHERE statusId = :id")
+    suspend fun getLogByKey(id: Long?): Lifelog
+
     /** まだ不明
      * Selects and returns the row that matches the supplied start time, which is our key.
      *
