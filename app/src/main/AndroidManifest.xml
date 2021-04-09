@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_baseline_library_books_24"
+        android:icon="@drawable/ic_lifelog2_018__1_"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_baseline_library_books_24"
+        android:roundIcon="@drawable/ic_lifelog2_018__1_"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
