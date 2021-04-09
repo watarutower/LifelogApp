@@ -103,3 +103,10 @@ select  distinct substr('SunMonTueWedThuFriSat',strftime('%w', date(substr(print
 
 memo
 SELECT date(1617465074639/1000, 'unixepoch')
+
+INSERT INTO each_status_table (condition, comment,submit_time)VALUES(100,'Need to finish up the letter for tommrrow meeting',1617939964000- 10000000);
+
+INSERT INTO each_status_table (condition, comment,submit_time)VALUES(82,'I hope my friends from my hometown Sri Nagar can one day share that experience with us here.',1617939964000- 3600000);
+
+delete from each_status_table where statusId =  86
+
