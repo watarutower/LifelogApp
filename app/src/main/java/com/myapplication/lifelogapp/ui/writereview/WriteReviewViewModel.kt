@@ -117,9 +117,4 @@ class WriteReviewViewModel (
             else -> 0
         }
     }
-
-
-
-
-//    }
 }
