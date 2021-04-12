@@ -3,7 +3,7 @@
 
 ## Introduction
 This is a life record application.
-You manage your lifelogs in the style of diary by making new logs.
+You can manage your lifelogs in the style of diary by making new logs.
 
 
 ## Instllation
