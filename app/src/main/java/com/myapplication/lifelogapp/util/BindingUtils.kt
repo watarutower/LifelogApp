@@ -107,6 +107,11 @@ object BindingUtils {
         }
         view.setOnEditorActionListener(listener)
     }
+    @BindingAdapter("timeInEdit")
+    @JvmStatic fun TextView.setTimeInEdit(time: Long) {
+        text = convertLongToDateString(time)
+
+    }
 
 
 }

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_fragment_home_to_fragment_write_review"
             app:destination="@id/fragment_write_review" />
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_edit_page"
+            app:destination="@id/fragment_edit_page" />
     </fragment>
 
     <fragment
@@ -68,6 +71,18 @@
         <action
             android:id="@+id/action_fragment_write_review_to_fragment_home"
             app:destination="@id/fragment_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_edit_page"
+        android:name="com.myapplication.lifelogapp.ui.editpage.EditPageFragment"
+        tools:layout="@layout/fragment_edit_page">
+        <action
+            android:id="@+id/action_fragment_edit_page_to_fragment_home"
+            app:destination="@id/fragment_home" />
+        <argument
+            android:name="dayLogId"
+            app:argType="long" />
     </fragment>
 
     <fragment

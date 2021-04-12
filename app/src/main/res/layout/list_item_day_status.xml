@@ -8,12 +8,17 @@
         <variable
             name="daystatus"
             type="com.myapplication.lifelogapp.database.Lifelog"/>
+        <variable
+            name="clickListener"
+            type="com.myapplication.lifelogapp.ui.home.HomeListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        android:onClick="@{() -> clickListener.onClick(daystatus)}">
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"

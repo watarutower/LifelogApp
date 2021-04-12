@@ -1,10 +1,7 @@
 package com.myapplication.lifelogapp.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface LifelogDao {
@@ -19,6 +16,8 @@ interface LifelogDao {
      */
     @Query("SELECT * FROM each_status_table ORDER BY submit_time DESC LIMIT 20")
     fun getDayLogs(): LiveData<List<Lifelog>>
+
+
 
     //home でのaverage
 
@@ -42,6 +41,11 @@ interface LifelogDao {
     @Query("SELECT review_comment from preview_table where flag = 0 ORDER BY dateId DESC LIMIT 1")
     suspend fun getMemo(): String?
 
+    @Update
+    suspend fun update(lifelog: Lifelog?)
+
+    @Query("DELETE FROM each_status_table where statusId = :id")
+    suspend fun delete(id: Long?)
 
     /**
      * Selects and returns the latest status.
@@ -49,6 +53,9 @@ interface LifelogDao {
     @Query("SELECT condition FROM each_status_table ORDER BY statusId DESC LIMIT 1")
     suspend fun getOneStatus(): Int?
 //    MutableLiveData<Lifelog?>
+
+    @Query("SELECT * FROM each_status_table WHERE statusId = :id")
+    suspend fun getLogByKey(id: Long?): Lifelog
 
     /** まだ不明
      * Selects and returns the row that matches the supplied start time, which is our key.
@@ -67,8 +74,7 @@ interface LifelogDao {
 //    @Query("select statusId,condition,comment,date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') from each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = :key order by statusId desc")
 //    fun getStatusWithId(key: String): LiveData<List<Lifelog>>
 
-    @Query("SELECT * FROM each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = :key order by statusId asc")
-    fun getStatusWithId(key: String?): LiveData<List<Lifelog>>
+
 //    @Query("SELECT condition FROM each_status_table ORDER BY statusId DESC LIMIT 1")
 
     @Query("SELECT * FROM each_status_table ORDER BY statusId DESC")
@@ -91,6 +97,24 @@ interface LifelogDao {
     @Insert
     suspend fun insert(newPreview: Preview)
 
+//    日にちのスタートが04:00から28:00まで　between (通常時間 - (ローカル時間 - 通常時間)) and (通常時間 - (ローカル時間 - 通常時間)) * 1日と４時間
+@Query("SELECT * FROM each_status_table where submit_time between ((strftime('%s', :key)) - (strftime('%s', :key,'localtime') - strftime('%s', :key))+ 3600 * 4 ) * 1000 and((strftime('%s', :key) - (strftime('%s', :key,'localtime') - strftime('%s', :key))) + (3600 * 28))*1000  order by statusId asc")
+fun getStatusWithId(key: String?): LiveData<List<Lifelog>>
+
+//      日にちが00:00区切り
+//    @Query("SELECT * FROM each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = :key order by statusId asc")
+//    fun getStatusWithId(key: String?): LiveData<List<Lifelog>>
+
+
+    //    @Query("SELECT * from each_status_table WHERE statusId = :key")
+//    fun getStatusWithId(key: String): LiveData<List<Lifelog>>
+
+//    @Query("select statusId,condition,comment,date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') from each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = :key order by statusId desc")
+//    fun getStatusWithId(key: String): LiveData<List<Lifelog>>
+
+
+//    @Query("SELECT condition FROM each_status_table ORDER BY statusId DESC LIMIT 1")
+
     @Query("SELECT review_comment FROM preview_table WHERE the_date = :day ORDER BY dateId DESC LIMIT 1")
     suspend fun getReviewComment(day: String?): String?
 
@@ -103,6 +127,8 @@ interface LifelogDao {
 
     @Update
     suspend fun update(preview: Preview?)
+
+
 
 //    ----Work Log
     @Insert

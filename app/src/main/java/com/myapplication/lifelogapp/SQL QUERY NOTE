@@ -103,3 +103,47 @@ select  distinct substr('SunMonTueWedThuFriSat',strftime('%w', date(substr(print
 
 memo
 SELECT date(1617465074639/1000, 'unixepoch')
+
+SELECT * FROM each_status_table between strftime('%s',date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime')) and strftime('%s',date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime'))  + 86400 - 3600 * 4  order by statusId asc
+
+INSERT INTO each_status_table (condition, comment,submit_time)VALUES(100,'Need to finish up the letter for tommrrow meeting',1617939964000- 10000000);
+
+INSERT INTO each_status_table (condition, comment,submit_time)VALUES(82,'I hope my friends from my hometown Sri Nagar can one day share that experience with us here.',1617939964000- 3600000);
+
+delete from each_status_table where statusId =  86
+
+SELECT * FROM each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = '2021-04-10' order by statusId asc
+
+SELECT * FROM each_status_table where submit_time between strftime('%s', '2021-04-10', 'localtime') and strftime('%s', '2021-04-10', 'localtime')  + 86400 + 3600 * 4  order by statusId asc
+
+惜しい。。
+SELECT * FROM each_status_table where submit_time between (strftime('%s', '2021-04-10'))*1000 and (strftime('%s', '2021-04-10')  +(3600 * 28))*1000  order by statusId asc
+
+1日と４時間
+SELECT (strftime('%s', '2021-04-10'))*1000 - (strftime('%s', '2021-04-10')  +(86400 + 3600 * 4))*1000
+
+SELECT * FROM each_status_table where submit_time between (strftime('%s', '2021-04-10'))*1000 and  ((strftime('%s', '2021-04-10'))*1000) + 100800000  order by statusId asc
+
+memo
+SELECT * FROM each_status_table WHERE date(substr(printf('%d',submit_time),1,10),'unixepoch','localtime') = :key order by statusId asc
+
+select datetime('1617986452','unixepoch', 'localtime')
+->	2021-04-10 01:40:52
+
+select strftime('%s', '2021-04-10')
+->	1618012800
+select strftime('%s', '2021-04-10', 'localtime')
+1	1618045200
+select datetime('1618012800','unixepoch')
+->	2021-04-10 00:00:00
+select datetime('1618045200','unixepoch')
+1	2021-04-10 09:00:00
+
+SELECT (strftime('%s', '2021-04-10','localtime') - strftime('%s', '2021-04-10'))*1000
+1	32400000
+
+これだけど、どうやってLocaltimeで９時間を出すか。。
+SELECT * FROM each_status_table where submit_time between (strftime('%s', '2021-04-10'))*1000 - (3600000*9) and (strftime('%s', '2021-04-10')  +(3600 * 28))*1000  order by statusId asc
+
+できたけど効率悪い 時間 - (Local時間 - 時間)
+SELECT * FROM each_status_table where submit_time between (strftime('%s', '2021-04-10'))*1000 - ((strftime('%s', '2021-04-10','localtime') - strftime('%s', '2021-04-10'))*1000) and (strftime('%s', '2021-04-10')  +(3600 * 28))*1000  order by statusId asc

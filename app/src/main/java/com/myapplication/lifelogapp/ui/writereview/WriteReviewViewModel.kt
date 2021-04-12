@@ -3,6 +3,7 @@ package com.myapplication.lifelogapp.ui.writereview
 import androidx.lifecycle.*
 import com.myapplication.lifelogapp.database.LifelogDao
 import com.myapplication.lifelogapp.database.Preview
+
 import kotlinx.coroutines.launch
 
 class WriteReviewViewModel (
@@ -44,9 +45,11 @@ class WriteReviewViewModel (
         get() = _navigateToHistoryDetail
     val _navigateToHistoryDetail = MutableLiveData<String?>()
 
-    val navigateToHome: LiveData<String?>
+    val navigateToHome: LiveData<Boolean?>
         get() = _navigateToHome
-    val _navigateToHome = MutableLiveData<String?>()
+    val _navigateToHome = MutableLiveData<Boolean?>()
+
+
 
     private suspend fun insert(newPreview: Preview) {
         database.insert(newPreview)
@@ -68,7 +71,7 @@ class WriteReviewViewModel (
                 newComment.theDate = dayLogsKey
                 newComment.reviewComment = editText
                 insert(newComment)
-                _navigateToHome.value = dayLogsKey
+                _navigateToHome.value = true
             }
             else {
                 newComment.flag = 1
@@ -88,7 +91,7 @@ class WriteReviewViewModel (
                 update(revisedPreview.value)
 
             if(dayLogsKey =="MEMO"){
-                _navigateToHome.value = dayLogsKey
+                _navigateToHome.value = true
             }else {
                 _navigateToHistoryDetail.value = withWeekday
             }
@@ -97,7 +100,7 @@ class WriteReviewViewModel (
 
     fun onCancelClicked() {
         if(dayLogsKey =="MEMO"){
-            _navigateToHome.value = dayLogsKey
+            _navigateToHome.value = true
         }else {
             _navigateToHistoryDetail.value = withWeekday
         }

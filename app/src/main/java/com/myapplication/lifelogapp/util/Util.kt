@@ -12,6 +12,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.myapplication.lifelogapp.R
 import com.myapplication.lifelogapp.database.Lifelog
 import java.text.SimpleDateFormat
@@ -21,6 +23,14 @@ fun convertLongToDateString(systemTime: Long): String {
     return SimpleDateFormat("EE MM-dd' Time: 'HH:mm")
         .format(systemTime).toString()
 }
+//ago 表記にしようとしてた
+//@SuppressLint("SimpleDateFormat")
+//fun convertLongToDateString(systemTime: Long): String {
+//    val fromNow = System.currentTimeMillis() - systemTime
+//    return SimpleDateFormat("HH:mm ' ago'")
+//        .format(fromNow).toString()
+//
+//}
 
 @SuppressLint("SimpleDateFormat")
 fun convertLongToTimeString(systemTime: Long): String {
@@ -89,3 +99,4 @@ fun Context.hideKeyboard(view: View) {
 }
 
 data class commentData(var comment: String = "")
+
