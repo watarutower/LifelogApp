@@ -18,3 +18,6 @@ You can use it fine already.
 ### Aurthor
 Wataru Yoshida
 https://github.com/watarutower
+
+## Screen Shots
+https://github.com/watarutower/LifelogApp/issues/5#issue-866727310
