@@ -19,5 +19,5 @@ You can use it fine already.
 Wataru Yoshida
 https://github.com/watarutower
 
-## Screen Shots
+## Screen Shot
 https://github.com/watarutower/LifelogApp/issues/5#issue-866727310
