@@ -16,9 +16,9 @@ It is fully stable, but there will be some update, like improved usibility, maki
 You can use it fine already.
 
 ## Features
-- ログと同時に状況の評価
-− ログをとった3時間後に自動通知で更新のタイミングのお知らせ
-− 日記スタイルとして保存される
+- ログと同時に状況の評価.
+− ログをとった3時間後に自動通知で更新のタイミングのお知らせ.
+− 日記スタイルとして保存される.
 
 - Make logs with your condition evaluation.
 - Notification in 3 hours from your last log.
